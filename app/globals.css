@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8faf8;
-  --foreground: #17211b;
-  --muted: #667069;
-  --line: #d9e0db;
+  --background: #f7f8f5;
+  --foreground: #1e2420;
+  --muted: #69736d;
+  --line: #e4e8e1;
   --panel: #ffffff;
-  --primary: #1f7a4d;
-  --primary-strong: #145d3a;
-  --accent: #e8b84f;
-  --danger: #b42318;
+  --primary: #2f8f63;
+  --primary-strong: #206744;
+  --mint: #dff5e8;
+  --lime: #eef7c5;
+  --sun: #ffe8a3;
+  --coral: #f47f6b;
+  --danger: #c85645;
+  --shadow-soft: 0 18px 44px rgba(43, 68, 52, 0.1);
+  --shadow-card: 0 10px 28px rgba(43, 68, 52, 0.08);
   --safe-bottom: env(safe-area-inset-bottom);
 }
 
@@ -44,4 +49,22 @@ textarea {
 .focus-ring:focus-visible {
   outline: 3px solid rgba(31, 122, 77, 0.35);
   outline-offset: 3px;
+}
+
+@keyframes lastly-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-lastly-pulse {
+    animation: lastly-pulse 1.4s ease-in-out infinite;
+  }
 }

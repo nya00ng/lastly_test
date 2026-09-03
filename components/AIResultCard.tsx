@@ -1,19 +1,23 @@
 import type { AiConfirmationFixture } from "@/lib/types";
 
 const rows: Array<[keyof AiConfirmationFixture, string]> = [
-  ["originalInput", "Original input"],
-  ["parsedIntent", "Parsed Intent"],
-  ["parsedScope", "Parsed Scope"],
-  ["normalizedAction", "Normalized Action"],
-  ["resolvedDate", "Resolved Date"],
-  ["dateResolutionSource", "Date Resolution Source"],
-  ["itemMatchingCandidate", "Item Matching Candidate"],
+  ["originalInput", "내가 입력한 말"],
+  ["normalizedAction", "기록할 내용"],
+  ["resolvedDate", "수행 날짜"],
+  ["itemMatchingCandidate", "기록할 항목"],
+  ["parsedIntent", "Dev · Parsed Intent"],
+  ["parsedScope", "Dev · Parsed Scope"],
+  ["datePrecision", "Dev · Date Precision"],
+  ["dateResolutionSource", "Dev · Date Resolution Source"],
 ];
 
 export function AIResultCard({ result }: { result: AiConfirmationFixture }) {
   return (
     <section className="rounded-md border border-[var(--line)] bg-white p-4">
-      <h2 className="text-base font-bold">저장 전 AI 확인 fixture</h2>
+      <h2 className="text-base font-bold">AI가 이렇게 이해했어요.</h2>
+      <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+        확인하고 필요한 부분만 고쳐주세요. 아직 저장되지 않았습니다.
+      </p>
       <dl className="mt-4 grid gap-3 text-sm">
         {rows.map(([key, label]) => (
           <div

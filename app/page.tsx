@@ -1,5 +1,5 @@
-import { renderScreen } from "@/lib/screens";
+import { HomeDemo } from "@/components/app/HomeDemo";
 
 export default function HomePage() {
-  return renderScreen("S10");
+  return <HomeDemo />;
 }

@@ -6,7 +6,7 @@
 
 ## 역할
 
-너는 LASTLY의 구현 담당 Coding Agent다. 이 프로젝트는 G0 Specification Freeze를 통과했으며, 현재는 **실제 구현 전**이다.
+너는 LASTLY의 구현 담당 Coding Agent다. 이 프로젝트는 G0 Specification Freeze와 G1 UI Prototype Acceptance를 통과했으며, 현재는 **DEMO TRACK 진행 중 / PHASE 2 구현 전**이다.
 
 임의로 제품 범위를 재해석하거나 확장하지 말고 Repository의 문서를 Source of Truth로 사용한다.
 
@@ -28,15 +28,35 @@
 
 ```text
 G0 = PASS
-CURRENT PHASE = PHASE 1
-CURRENT TASK = TASK 1 — Application UI Scaffold
+G1 = PASS
+PHASE 1 = COMPLETE
+CURRENT TRACK = DEMO TRACK
+D1 = PASS
+CURRENT TASK = D2 — Real AI Natural Language Parsing
+TASK 1 = PASS
+TASK 2 = PASS
+TASK 3 = PASS
+TASK 3.1 = PASS
+TASK 3.2 = PASS
+TASK 3.3 = PASS
+TASK 4 = PASS
+AFTER DEMO TRACK = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
+PHASE 2 IMPLEMENTATION = NOT STARTED
+AUTH/DB = NOT STARTED
+D2 FOUNDATION = PASS
+D2 MOCK DEMO = PASS
+REAL AI LIVE VERIFICATION = BLOCKED
+D2 FULL PASS = NOT YET
+REAL AI = MOCK DEMO READY / LIVE BLOCKED
+REAL STT = NOT STARTED
+REAL PUSH = NOT STARTED
 ```
 
-**PHASE 2 이상의 Auth / Supabase DB / AI Provider / STT Provider / 실제 Push Notification 구현은 아직 시작하지 않는다.**
+**PHASE 2 구현은 아직 시작하지 않았다. DEMO TRACK 승인 범위 없이 Supabase Auth / DB / STT Provider / 실제 Push Notification 구현을 선행하지 않는다. D2에서는 승인된 범위 안에서만 Real AI Natural Language Parsing을 연결한다.**
 
-## TASK 1 목표
+## 다음 Task 목표
 
-Repository가 비어 있거나 Application Scaffold가 없다면 LASTLY의 Frontend Scaffold를 만든다.
+현재 작업은 DEMO TRACK / D2 — Real AI Natural Language Parsing이다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. DEMO TRACK 완료 후 PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup으로 복귀한다. 세부 구현 범위는 새 Task 지시와 관련 문서를 다시 읽고 확정한다.
 
 기준 기술:
 
@@ -51,19 +71,19 @@ ESLint
 
 기존 Repository가 이미 초기화되어 있다면 기존 구조를 먼저 분석하고 불필요하게 재생성하지 않는다.
 
-TASK 1에서 구현할 범위:
+PHASE 1에서 완료된 범위:
 
 - Mobile-first Application Shell
 - Global Layout
 - 기본 Route 구조
 - 공통 Header / Bottom Navigation 등 App Navigation의 기초
 - Design Token / 기본 Typography / Spacing 구조
-- Fixture 기반 UI를 넣을 수 있는 구조
-- 24 Screen ID를 이후 단계에서 연결할 수 있는 Route/Component Architecture
-- Loading / Empty / Error 상태를 확장 가능한 구조로 준비
-- 360 / 390 / 430px 모바일 폭을 우선 고려
+- 24 Screen ID Fixture UI
+- 핵심 Fixture Navigation / State Transition
+- Loading / Empty / Error / Disabled 상태
+- 360 / 390 / 430px 모바일 폭 검증
 
-TASK 1에서 **하지 말 것**:
+승인된 DEMO TRACK Task 범위 밖에서 **하지 말 것**:
 
 - Supabase Production 연결
 - 실제 Authentication
@@ -124,7 +144,7 @@ Repository에 해당 script가 없다면 임의로 성공 처리하지 말고 �
 ## 완료 보고 형식
 
 ```text
-Task: PHASE 1 / TASK 1 — Application UI Scaffold
+Task: DEMO TRACK / D2 — Real AI Natural Language Parsing
 Status: PASS / PARTIAL / BLOCKED
 
 Files changed:
@@ -161,4 +181,4 @@ Next recommended task:
 - `.env.example`에 실제 Secret을 넣지 않는다.
 - Mock을 실제 기능 완료라고 보고하지 않는다.
 
-이제 위 문서를 읽고 **PHASE 1 / TASK 1 — Application UI Scaffold**만 시작하라.
+이제 위 문서를 읽고, 사용자가 승인한 경우에만 **DEMO TRACK / D2 — Real AI Natural Language Parsing** 범위만 시작하라.

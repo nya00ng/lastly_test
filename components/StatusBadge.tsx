@@ -17,8 +17,10 @@ type StatusBadgeProps = {
 export function StatusBadge({ status }: StatusBadgeProps) {
   return (
     <span
-      className={`inline-flex min-h-7 items-center rounded-md border px-2.5 text-xs font-bold ${statusTone[status]}`}
+      className={`inline-flex min-h-7 items-center gap-1 rounded-md border px-2.5 text-xs font-bold ${statusTone[status]}`}
     >
+      <span aria-hidden="true">●</span>
+      <span className="sr-only">상태: </span>
       {statusLabels[status]}
     </span>
   );

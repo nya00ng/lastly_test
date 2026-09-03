@@ -18,9 +18,12 @@ export function ScreenFrame({
 }: ScreenFrameProps) {
   return (
     <AppShell activeRoute={activeRoute} title={title}>
-      <section className="mb-4 rounded-md border border-[var(--line)] bg-white px-4 py-3">
-        <p className="text-xs font-bold text-[var(--primary)]">
-          {screenId} Fixture Screen
+      <section
+        aria-label="개발용 Fixture metadata"
+        className="mb-4 rounded-md border border-dashed border-[var(--line)] bg-white/70 px-4 py-3"
+      >
+        <p className="text-xs font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
+          Dev Fixture · {screenId} Fixture Screen
         </p>
         <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
           {description}

@@ -48,6 +48,41 @@ export type DatePrecision = "EXACT" | "APPROXIMATE" | "UNKNOWN" | "NOT_APPLICABL
 
 export type DateResolutionSource = "EXPLICIT" | "IMPLICIT_TODAY" | "NONE";
 
+export type ItemMatchType = "NEW" | "MATCHED" | "AMBIGUOUS";
+
+export type RecordInputState =
+  | "EMPTY"
+  | "TYPING"
+  | "READY"
+  | "TOO_LONG"
+  | "MULTIPLE_ACTION_EXAMPLE";
+
+export type VoiceState =
+  | "LISTENING"
+  | "PERMISSION_DENIED"
+  | "TRANSCRIBING"
+  | "TRANSCRIPT_READY"
+  | "STT_ERROR";
+
+export type AiProcessingState =
+  | "PROCESSING"
+  | "TIMEOUT"
+  | "PARSE_ERROR"
+  | "RETRY"
+  | "MANUAL_FALLBACK";
+
+export type GuardVariant =
+  | "TARGET"
+  | "UNKNOWN"
+  | "OUT_OF_SCOPE"
+  | "PLANNED"
+  | "NOT_COMPLETED"
+  | "QUERY"
+  | "DUPLICATE"
+  | "TOO_MANY_ACTIONS"
+  | "FUTURE_DATE"
+  | "APPROXIMATE_DATE";
+
 export type ClarificationType = "COMPLETION" | "ACTION" | "DATE" | "SCOPE";
 
 export type ManagementFixture = {
@@ -77,4 +112,15 @@ export type AiConfirmationFixture = {
   datePrecision: DatePrecision;
   dateResolutionSource: DateResolutionSource;
   itemMatchingCandidate: string;
+};
+
+export type MultiActionSegmentFixture = {
+  id: string;
+  sourceText: string;
+  action: string;
+  date: string;
+  item: string;
+  inclusion: "Include" | "Exclude";
+  recordability: "Recordable" | "Non-recordable" | "Invalid";
+  note: string;
 };

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { isScreenId, renderScreen, screenIds } from "@/lib/screens";
+import { isScreenId, renderScreen, screenIds } from "@/lib/screens/index";
 
 type ScreenPageProps = {
   params: Promise<{

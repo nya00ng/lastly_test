@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
-import { screenDefinitions } from "@/lib/screens";
+import { screenDefinitions } from "@/lib/screens/index";
 
 export default function ScreensIndexPage() {
   return (

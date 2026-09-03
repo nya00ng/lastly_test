@@ -12,7 +12,22 @@ LASTLY는 캘린더나 일반 To-do처럼 앞으로 할 일을 관리하는 서�
 Product / Technical Specification = COMPLETE
 Cross-document Audit = COMPLETE
 G0 Specification Freeze = PASS
-Runtime Implementation = NOT STARTED
+G1 UI Prototype Acceptance = PASS
+PHASE 1 UI Prototype = COMPLETE
+Current Track = DEMO TRACK
+D1 = PASS
+Current Task = D2 — Real AI Natural Language Parsing
+After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
+Runtime Implementation = PARTIAL DEMO TRACK ONLY
+PHASE 2 Implementation = NOT STARTED
+Auth/DB = NOT STARTED
+D2 Foundation = PASS
+D2 Mock Demo = PASS
+Real AI Live Verification = BLOCKED
+D2 Full PASS = NOT YET
+Real AI = MOCK DEMO READY / LIVE BLOCKED
+Real STT = NOT STARTED
+Real Push = NOT STARTED
 Runtime QA = NOT EXECUTED
 External Deployment = NOT EXECUTED
 ```
@@ -461,7 +476,9 @@ LASTLY/
 
 ## 다음 작업
 
-다음 단계는 **PHASE 1 / UI Scaffold**다.
+현재 단계는 **DEMO TRACK / D2 — Real AI Natural Language Parsing**이다. D1 Real App UI / IA Redesign은 PASS 상태다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다.
+
+DEMO TRACK 완료 후 기존 계획인 **PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup**으로 복귀한다. PHASE 2 구현은 아직 시작하지 않았다. G1 PASS는 PHASE 1의 Fixture 기반 UI Prototype Acceptance PASS를 의미하며, Auth, Database, AI, STT, Push, External Deployment 완료를 의미하지 않는다.
 
 Codex에게 처음부터 “전체 앱을 만들어”라고 하지 않는다. 작은 Task 단위로 구현하고 각 Task 완료 후 Test, Typecheck, Lint, Diff를 확인한다.
 

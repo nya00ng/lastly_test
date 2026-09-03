@@ -1,5 +1,5 @@
-import { renderScreen } from "@/lib/screens";
+import { SettingsDemo } from "@/components/app/SettingsDemo";
 
 export default function SettingsPage() {
-  return renderScreen("S40");
+  return <SettingsDemo />;
 }

@@ -1,5 +1,5 @@
-import { renderScreen } from "@/lib/screens";
+import { RecordDemo } from "@/components/app/RecordDemo";
 
 export default function RecordPage() {
-  return renderScreen("S11");
+  return <RecordDemo />;
 }

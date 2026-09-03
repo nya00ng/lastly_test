@@ -7,8 +7,11 @@
 - Service: LASTLY
 - Project/Team: 언제했조
 - Product: AI 생활주기 기억 웹앱
-- Current Gate: G0 PASS
-- Current State: Specification Freeze 완료 / Runtime 구현 전
+- Current Gate: G1 PASS
+- Current Track: DEMO TRACK
+- D1: PASS
+- Current Task: D2 — Real AI Natural Language Parsing
+- Current State: Specification Freeze 완료 / PHASE 1 UI Prototype 완료 / D2 Foundation PASS / D2 Mock Demo PASS / Real AI Live Verification BLOCKED / PHASE 2 구현 전
 
 핵심 문장:
 
@@ -530,7 +533,7 @@ PHASE 8 QA / User Test
 PHASE 9 Deployment / Final Verification
 ```
 
-현재는 G0 PASS 이후 **PHASE 1부터 시작**한다.
+현재는 G1 PASS 이후 사용자 요구에 따라 **DEMO TRACK**을 먼저 진행하고, DEMO TRACK 완료 후 기존 PHASE 2로 복귀한다.
 
 ## 29. Phase Discipline
 
@@ -630,7 +633,7 @@ AI Validation Dataset Ground Truth는 특히 임의 수정 금지.
 - External Golden Path PASS
 - G9 PASS
 
-현재는 Specification Freeze만 PASS다.
+현재는 G0 Specification Freeze와 G1 UI Prototype Acceptance만 PASS다.
 
 ## 35. Repository Layout
 
@@ -704,24 +707,45 @@ Framework 생성 후 구조가 조금 달라질 수 있지만 책임 분리는 �
 
 ## 40. Current Next Task
 
-현재 다음 개발 작업:
+현재 진행 상태:
 
 ```text
 PHASE 1
-TASK 1
-Application UI Scaffold
+TASK 1 = PASS
+TASK 2 = PASS
+TASK 3 = PASS
+TASK 3.1 = PASS
+TASK 3.2 = PASS
+TASK 3.3 = PASS
+TASK 4 = PASS
+G1 = PASS
+PHASE 1 = COMPLETE
+Current Track = DEMO TRACK
+D1 = PASS
+Current Task = D2 — Real AI Natural Language Parsing
+After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
+PHASE 2 implementation = NOT STARTED
+Auth/DB = NOT STARTED
+D2 Foundation = PASS
+D2 Mock Demo = PASS
+Real AI Live Verification = BLOCKED
+D2 Full PASS = NOT YET
+Real AI = MOCK DEMO READY / LIVE BLOCKED
+Real STT = NOT STARTED
+Real Push = NOT STARTED
 ```
 
 아직 전체 Product 구현을 시작하지 않는다.
 
 관련 문서:
 - 00
+- 02
 - 01
 - 03
 - 04
 - 10
 
-PHASE 1 완료 전 PHASE 2 Backend/Auth/DB 구현으로 넘어가지 않는다.
+DEMO TRACK 완료 전 PHASE 2 Backend/Auth/DB 구현으로 넘어가지 않는다.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
