@@ -105,7 +105,7 @@ Generic To-do, Calendar, Habit Checklist, Family Sharing, Photo Recognition, IoT
 **G9 PASS:** Core MUST 25 실제 동작; External Text/Voice/Save/Refresh/Relogin/Dashboard/Push/Re-record; Critical Security Defect 0; Rollback Path
 
 # 17. 현재 G0 상태
-01~12 v1.1 FINAL 문서와 Cross-document Audit가 완료되어 G0는 PASS 상태다. PHASE 1 UI Prototype Acceptance Review가 완료되어 G1도 PASS 상태다. 사용자 요구에 따라 기존 PHASE 2 진입 전 별도 DEMO TRACK을 먼저 진행한다. 현재 기준 상태는 Specification Freeze 완료 / PHASE 1 완료 / DEMO TRACK 진행 중 / PHASE 2 구현 전이며, D1 — Real App UI / IA Redesign은 PASS 상태이고 현재 Task는 D2 — Real AI Natural Language Parsing이다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. DEMO TRACK 완료 후 기존 진행 순서인 PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup으로 복귀한다. PHASE 2 Auth, Database, STT, Push Runtime 구현은 아직 시작하지 않았다.
+01~12 v1.1 FINAL 문서와 Cross-document Audit가 완료되어 G0는 PASS 상태다. PHASE 1 UI Prototype Acceptance Review가 완료되어 G1도 PASS 상태다. 사용자 요구에 따라 기존 PHASE 2 진입 전 별도 DEMO TRACK을 먼저 진행한다. 현재 기준 상태는 Specification Freeze 완료 / PHASE 1 완료 / DEMO TRACK 진행 중 / PHASE 2 구현 전이며, D1 — Real App UI / IA Redesign은 PASS 상태이고 현재 Task는 D3 — Real Voice Input Demo이다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. Browser Voice UI와 Web Speech API 연결은 구현됐지만, 실제 마이크 음성 입력 검증은 수동 확인이 필요해 D3는 PARTIAL 상태다. DEMO TRACK 완료 후 기존 진행 순서인 PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup으로 복귀한다. PHASE 2 Auth, Database, STT, Push Runtime 구현은 아직 시작하지 않았다.
 
 # 18. 문서 우선순위
 Product Scope=PRD, Business Meaning=BRS, Flow=UFS, Screen Behavior=UI/UX FS, AI=Parser, Persistence/Security=DB, Transport=API, AI Ground Truth=08, Release Verification=09, Execution Order=10, Release Operation=11, External Description=12. 충돌 시 임의 구현하지 않는다.
@@ -292,7 +292,7 @@ Cross Audit 통과 후 Repository `/docs`에 01~12를 고정하고 이후 Busine
 - **PHASE 1: COMPLETE**
 - **Current Track: DEMO TRACK**
 - **D1: PASS — Real App UI / IA Redesign**
-- **Current Task: D2 — Real AI Natural Language Parsing**
+- **Current Task: D3 — Real Voice Input Demo**
 - **TASK 1: PASS — Application UI Scaffold**
 - **TASK 2: PASS — 24 Screen ID Fixture UI Structure**
 - **TASK 3: PASS — Fixture Interaction & Edge-State Refinement**
@@ -308,6 +308,9 @@ Cross Audit 통과 후 Repository `/docs`에 01~12를 고정하고 이후 Busine
 - **Real AI Live Verification: BLOCKED**
 - **D2 Full PASS: NOT YET**
 - **Real AI: Mock Demo Ready / Live Blocked**
+- **Browser Voice Demo: IMPLEMENTED / MICROPHONE MANUAL VERIFICATION REQUIRED**
+- **D3: PARTIAL**
+- **External STT: NOT IMPLEMENTED**
 - **Real STT: 아직 시작 전**
 - **Real Push: 아직 시작 전**
 - **Runtime 구현: DEMO TRACK 범위에서 부분 진행**

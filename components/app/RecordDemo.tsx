@@ -1,15 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AiParseApiResponse, EnrichedParserSegment } from "@/lib/ai/types";
 import { DemoAppShell } from "./DemoAppShell";
 import { DemoButton } from "./DemoButton";
 import { CategoryIcon, CheckIcon, MicIcon } from "./AppIcons";
 
-type RecordStep = "input" | "processing" | "confirm" | "manual" | "blocked" | "saved";
+type RecordStep = "input" | "voice" | "processing" | "confirm" | "manual" | "blocked" | "saved";
+type VoiceState =
+  | "IDLE"
+  | "REQUESTING_PERMISSION"
+  | "LISTENING"
+  | "TRANSCRIPT_READY"
+  | "PERMISSION_DENIED"
+  | "UNSUPPORTED"
+  | "ERROR";
 
-const fallbackDate = "2026-09-03";
 const fallbackItemOptions = ["이불 세탁", "침구 정리", "칫솔 교체", "새 항목으로 기록"];
+
+function getToday() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+  }).formatToParts(new Date());
+  const year = parts.find((part) => part.type === "year")?.value ?? "2026";
+  const month = parts.find((part) => part.type === "month")?.value ?? "09";
+  const day = parts.find((part) => part.type === "day")?.value ?? "04";
+  return `${year}-${month}-${day}`;
+}
+
+function getSpeechRecognitionConstructor() {
+  if (typeof window === "undefined") return undefined;
+  return window.SpeechRecognition ?? window.webkitSpeechRecognition;
+}
+
+function getVoiceErrorCopy(error: SpeechRecognitionErrorCode | "unknown") {
+  if (error === "not-allowed" || error === "service-not-allowed") {
+    return "마이크 사용이 허용되지 않았어요. 브라우저에서 마이크 권한을 허용해주세요.";
+  }
+  if (error === "audio-capture") {
+    return "마이크를 찾지 못했어요. 기기 연결을 확인하거나 직접 입력해주세요.";
+  }
+  if (error === "no-speech" || error === "aborted") {
+    return "음성을 잘 듣지 못했어요. 다시 말하거나 직접 입력해주세요.";
+  }
+  if (error === "network") {
+    return "음성 인식 연결이 불안정해요. 다시 말하거나 직접 입력해주세요.";
+  }
+  return "음성 입력을 이어가기 어려워요. 다시 말하거나 직접 입력해주세요.";
+}
 
 function getCandidateCopy(segment: EnrichedParserSegment | null) {
   if (!segment) return "직접 기록으로 이어갈 수 있어요.";
@@ -34,21 +75,50 @@ function getCandidateCopy(segment: EnrichedParserSegment | null) {
 }
 
 export function RecordDemo() {
+  const today = getToday();
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionActiveRef = useRef(false);
+  const voiceStateRef = useRef<VoiceState>("IDLE");
+  const voiceTranscriptRef = useRef("");
   const [step, setStep] = useState<RecordStep>("input");
+  const [voiceState, setVoiceState] = useState<VoiceState>("IDLE");
   const [text, setText] = useState("오늘 이불 빨았어");
+  const [voiceTranscript, setVoiceTranscript] = useState("");
+  const [interimTranscript, setInterimTranscript] = useState("");
   const [action, setAction] = useState("이불 세탁");
-  const [date, setDate] = useState(fallbackDate);
+  const [date, setDate] = useState(today);
   const [item, setItem] = useState("이불 세탁");
   const [category, setCategory] = useState("생활");
   const [message, setMessage] = useState("");
   const [apiResult, setApiResult] = useState<AiParseApiResponse | null>(null);
   const [activeSegment, setActiveSegment] = useState<EnrichedParserSegment | null>(null);
 
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.abort();
+      recognitionRef.current = null;
+      recognitionActiveRef.current = false;
+    };
+  }, []);
+
+  function updateVoiceState(nextState: VoiceState) {
+    voiceStateRef.current = nextState;
+    setVoiceState(nextState);
+  }
+
+  function updateVoiceTranscript(nextTranscript: string) {
+    voiceTranscriptRef.current = nextTranscript;
+    setVoiceTranscript(nextTranscript);
+  }
+
   const isEmpty = text.trim().length === 0;
   const isTooLong = text.length > 500;
   const canAnalyze = !isEmpty && !isTooLong;
+  const transcriptEmpty = voiceTranscript.trim().length === 0;
+  const transcriptTooLong = voiceTranscript.length > 500;
+  const canAnalyzeTranscript = !transcriptEmpty && !transcriptTooLong;
   const dateEmpty = date.trim().length === 0;
-  const futureDate = date > fallbackDate;
+  const futureDate = date > today;
   const canSave = action.trim().length > 0 && !dateEmpty && !futureDate;
 
   function applySegment(segment: EnrichedParserSegment) {
@@ -56,24 +126,26 @@ export function RecordDemo() {
 
     setActiveSegment(segment);
     setAction(segment.normalized_action || "");
-    setDate(segment.performed_date || fallbackDate);
+    setDate(segment.performed_date || today);
     setCategory(segment.demo_category || "기타");
     setItem(firstCandidate);
     setMessage(getCandidateCopy(segment));
     setStep(segment.record_candidate ? "confirm" : "blocked");
   }
 
-  async function analyzeRecord() {
-    if (!canAnalyze) return;
+  async function analyzeRecord(nextText = text) {
+    const candidateText = nextText.trim();
+    if (!candidateText || candidateText.length > 500) return;
 
     setStep("processing");
     setMessage("");
     setApiResult(null);
     setActiveSegment(null);
+    setText(candidateText);
 
     try {
       const response = await fetch("/api/ai/parse", {
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text: candidateText }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
@@ -83,7 +155,7 @@ export function RecordDemo() {
       if (!result.ok) {
         setMessage(result.message);
         setAction("");
-        setDate(fallbackDate);
+        setDate(today);
         setItem("새 항목으로 기록");
         setCategory("기타");
         setStep("manual");
@@ -112,15 +184,118 @@ export function RecordDemo() {
 
   function startManualRecord() {
     setAction(activeSegment?.normalized_action || "");
-    setDate(activeSegment?.performed_date || fallbackDate);
+    setDate(activeSegment?.performed_date || today);
     setItem("새 항목으로 기록");
     setCategory(activeSegment?.demo_category || "기타");
     setStep("manual");
   }
 
   function resetInput() {
+    stopVoiceRecognition();
     setStep("input");
     setMessage("");
+  }
+
+  function stopVoiceRecognition() {
+    if (!recognitionActiveRef.current) return;
+    recognitionActiveRef.current = false;
+    recognitionRef.current?.stop();
+  }
+
+  function startVoiceRecognition() {
+    const Recognition = getSpeechRecognitionConstructor();
+    setMessage("");
+    setInterimTranscript("");
+
+    if (!Recognition) {
+      updateVoiceState("UNSUPPORTED");
+      setStep("voice");
+      setMessage("이 브라우저에서는 음성 입력을 사용할 수 없어요.");
+      return;
+    }
+
+    if (recognitionActiveRef.current) return;
+
+    const recognition = new Recognition();
+    recognitionRef.current = recognition;
+    recognition.lang = "ko-KR";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      recognitionActiveRef.current = true;
+      updateVoiceState("LISTENING");
+    };
+
+    recognition.onresult = (event) => {
+      let finalText = "";
+      let interimText = "";
+
+      for (let index = 0; index < event.results.length; index += 1) {
+        const result = event.results[index];
+        const transcript = result[0]?.transcript.trim();
+        if (!transcript) continue;
+        if (result.isFinal) {
+          finalText = `${finalText} ${transcript}`.trim();
+        } else {
+          interimText = `${interimText} ${transcript}`.trim();
+        }
+      }
+
+      if (finalText) {
+        updateVoiceTranscript(finalText);
+        setText(finalText);
+        updateVoiceState("TRANSCRIPT_READY");
+        if (recognitionActiveRef.current) {
+          recognitionActiveRef.current = false;
+          recognition.stop();
+        }
+      }
+      setInterimTranscript(interimText);
+    };
+
+    recognition.onerror = (event) => {
+      recognitionActiveRef.current = false;
+      if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+        updateVoiceState("PERMISSION_DENIED");
+      } else {
+        updateVoiceState("ERROR");
+      }
+      setMessage(getVoiceErrorCopy(event.error));
+    };
+
+    recognition.onend = () => {
+      recognitionActiveRef.current = false;
+      recognitionRef.current = null;
+      if (voiceStateRef.current === "LISTENING") {
+        if (voiceTranscriptRef.current.trim()) {
+          updateVoiceState("TRANSCRIPT_READY");
+        } else {
+          updateVoiceState("ERROR");
+          setMessage(getVoiceErrorCopy("no-speech"));
+        }
+      }
+    };
+
+    updateVoiceTranscript("");
+    updateVoiceState("REQUESTING_PERMISSION");
+    setStep("voice");
+
+    try {
+      recognition.start();
+    } catch {
+      recognitionActiveRef.current = false;
+      updateVoiceState("ERROR");
+      setMessage(getVoiceErrorCopy("unknown"));
+    }
+  }
+
+  function retryVoice() {
+    stopVoiceRecognition();
+    updateVoiceTranscript("");
+    setInterimTranscript("");
+    startVoiceRecognition();
   }
 
   const itemOptions =
@@ -164,7 +339,7 @@ export function RecordDemo() {
           </p>
           <button
             className="focus-ring flex min-h-16 w-full items-center justify-center gap-3 rounded-[22px] bg-white text-[15px] font-semibold shadow-[var(--shadow-card)]"
-            onClick={() => setMessage("말로 기록하기는 다음 데모 단계에서 연결돼요. 지금은 글로 남겨주세요.")}
+            onClick={startVoiceRecognition}
             type="button"
           >
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--mint)] text-[var(--primary)]">
@@ -177,9 +352,116 @@ export function RecordDemo() {
               {message}
             </p>
           ) : null}
-          <DemoButton disabled={!canAnalyze} onClick={analyzeRecord} tone="primary">
+          <DemoButton disabled={!canAnalyze} onClick={() => analyzeRecord()} tone="primary">
             기록 이해하기
           </DemoButton>
+        </section>
+      ) : null}
+
+      {step === "voice" ? (
+        <section className="flex min-h-[64vh] flex-col justify-center space-y-6 text-center">
+          {voiceState === "REQUESTING_PERMISSION" || voiceState === "LISTENING" ? (
+            <>
+              <div>
+                <h1 className="text-[26px] font-semibold leading-8">
+                  {voiceState === "REQUESTING_PERMISSION" ? "마이크를 준비하고 있어요" : "듣고 있어요"}
+                </h1>
+                <p className="mt-3 text-[14px] leading-6 text-[var(--muted)]">
+                  편하게 말해주세요.
+                  <br />
+                  예) 오늘 이불 빨았어
+                </p>
+              </div>
+              <div className="mx-auto flex h-44 w-44 items-center justify-center rounded-full bg-[var(--mint)] text-[var(--primary)] shadow-[var(--shadow-soft)] voice-ring">
+                <MicIcon className="h-16 w-16" />
+              </div>
+              {interimTranscript ? (
+                <p className="rounded-2xl bg-white px-4 py-3 text-[15px] font-semibold shadow-[var(--shadow-card)]">
+                  {interimTranscript}
+                </p>
+              ) : null}
+              <DemoButton onClick={stopVoiceRecognition} tone="primary">
+                듣기 중지
+              </DemoButton>
+              <DemoButton onClick={resetInput} tone="ghost">
+                직접 입력하기
+              </DemoButton>
+            </>
+          ) : null}
+
+          {voiceState === "TRANSCRIPT_READY" ? (
+            <div className="space-y-5 text-left">
+              <div className="text-center">
+                <h1 className="text-[26px] font-semibold leading-8">이렇게 들었어요</h1>
+                <p className="mt-3 text-[14px] leading-6 text-[var(--muted)]">
+                  내용을 확인하고 고칠 수 있어요.
+                </p>
+              </div>
+              <label className="block text-[14px] font-semibold">
+                들은 내용
+                <textarea
+                  className="focus-ring mt-2 min-h-44 w-full resize-none rounded-[24px] border-0 bg-white p-5 text-[17px] leading-7 shadow-[var(--shadow-card)]"
+                  onChange={(event) => {
+                    updateVoiceTranscript(event.target.value);
+                    setText(event.target.value);
+                  }}
+                  value={voiceTranscript}
+                />
+              </label>
+              <p
+                className={[
+                  "rounded-2xl px-4 py-3 text-[13px] font-medium",
+                  transcriptEmpty || transcriptTooLong
+                    ? "bg-[#ffe2dc] text-[#9f3e30]"
+                    : "bg-[var(--mint)] text-[var(--primary-strong)]",
+                ].join(" ")}
+              >
+                {transcriptEmpty
+                  ? "들은 내용이 비어 있어요."
+                  : transcriptTooLong
+                    ? `500자를 넘었어요. ${voiceTranscript.length}/500자`
+                    : `${voiceTranscript.length}/500자 · 이 내용으로 이해할 수 있어요.`}
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <DemoButton onClick={retryVoice} tone="secondary">
+                  다시 말하기
+                </DemoButton>
+                <DemoButton
+                  disabled={!canAnalyzeTranscript}
+                  onClick={() => analyzeRecord(voiceTranscript)}
+                  tone="primary"
+                >
+                  이 내용으로 이해하기
+                </DemoButton>
+              </div>
+            </div>
+          ) : null}
+
+          {voiceState === "UNSUPPORTED" || voiceState === "PERMISSION_DENIED" || voiceState === "ERROR" ? (
+            <div className="space-y-5">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-[28px] bg-[#ffe2dc] text-[#9f3e30]">
+                <MicIcon className="h-9 w-9" />
+              </div>
+              <div>
+                <h1 className="text-[24px] font-semibold leading-8">
+                  {voiceState === "UNSUPPORTED" ? "음성 입력을 사용할 수 없어요" : "음성을 듣지 못했어요"}
+                </h1>
+                <p className="mt-3 text-[14px] leading-6 text-[var(--muted)]">
+                  {message || "직접 입력으로 계속 기록할 수 있어요."}
+                </p>
+              </div>
+              <div className="space-y-2">
+                {voiceState !== "UNSUPPORTED" ? (
+                  <DemoButton onClick={retryVoice} tone="primary">
+                    다시 말하기
+                  </DemoButton>
+                ) : null}
+                <DemoButton onClick={resetInput} tone={voiceState === "UNSUPPORTED" ? "primary" : "secondary"}>
+                  직접 입력하기
+                </DemoButton>
+              </div>
+            </div>
+          ) : null}
         </section>
       ) : null}
 

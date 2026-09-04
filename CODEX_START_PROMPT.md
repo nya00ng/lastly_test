@@ -32,7 +32,7 @@ G1 = PASS
 PHASE 1 = COMPLETE
 CURRENT TRACK = DEMO TRACK
 D1 = PASS
-CURRENT TASK = D2 — Real AI Natural Language Parsing
+CURRENT TASK = D3 — Real Voice Input Demo
 TASK 1 = PASS
 TASK 2 = PASS
 TASK 3 = PASS
@@ -48,6 +48,9 @@ D2 MOCK DEMO = PASS
 REAL AI LIVE VERIFICATION = BLOCKED
 D2 FULL PASS = NOT YET
 REAL AI = MOCK DEMO READY / LIVE BLOCKED
+Browser Voice Demo = IMPLEMENTED / MICROPHONE MANUAL VERIFICATION REQUIRED
+D3 = PARTIAL
+EXTERNAL STT = NOT IMPLEMENTED
 REAL STT = NOT STARTED
 REAL PUSH = NOT STARTED
 ```
@@ -56,7 +59,7 @@ REAL PUSH = NOT STARTED
 
 ## 다음 Task 목표
 
-현재 작업은 DEMO TRACK / D2 — Real AI Natural Language Parsing이다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. DEMO TRACK 완료 후 PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup으로 복귀한다. 세부 구현 범위는 새 Task 지시와 관련 문서를 다시 읽고 확정한다.
+현재 작업은 DEMO TRACK / D3 — Real Voice Input Demo이다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. Browser Voice UI와 Web Speech API 연결은 구현됐지만, 실제 마이크 음성 입력 검증은 수동 확인이 필요해 D3는 PARTIAL 상태다. DEMO TRACK 완료 후 PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup으로 복귀한다. 세부 구현 범위는 새 Task 지시와 관련 문서를 다시 읽고 확정한다.
 
 기준 기술:
 
@@ -144,7 +147,7 @@ Repository에 해당 script가 없다면 임의로 성공 처리하지 말고 �
 ## 완료 보고 형식
 
 ```text
-Task: DEMO TRACK / D2 — Real AI Natural Language Parsing
+Task: DEMO TRACK / D3 — Real Voice Input Demo
 Status: PASS / PARTIAL / BLOCKED
 
 Files changed:
@@ -181,4 +184,4 @@ Next recommended task:
 - `.env.example`에 실제 Secret을 넣지 않는다.
 - Mock을 실제 기능 완료라고 보고하지 않는다.
 
-이제 위 문서를 읽고, 사용자가 승인한 경우에만 **DEMO TRACK / D2 — Real AI Natural Language Parsing** 범위만 시작하라.
+이제 위 문서를 읽고, 사용자가 승인한 경우에만 **DEMO TRACK / D3 — Real Voice Input Demo** 범위만 시작하라.
