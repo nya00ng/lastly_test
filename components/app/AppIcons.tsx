@@ -89,6 +89,33 @@ export function BellIcon(props: IconProps) {
   );
 }
 
+export function AlertIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 9v4" />
+      <path d="M12 17h.01" />
+      <path d="m10.3 3.9-8 13.8A2 2 0 0 0 4 20h16a2 2 0 0 0 1.7-2.3l-8-13.8a2 2 0 0 0-3.4 0Z" />
+    </Svg>
+  );
+}
+
+export function ClockIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </Svg>
+  );
+}
+
+export function ChevronIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="m9 18 6-6-6-6" />
+    </Svg>
+  );
+}
+
 export function CategoryIcon({ category, className }: IconProps & { category: string }) {
   if (category === "교체") {
     return (

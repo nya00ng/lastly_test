@@ -10,8 +10,8 @@ type DemoButtonProps = {
 };
 
 const toneClass = {
-  primary: "bg-[var(--primary)] text-white shadow-[var(--shadow-card)]",
-  secondary: "bg-white text-[var(--foreground)] shadow-[var(--shadow-card)]",
+  primary: "bg-[var(--primary-strong)] text-white shadow-[var(--shadow-card)]",
+  secondary: "border border-[var(--line)] bg-white text-[var(--foreground)] shadow-[var(--shadow-card)]",
   ghost: "bg-transparent text-[var(--muted)]",
 };
 
@@ -24,7 +24,7 @@ export function DemoButton({
   type = "button",
 }: DemoButtonProps) {
   const className = [
-    "focus-ring flex min-h-12 w-full items-center justify-center rounded-2xl px-4 text-center text-[15px] font-semibold transition",
+    "focus-ring flex min-h-13 w-full items-center justify-center rounded-2xl px-4 text-center text-[15px] font-semibold transition",
     disabled ? "bg-[#e8ece6] text-[#8b958f]" : toneClass[tone],
   ].join(" ");
 

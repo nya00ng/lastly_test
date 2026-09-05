@@ -14,7 +14,9 @@ export function ItemsDemo() {
     return demoItems.filter((item) => {
       if (item.status === "ARCHIVED") return false;
       const categoryMatch = category === "전체" || item.category === category;
-      const queryMatch = item.name.toLowerCase().includes(query.trim().toLowerCase());
+      const normalizedQuery = query.trim().toLowerCase();
+      const searchableText = `${item.name} ${item.memo}`.toLowerCase();
+      const queryMatch = searchableText.includes(normalizedQuery);
       return categoryMatch && queryMatch;
     });
   }, [category, query]);
@@ -30,13 +32,6 @@ export function ItemsDemo() {
   return (
     <DemoAppShell activeRoute="items" title="전체관리">
       <section className="space-y-5">
-        <div>
-          <h1 className="text-[25px] font-semibold leading-8">나는 무엇을 관리하고 있지?</h1>
-          <p className="mt-2 text-[14px] leading-6 text-[var(--muted)]">
-            상태와 생활 맥락을 함께 보고 필요한 항목을 찾을 수 있어요.
-          </p>
-        </div>
-
         <div className="-mx-5 overflow-x-auto px-5">
           <div className="flex min-w-max gap-2">
             {demoCategories.map((item) => {
@@ -46,8 +41,8 @@ export function ItemsDemo() {
                   className={[
                     "focus-ring min-h-11 rounded-full px-4 text-[14px] font-semibold",
                     isActive
-                      ? "bg-[var(--primary)] text-white"
-                      : "bg-white text-[var(--foreground)] shadow-[var(--shadow-card)]",
+                      ? "bg-[var(--primary-strong)] text-white"
+                      : "border border-[var(--line)] bg-white text-[var(--foreground)]",
                   ].join(" ")}
                   key={item}
                   onClick={() => setCategory(item)}
@@ -60,12 +55,11 @@ export function ItemsDemo() {
           </div>
         </div>
 
-        <label className="block text-[14px] font-semibold">
-          관리 항목 검색
+        <label className="block text-[14px] font-semibold text-[var(--foreground)]">
           <input
-            className="focus-ring mt-2 min-h-13 w-full rounded-[18px] border-0 bg-white px-4 text-[15px] shadow-[var(--shadow-card)]"
+            className="focus-ring min-h-13 w-full rounded-[18px] border border-[var(--line)] bg-white px-4 text-[15px] shadow-[var(--shadow-card)]"
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="예) 필터, 세탁, 구독"
+            placeholder="관리 항목을 검색하세요."
             value={query}
           />
         </label>
@@ -87,7 +81,7 @@ export function ItemsDemo() {
             ))}
           </div>
         ) : (
-          <div className="rounded-[24px] bg-white p-6 text-center shadow-[var(--shadow-card)]">
+          <div className="rounded-[18px] border border-[var(--line)] bg-white p-6 text-center shadow-[var(--shadow-card)]">
             <h2 className="text-[18px] font-semibold">검색 결과가 없어요.</h2>
             <p className="mt-2 text-[14px] leading-6 text-[var(--muted)]">
               다른 단어로 관리 항목을 찾아보세요.

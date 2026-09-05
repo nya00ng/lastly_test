@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { AiParseApiResponse, EnrichedParserSegment } from "@/lib/ai/types";
+import { demoItems } from "@/lib/demo-data";
 import { DemoAppShell } from "./DemoAppShell";
 import { DemoButton } from "./DemoButton";
 import { CategoryIcon, CheckIcon, MicIcon } from "./AppIcons";
@@ -17,6 +18,7 @@ type VoiceState =
   | "ERROR";
 
 const fallbackItemOptions = ["이불 세탁", "침구 정리", "칫솔 교체", "새 항목으로 기록"];
+const quickItems = demoItems.slice(0, 6);
 
 function getToday() {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -82,7 +84,7 @@ export function RecordDemo() {
   const voiceTranscriptRef = useRef("");
   const [step, setStep] = useState<RecordStep>("input");
   const [voiceState, setVoiceState] = useState<VoiceState>("IDLE");
-  const [text, setText] = useState("오늘 이불 빨았어");
+  const [text, setText] = useState("");
   const [voiceTranscript, setVoiceTranscript] = useState("");
   const [interimTranscript, setInterimTranscript] = useState("");
   const [action, setAction] = useState("이불 세탁");
@@ -109,6 +111,13 @@ export function RecordDemo() {
   function updateVoiceTranscript(nextTranscript: string) {
     voiceTranscriptRef.current = nextTranscript;
     setVoiceTranscript(nextTranscript);
+  }
+
+  function updateText(nextText: string) {
+    setText(nextText);
+    if (voiceStateRef.current === "TRANSCRIPT_READY") {
+      updateVoiceTranscript(nextText);
+    }
   }
 
   const isEmpty = text.trim().length === 0;
@@ -247,6 +256,8 @@ export function RecordDemo() {
         updateVoiceTranscript(finalText);
         setText(finalText);
         updateVoiceState("TRANSCRIPT_READY");
+        setMessage("이렇게 들은 내용을 확인하고 고칠 수 있어요.");
+        setStep("input");
         if (recognitionActiveRef.current) {
           recognitionActiveRef.current = false;
           recognition.stop();
@@ -307,53 +318,57 @@ export function RecordDemo() {
   return (
     <DemoAppShell activeRoute="record" title="기록하기">
       {step === "input" ? (
-        <section className="space-y-5">
-          <div>
-            <h1 className="text-[26px] font-semibold leading-8">무엇을 했나요?</h1>
-            <p className="mt-2 text-[14px] leading-6 text-[var(--muted)]">
-              오늘 한 생활관리를 한 문장으로 남겨보세요.
-            </p>
+        <section className="space-y-6">
+          <div className="flex justify-center pt-2">
+            <button
+              aria-label="말로 기록하기"
+              className={[
+                "focus-ring flex h-36 w-36 items-center justify-center rounded-full border border-[#9ecdbd] bg-[var(--mint)] text-[var(--primary-strong)] shadow-[var(--shadow-card)]",
+                voiceState === "LISTENING" ? "voice-ring" : "",
+              ].join(" ")}
+              onClick={startVoiceRecognition}
+              type="button"
+            >
+              <MicIcon className="h-14 w-14" />
+            </button>
           </div>
           <label className="block text-[14px] font-semibold">
-            기록할 내용
             <textarea
-              className="focus-ring mt-2 min-h-48 w-full resize-none rounded-[24px] border-0 bg-white p-5 text-[17px] leading-7 shadow-[var(--shadow-card)]"
-              onChange={(event) => setText(event.target.value)}
-              placeholder="예) 오늘 이불 빨았어"
+              className="focus-ring min-h-44 w-full resize-none rounded-[20px] border border-[var(--line)] bg-white p-5 text-[17px] leading-7 shadow-[var(--shadow-card)]"
+              onChange={(event) => updateText(event.target.value)}
+              placeholder="오늘 어떤 걸 기록할까요?"
               value={text}
             />
           </label>
-          <p
-            className={[
-              "rounded-2xl px-4 py-3 text-[13px] font-medium",
-              isEmpty || isTooLong
-                ? "bg-[#ffe2dc] text-[#9f3e30]"
-                : "bg-[var(--mint)] text-[var(--primary-strong)]",
-            ].join(" ")}
-          >
-            {isEmpty
-              ? "내용을 입력하면 이해할 수 있어요."
-              : isTooLong
-                ? `500자를 넘었어요. ${text.length}/500자`
-                : `${text.length}/500자 · 이해할 준비가 됐어요.`}
-          </p>
-          <button
-            className="focus-ring flex min-h-16 w-full items-center justify-center gap-3 rounded-[22px] bg-white text-[15px] font-semibold shadow-[var(--shadow-card)]"
-            onClick={startVoiceRecognition}
-            type="button"
-          >
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--mint)] text-[var(--primary)]">
-              <MicIcon className="h-5 w-5" />
+          <div className="flex items-center justify-between text-[13px] font-medium">
+            <span className={isEmpty || isTooLong ? "text-[var(--danger)]" : "text-[var(--muted)]"}>
+              {isEmpty ? "내용을 입력해주세요." : isTooLong ? "500자를 넘었어요." : "기록할 수 있어요."}
             </span>
-            말로 기록하기
-          </button>
+            <span className={isTooLong ? "text-[var(--danger)]" : "text-[var(--muted)]"}>{text.length}/500</span>
+          </div>
           {message ? (
-            <p className="rounded-2xl bg-white px-4 py-3 text-[13px] font-semibold text-[var(--muted)] shadow-[var(--shadow-card)]">
+            <p className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-[13px] font-semibold text-[var(--muted)] shadow-[var(--shadow-card)]">
               {message}
             </p>
           ) : null}
+          <section className="space-y-3">
+            <h2 className="text-[18px] font-semibold">자주 사용하는 항목</h2>
+            <div className="grid grid-cols-2 gap-2">
+              {quickItems.map((item) => (
+                <button
+                  className="focus-ring flex min-h-14 items-center gap-2 rounded-2xl border border-[var(--line)] bg-white px-3 text-left text-[14px] font-semibold shadow-[var(--shadow-card)]"
+                  key={item.id}
+                  onClick={() => updateText(`오늘 ${item.name}했어`)}
+                  type="button"
+                >
+                  <CategoryIcon category={item.category} className="h-5 w-5 shrink-0 text-[var(--icon-line)]" />
+                  <span className="min-w-0 truncate">{item.name}</span>
+                </button>
+              ))}
+            </div>
+          </section>
           <DemoButton disabled={!canAnalyze} onClick={() => analyzeRecord()} tone="primary">
-            기록 이해하기
+            기록하기
           </DemoButton>
         </section>
       ) : null}
@@ -372,7 +387,7 @@ export function RecordDemo() {
                   예) 오늘 이불 빨았어
                 </p>
               </div>
-              <div className="mx-auto flex h-44 w-44 items-center justify-center rounded-full bg-[var(--mint)] text-[var(--primary)] shadow-[var(--shadow-soft)] voice-ring">
+              <div className="mx-auto flex h-44 w-44 items-center justify-center rounded-full border border-[#9ecdbd] bg-[var(--mint)] text-[var(--primary-strong)] voice-ring">
                 <MicIcon className="h-16 w-16" />
               </div>
               {interimTranscript ? (
@@ -400,7 +415,7 @@ export function RecordDemo() {
               <label className="block text-[14px] font-semibold">
                 들은 내용
                 <textarea
-                  className="focus-ring mt-2 min-h-44 w-full resize-none rounded-[24px] border-0 bg-white p-5 text-[17px] leading-7 shadow-[var(--shadow-card)]"
+                  className="focus-ring mt-2 min-h-44 w-full resize-none rounded-[20px] border border-[var(--line)] bg-white p-5 text-[17px] leading-7 shadow-[var(--shadow-card)]"
                   onChange={(event) => {
                     updateVoiceTranscript(event.target.value);
                     setText(event.target.value);
@@ -467,21 +482,21 @@ export function RecordDemo() {
 
       {step === "processing" ? (
         <section className="flex min-h-[58vh] flex-col items-center justify-center text-center">
-          <div className="animate-lastly-pulse flex h-20 w-20 items-center justify-center rounded-[28px] bg-[var(--mint)] text-[var(--primary)]">
+          <div className="animate-lastly-pulse flex h-20 w-20 items-center justify-center rounded-[28px] border border-[var(--line)] bg-white text-[var(--icon-line)]">
             <CategoryIcon category="생활" className="h-9 w-9" />
           </div>
           <h1 className="mt-6 text-[24px] font-semibold leading-8">
-            LASTLY가 기록을 이해하고 있어요
+            기록을 정리하고 있어요.
           </h1>
           <p className="mt-3 text-[14px] leading-6 text-[var(--muted)]">
-            입력한 문장을 확인 가능한 기록으로 정리하는 중이에요.
+            내용을 확인 가능한 기록으로 정리하는 중이에요.
           </p>
         </section>
       ) : null}
 
       {step === "confirm" || step === "manual" ? (
         <section className="space-y-5">
-          <div className="rounded-[26px] bg-white p-5 shadow-[var(--shadow-card)]">
+          <div className="rounded-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
             <p className="text-[13px] font-medium text-[var(--muted)]">내가 남긴 내용</p>
             <p className="mt-2 text-[20px] font-semibold leading-7">{text || "오늘 이불 빨았어"}</p>
             {apiResult?.ok ? (
@@ -490,12 +505,12 @@ export function RecordDemo() {
               </p>
             ) : null}
           </div>
-          <div className="rounded-[28px] bg-white p-5 shadow-[var(--shadow-card)]">
+          <div className="rounded-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
             <p className="text-[13px] font-medium text-[var(--muted)]">
-              {step === "manual" ? "직접 확인해서 기록해요" : "LASTLY가 이렇게 이해했어요"}
+              {step === "manual" ? "직접 확인해서 기록해요" : "이렇게 기록할게요."}
             </p>
             <div className="mt-4 flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--mint)] text-[var(--primary)]">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--line)] bg-white text-[var(--icon-line)]">
                 <CategoryIcon category={category} className="h-6 w-6" />
               </span>
               <div>
@@ -513,7 +528,7 @@ export function RecordDemo() {
             <label className="mt-5 block text-[14px] font-semibold">
               수행한 날
               <input
-                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border-0 bg-[#f2f4ef] px-4"
+                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border border-[var(--line)] bg-white px-4"
                 onChange={(event) => setDate(event.target.value)}
                 type="date"
                 value={date}
@@ -522,7 +537,7 @@ export function RecordDemo() {
             <label className="mt-4 block text-[14px] font-semibold">
               어떤 항목으로 기록할까요?
               <select
-                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border-0 bg-[#f2f4ef] px-4"
+                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border border-[var(--line)] bg-white px-4"
                 onChange={(event) => setItem(event.target.value)}
                 value={item}
               >
@@ -534,7 +549,7 @@ export function RecordDemo() {
             <label className="mt-4 block text-[14px] font-semibold">
               기록할 이름
               <input
-                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border-0 bg-[#f2f4ef] px-4"
+                className="focus-ring mt-2 min-h-12 w-full rounded-2xl border border-[var(--line)] bg-white px-4"
                 onChange={(event) => setAction(event.target.value)}
                 value={action}
               />

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { DemoItem } from "@/lib/demo-data";
 import { statusCopy, statusTone } from "@/lib/demo-data";
-import { CategoryIcon } from "./AppIcons";
+import { CategoryIcon, ChevronIcon } from "./AppIcons";
 
 type DemoItemCardProps = {
   item: DemoItem;
@@ -10,47 +10,46 @@ type DemoItemCardProps = {
 };
 
 export function DemoItemCard({ item, href, compact = false }: DemoItemCardProps) {
+  const isCycleTracked = item.status === "DUE" || item.status === "UPCOMING" || item.status === "NORMAL";
   const content = (
-    <>
-      <div className="flex items-start gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--mint)] text-[var(--primary)]">
-          <CategoryIcon category={item.category} className="h-5 w-5" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="min-w-0 text-[16px] font-semibold leading-6 text-[var(--foreground)]">
+    <div className="flex items-center gap-3">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--line)] bg-white text-[var(--icon-line)]">
+        <CategoryIcon category={item.category} className="h-6 w-6" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="min-w-0 text-[17px] font-semibold leading-6 text-[var(--foreground)]">
               {item.name}
             </h3>
-            <span
-              className={[
-                "shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold",
-                statusTone[item.status],
-              ].join(" ")}
-            >
-              {statusCopy[item.status]}
-            </span>
+            <p className="mt-0.5 text-[14px] leading-5 text-[var(--muted)]">{item.memo}</p>
           </div>
-          <p className="mt-1 text-[13px] leading-5 text-[var(--muted)]">
-            {item.lastLabel}
-          </p>
+          <span
+            className={[
+              "shrink-0 rounded-full px-3 py-1.5 text-[15px] font-semibold leading-5",
+              isCycleTracked ? statusTone[item.status] : "bg-[#f4f7f5] text-[var(--muted)]",
+            ].join(" ")}
+          >
+            {item.dDayLabel}
+          </span>
         </div>
+        {!compact ? (
+          <div className="mt-3 flex items-center justify-between gap-3 border-t border-[var(--divider)] pt-3 text-[13px] text-[var(--muted)]">
+            <span>{item.category}</span>
+            <span>{item.cycleLabel}</span>
+          </div>
+        ) : null}
       </div>
-      <div className="mt-4 flex items-center justify-between gap-3 text-[13px]">
-        <span className="rounded-full bg-[#f2f4ef] px-3 py-1.5 font-medium text-[var(--foreground)]">
-          {item.category}
+      {href ? (
+        <span className="text-[var(--muted)]" aria-hidden="true">
+          <ChevronIcon className="h-5 w-5" />
         </span>
-        <span className="text-right font-semibold text-[var(--foreground)]">
-          {item.dueLabel}
-        </span>
-      </div>
-      {!compact ? (
-        <p className="mt-3 text-[13px] leading-5 text-[var(--muted)]">{item.detail}</p>
       ) : null}
-    </>
+    </div>
   );
 
   const className =
-    "focus-ring block rounded-[20px] bg-white p-4 shadow-[var(--shadow-card)]";
+    "focus-ring block rounded-[18px] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-card)]";
 
   if (!href) {
     return <article className={className}>{content}</article>;

@@ -4,44 +4,49 @@ import { useState } from "react";
 import { DemoAppShell } from "./DemoAppShell";
 import { DemoButton } from "./DemoButton";
 import { BellIcon, CategoryIcon, CheckIcon } from "./AppIcons";
+import { demoItems } from "@/lib/demo-data";
 
 export function NotificationDemo() {
   const [sheetOpen, setSheetOpen] = useState(false);
+  const notificationItem = demoItems.find((item) => item.id === "bedding") ?? demoItems[0];
 
   return (
     <DemoAppShell activeRoute="home" title="알림">
       <section className="space-y-5">
-        <div className="rounded-[28px] bg-[#203527] p-5 text-white shadow-[var(--shadow-card)]">
-          <div className="rounded-[22px] bg-white/95 p-4 text-[var(--foreground)] shadow-[var(--shadow-card)]">
+        <div className="rounded-[22px] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-card)]">
+          <div className="rounded-[18px] border border-[var(--line)] bg-[var(--background)] p-4 text-[var(--foreground)]">
             <div className="flex items-center justify-between text-[12px] font-semibold text-[var(--muted)]">
               <span>LASTLY</span>
               <span>지금</span>
             </div>
             <div className="mt-3 flex gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--mint)] text-[var(--primary)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--mint)] text-[var(--icon-line)]">
                 <BellIcon className="h-5 w-5" />
               </span>
               <div>
-                <h1 className="text-[17px] font-semibold">이불 세탁할 때예요</h1>
-                <p className="mt-1 text-[13px] leading-5 text-[var(--muted)]">
-                  마지막 세탁 후 30일이 지났어요.
-                </p>
+                <h1 className="text-[17px] font-semibold">{notificationItem.name}</h1>
+                <p className="mt-1 text-[13px] leading-5 text-[var(--muted)]">{notificationItem.memo}</p>
               </div>
             </div>
           </div>
-          <p className="mt-4 text-[13px] leading-5 text-white/72">
-            실제 브라우저 알림 연결 전, 앱 안에서 보여주는 알림 흐름 미리보기입니다.
+          <p className="mt-4 text-[13px] leading-5 text-[var(--muted)]">
+            앱 안에서 확인하는 알림 데모 흐름입니다.
           </p>
         </div>
 
-        <div className="rounded-[28px] bg-white p-5 shadow-[var(--shadow-card)]">
-          <span className="flex h-14 w-14 items-center justify-center rounded-[20px] bg-[var(--mint)] text-[var(--primary)]">
+        <div className="rounded-[22px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
+          <span className="flex h-14 w-14 items-center justify-center rounded-[20px] border border-[var(--line)] bg-white text-[var(--icon-line)]">
             <CategoryIcon category="생활" className="h-7 w-7" />
           </span>
-          <h1 className="mt-4 text-[25px] font-semibold">이불 세탁</h1>
-          <p className="mt-2 text-[15px] leading-6 text-[var(--muted)]">
-            마지막 세탁은 30일 전이에요. 이제 관리할 때가 되었어요.
-          </p>
+          <div className="mt-4 flex items-start justify-between gap-3">
+            <div>
+              <h1 className="text-[25px] font-semibold">{notificationItem.name}</h1>
+              <p className="mt-1 text-[15px] leading-6 text-[var(--muted)]">{notificationItem.memo}</p>
+            </div>
+            <span className="rounded-full bg-[var(--status-due-bg)] px-3 py-1.5 text-[18px] font-semibold text-[#a95550]">
+              {notificationItem.dDayLabel}
+            </span>
+          </div>
           <div className="mt-5 grid gap-2">
             <DemoButton href="/record" tone="primary">
               오늘 했어요
@@ -71,7 +76,7 @@ export function NotificationDemo() {
             <div className="mt-5 grid gap-2">
               {["1일 후", "3일 후", "7일 후"].map((label) => (
                 <button
-                  className="focus-ring flex min-h-13 items-center justify-between rounded-2xl bg-[#f2f4ef] px-4 text-[15px] font-semibold"
+                  className="focus-ring flex min-h-13 items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 text-[15px] font-semibold"
                   key={label}
                   onClick={() => setSheetOpen(false)}
                   type="button"

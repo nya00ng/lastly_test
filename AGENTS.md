@@ -10,8 +10,9 @@
 - Current Gate: G1 PASS
 - Current Track: DEMO TRACK
 - D1: PASS
+- D1.2: PASS — Minimal Mint Line UI Final Revision
 - Current Task: D3 — Real Voice Input Demo
-- Current State: Specification Freeze 완료 / PHASE 1 UI Prototype 완료 / D2 Foundation PASS / D2 Mock Demo PASS / Real AI Live Verification BLOCKED / D3 PARTIAL / PHASE 2 구현 전
+- Current State: Specification Freeze 완료 / PHASE 1 UI Prototype 완료 / D1.2 Minimal Mint Line UI 완료 / D2 Foundation PASS / D2 Mock Demo PASS / Real AI Live Verification BLOCKED / D3 PARTIAL / PHASE 2 구현 전
 
 핵심 문장:
 
@@ -722,6 +723,8 @@ G1 = PASS
 PHASE 1 = COMPLETE
 Current Track = DEMO TRACK
 D1 = PASS
+D1.2 = PASS — Minimal Mint Line UI Final Revision
+Current UI = Minimal Mint Line UI
 Current Task = D3 — Real Voice Input Demo
 After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
 PHASE 2 implementation = NOT STARTED
@@ -732,6 +735,7 @@ Real AI Live Verification = BLOCKED
 D2 Full PASS = NOT YET
 Real AI = MOCK DEMO READY / LIVE BLOCKED
 Browser Voice Demo = IMPLEMENTED / MICROPHONE MANUAL VERIFICATION REQUIRED
+D3 = PARTIAL
 External STT = NOT IMPLEMENTED
 Real STT = NOT STARTED
 Real Push = NOT STARTED

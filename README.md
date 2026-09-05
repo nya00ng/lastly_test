@@ -16,6 +16,8 @@ G1 UI Prototype Acceptance = PASS
 PHASE 1 UI Prototype = COMPLETE
 Current Track = DEMO TRACK
 D1 = PASS
+D1.2 = PASS
+Current UI = Minimal Mint Line UI
 Current Task = D3 — Real Voice Input Demo
 After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
 Runtime Implementation = PARTIAL DEMO TRACK ONLY
@@ -479,7 +481,7 @@ LASTLY/
 
 ## 다음 작업
 
-현재 단계는 **DEMO TRACK / D3 — Real Voice Input Demo**이다. D1 Real App UI / IA Redesign은 PASS 상태다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. Browser Voice UI와 Web Speech API 연결은 구현됐지만, 실제 마이크 음성 입력 검증은 수동 확인이 필요해 D3는 PARTIAL 상태다.
+현재 단계는 **DEMO TRACK / D3 — Real Voice Input Demo**이다. D1 Real App UI / IA Redesign과 D1.2 Minimal Mint Line UI Final Revision은 PASS 상태다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. Browser Voice UI와 Web Speech API 연결은 구현됐지만, 실제 마이크 음성 입력 검증은 수동 확인이 필요해 D3는 PARTIAL 상태다.
 
 DEMO TRACK 완료 후 기존 계획인 **PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup**으로 복귀한다. PHASE 2 구현은 아직 시작하지 않았다. G1 PASS는 PHASE 1의 Fixture 기반 UI Prototype Acceptance PASS를 의미하며, Auth, Database, AI, STT, Push, External Deployment 완료를 의미하지 않는다.
 
