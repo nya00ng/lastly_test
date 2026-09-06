@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { DemoAppShell } from "./DemoAppShell";
 import { DemoItemCard } from "./DemoItemCard";
-import { AlertIcon, CheckIcon, ClockIcon } from "./AppIcons";
+import { AlertIcon, CheckIcon, ChevronIcon, ClockIcon } from "./AppIcons";
 import { dashboardDemoItems } from "@/lib/demo-data";
 import type { LifecycleStatus } from "@/lib/types";
 
@@ -67,7 +68,7 @@ export function HomeDemo() {
             </span>
           </div>
           {priorityItems.map((item) => (
-            <DemoItemCard href="/items" item={item} key={item.id} />
+            <DemoItemCard href={`/items/${item.id}`} item={item} key={item.id} />
           ))}
         </div>
 
@@ -78,11 +79,12 @@ export function HomeDemo() {
           </div>
           <div className="rounded-[18px] border border-[var(--line)] bg-white shadow-[var(--shadow-card)]">
             {recentItems.map((item, index) => (
-              <div
+              <Link
                 className={[
-                  "flex items-center justify-between gap-3 px-4 py-4",
+                  "focus-ring flex min-h-16 items-center justify-between gap-3 px-4 py-4",
                   index > 0 ? "border-t border-[var(--divider)]" : "",
                 ].join(" ")}
+                href={`/items/${item.id}`}
                 key={item.id}
               >
                 <div className="min-w-0">
@@ -92,7 +94,8 @@ export function HomeDemo() {
                 <span className="shrink-0 text-[14px] font-medium text-[var(--muted)]">
                   {item.recentLabel}
                 </span>
-              </div>
+                <ChevronIcon className="h-5 w-5 shrink-0 text-[var(--muted)]" />
+              </Link>
             ))}
           </div>
         </section>

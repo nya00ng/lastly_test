@@ -13,7 +13,17 @@ export type DemoItem = {
   dDayLabel: string;
   dueLabel: string;
   cycleLabel: string;
+  cycleDays: number | null;
+  lastPerformedDateLabel: string;
+  nextDueDateLabel: string;
   detail: string;
+  history: DemoHistoryEntry[];
+};
+
+export type DemoHistoryEntry = {
+  id: string;
+  dateLabel: string;
+  actionLabel: string;
 };
 
 export const demoCategories: Array<"전체" | DemoCategory> = [
@@ -36,7 +46,15 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D+2",
     dueLabel: "관리일 2일 지남",
     cycleLabel: "30일마다",
+    cycleDays: 30,
+    lastPerformedDateLabel: "2026.08.05",
+    nextDueDateLabel: "2026.09.04",
     detail: "오늘 확인하면 좋은 생활관리 항목이에요.",
+    history: [
+      { id: "bedding-20260805", dateLabel: "2026.08.05", actionLabel: "이불 세탁" },
+      { id: "bedding-20260706", dateLabel: "2026.07.06", actionLabel: "이불 세탁" },
+      { id: "bedding-20260606", dateLabel: "2026.06.06", actionLabel: "이불 세탁" },
+    ],
   },
   {
     id: "water-filter",
@@ -48,7 +66,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D+8",
     dueLabel: "관리일 8일 지남",
     cycleLabel: "90일마다",
-    detail: "교체 시점이 지나 알림 데모 대상입니다.",
+    cycleDays: 90,
+    lastPerformedDateLabel: "2026.05.29",
+    nextDueDateLabel: "2026.08.27",
+    detail: "교체 시점이 지나 알림 확인 대상입니다.",
+    history: [
+      { id: "water-filter-20260529", dateLabel: "2026.05.29", actionLabel: "정수기 필터 교체" },
+      { id: "water-filter-20260228", dateLabel: "2026.02.28", actionLabel: "정수기 필터 교체" },
+    ],
   },
   {
     id: "toothbrush",
@@ -61,7 +86,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D-3",
     dueLabel: "관리일까지 3일 남음",
     cycleLabel: "30일마다",
+    cycleDays: 30,
+    lastPerformedDateLabel: "2026.09.03",
+    nextDueDateLabel: "2026.10.03",
     detail: "곧 바꿀 때가 다가와요.",
+    history: [
+      { id: "toothbrush-20260903", dateLabel: "2026.09.03", actionLabel: "칫솔 교체" },
+      { id: "toothbrush-20260804", dateLabel: "2026.08.04", actionLabel: "칫솔 교체" },
+    ],
   },
   {
     id: "washer",
@@ -74,7 +106,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D-5",
     dueLabel: "관리일까지 5일 남음",
     cycleLabel: "30일마다",
+    cycleDays: 30,
+    lastPerformedDateLabel: "2026.08.12",
+    nextDueDateLabel: "2026.09.11",
     detail: "여유가 조금 남아 있어요.",
+    history: [
+      { id: "washer-20260812", dateLabel: "2026.08.12", actionLabel: "세탁조 청소" },
+      { id: "washer-20260713", dateLabel: "2026.07.13", actionLabel: "세탁조 청소" },
+    ],
   },
   {
     id: "aircon",
@@ -87,7 +126,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D-18",
     dueLabel: "관리일까지 18일 남음",
     cycleLabel: "30일마다",
+    cycleDays: 30,
+    lastPerformedDateLabel: "2026.08.24",
+    nextDueDateLabel: "2026.09.23",
     detail: "아직은 편하게 지켜봐도 돼요.",
+    history: [
+      { id: "aircon-20260824", dateLabel: "2026.08.24", actionLabel: "에어컨 청소" },
+      { id: "aircon-20260725", dateLabel: "2026.07.25", actionLabel: "에어컨 청소" },
+    ],
   },
   {
     id: "lens",
@@ -99,7 +145,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D-10",
     dueLabel: "관리일까지 10일 남음",
     cycleLabel: "14일마다",
+    cycleDays: 14,
+    lastPerformedDateLabel: "2026.09.02",
+    nextDueDateLabel: "2026.09.16",
     detail: "다음 교체일까지 여유가 있어요.",
+    history: [
+      { id: "lens-20260902", dateLabel: "2026.09.02", actionLabel: "렌즈 교체" },
+      { id: "lens-20260819", dateLabel: "2026.08.19", actionLabel: "렌즈 교체" },
+    ],
   },
   {
     id: "boiler",
@@ -111,7 +164,13 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "주기 없음",
     dueLabel: "관리주기가 없어요",
     cycleLabel: "주기 없음",
+    cycleDays: null,
+    lastPerformedDateLabel: "2026.09.01",
+    nextDueDateLabel: "주기 없음",
     detail: "전체관리에서 주기를 정할 수 있어요.",
+    history: [
+      { id: "boiler-20260901", dateLabel: "2026.09.01", actionLabel: "보일러 점검" },
+    ],
   },
   {
     id: "fridge",
@@ -123,7 +182,11 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "기록 없음",
     dueLabel: "첫 기록이 필요해요",
     cycleLabel: "30일마다",
+    cycleDays: 30,
+    lastPerformedDateLabel: "기록 없음",
+    nextDueDateLabel: "기록 후 계산",
     detail: "관리 대상은 있지만 수행기록은 아직 없어요.",
+    history: [],
   },
   {
     id: "shoes",
@@ -135,7 +198,13 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "주기 없음",
     dueLabel: "관리주기가 없어요",
     cycleLabel: "주기 없음",
+    cycleDays: null,
+    lastPerformedDateLabel: "2026.08.20",
+    nextDueDateLabel: "주기 없음",
     detail: "원하면 반복 확인 주기를 둘 수 있어요.",
+    history: [
+      { id: "shoes-20260820", dateLabel: "2026.08.20", actionLabel: "신발 세탁" },
+    ],
   },
   {
     id: "subscription",
@@ -147,7 +216,14 @@ export const demoItems: DemoItem[] = [
     dDayLabel: "D-18",
     dueLabel: "관리일까지 18일 남음",
     cycleLabel: "60일마다",
+    cycleDays: 60,
+    lastPerformedDateLabel: "2026.08.22",
+    nextDueDateLabel: "2026.10.21",
     detail: "가끔 확인하면 좋은 항목이에요.",
+    history: [
+      { id: "subscription-20260822", dateLabel: "2026.08.22", actionLabel: "구독 결제 확인" },
+      { id: "subscription-20260623", dateLabel: "2026.06.23", actionLabel: "구독 결제 확인" },
+    ],
   },
 ];
 
@@ -172,3 +248,7 @@ export const statusTone: Record<LifecycleStatus, string> = {
   UPCOMING: "bg-[var(--status-upcoming-bg)] text-[#8a6619]",
   DUE: "bg-[var(--status-due-bg)] text-[#a95550]",
 };
+
+export function getDemoItemById(itemId: string) {
+  return demoItems.find((item) => item.id === itemId);
+}

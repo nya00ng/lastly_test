@@ -11,8 +11,9 @@
 - Current Track: DEMO TRACK
 - D1: PASS
 - D1.2: PASS — Minimal Mint Line UI Final Revision
+- D1.3: PASS — Product Item Detail Demo
 - Current Task: D3 — Real Voice Input Demo
-- Current State: Specification Freeze 완료 / PHASE 1 UI Prototype 완료 / D1.2 Minimal Mint Line UI 완료 / D2 Foundation PASS / D2 Mock Demo PASS / Real AI Live Verification BLOCKED / D3 PARTIAL / PHASE 2 구현 전
+- Current State: Specification Freeze 완료 / PHASE 1 UI Prototype 완료 / D1.2 Minimal Mint Line UI 완료 / D1.3 Product Item Detail Demo 완료 / D2 Foundation PASS / D2 Mock Demo PASS / Real AI Live Verification BLOCKED / D3 PARTIAL / PHASE 2 구현 전
 
 핵심 문장:
 
@@ -724,7 +725,8 @@ PHASE 1 = COMPLETE
 Current Track = DEMO TRACK
 D1 = PASS
 D1.2 = PASS — Minimal Mint Line UI Final Revision
-Current UI = Minimal Mint Line UI
+D1.3 = PASS — Product Item Detail Demo
+Current UI = Minimal Mint Line UI + Product Item Detail Demo
 Current Task = D3 — Real Voice Input Demo
 After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
 PHASE 2 implementation = NOT STARTED

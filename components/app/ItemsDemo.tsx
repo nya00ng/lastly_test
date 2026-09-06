@@ -75,7 +75,7 @@ export function ItemsDemo() {
                   </span>
                 </div>
                 {group.items.map((item) => (
-                  <DemoItemCard compact item={item} key={item.id} />
+                  <DemoItemCard compact href={`/items/${item.id}`} item={item} key={item.id} />
                 ))}
               </section>
             ))}

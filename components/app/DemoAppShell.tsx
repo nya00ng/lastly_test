@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { RouteKey } from "@/lib/types";
 import { BellIcon, ChevronIcon, HomeIcon, ListIcon, PlusPenIcon, SettingsIcon } from "./AppIcons";
 
 type DemoAppShellProps = {
   activeRoute: RouteKey;
   title?: string;
+  backHref?: string;
+  showBack?: boolean;
   children: React.ReactNode;
 };
 
@@ -16,19 +19,42 @@ const navItems = [
   { key: "items", label: "전체관리", href: "/items", icon: ListIcon },
 ] as const;
 
-export function DemoAppShell({ activeRoute, title = "LASTLY", children }: DemoAppShellProps) {
-  const showBack = activeRoute === "record";
+export function DemoAppShell({
+  activeRoute,
+  title = "LASTLY",
+  backHref = "/",
+  showBack,
+  children,
+}: DemoAppShellProps) {
+  const router = useRouter();
+  const shouldShowBack = showBack ?? activeRoute === "record";
+
+  function goBack() {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+      return;
+    }
+    router.push(backHref);
+  }
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-[480px] flex-col bg-[var(--background)]">
       <header className="sticky top-0 z-20 border-b border-[var(--divider)] bg-[rgba(245,250,248,0.94)] px-5 pb-3 pt-4 backdrop-blur">
         <div className="flex min-h-11 items-center justify-between gap-3">
-          <Link className="focus-ring flex min-h-11 items-center gap-1 rounded-full" href="/">
-            {showBack ? <ChevronIcon className="h-5 w-5 rotate-180 text-[var(--icon-line)]" /> : null}
-            <span className="block text-[22px] font-semibold tracking-normal text-[var(--foreground)]">
-              {title}
-            </span>
-          </Link>
+          {shouldShowBack ? (
+            <button className="focus-ring flex min-h-11 items-center gap-1 rounded-full" onClick={goBack} type="button">
+              <ChevronIcon className="h-5 w-5 rotate-180 text-[var(--icon-line)]" />
+              <span className="block text-[22px] font-semibold tracking-normal text-[var(--foreground)]">
+                {title}
+              </span>
+            </button>
+          ) : (
+            <Link className="focus-ring flex min-h-11 items-center gap-1 rounded-full" href="/">
+              <span className="block text-[22px] font-semibold tracking-normal text-[var(--foreground)]">
+                {title}
+              </span>
+            </Link>
+          )}
           <div className="flex items-center gap-2">
             <Link
               aria-label="알림"
