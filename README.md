@@ -126,6 +126,38 @@ Physical microphone/touch interactions = manually verified by the user on an ext
 
 공개 데모: https://lastly-six.vercel.app/
 
+## Production 배포 기록
+
+MVP Release Candidate는 Vercel Production에 배포되어 있다.
+
+```text
+Production URL = https://lastly-six.vercel.app/
+Deployment Status = READY
+HTTP Status = 200 OK
+AI_PROVIDER = mock
+Parser Mode = MOCK
+Latest Verified Deployment = dpl_DY5GEayktFhi54MMGLKY4q2emm1w
+```
+
+최초 재배포 직후 Vercel Production에 `AI_PROVIDER`가 없어 parser 요청이 기본 `openai` 경로를 사용했고, API key 부재로 `503 AI_CONFIG_MISSING`이 발생했다. Production 환경에 `AI_PROVIDER=mock`을 명시하고 재배포하여 해결했다. 실제 Provider 실패를 Mock 성공으로 자동 fallback하는 코드는 추가하지 않았다.
+
+재배포 후 Production API와 Product UI에서 다음 동작을 확인했다.
+
+```text
+신발 언제 빨았어
+→ QUERY
+→ 신발 세탁
+→ 기존 Activity Query Result
+
+선풍기 교체했어
+→ COMPLETED
+→ 선풍기 교체
+→ 기존 Item Match 없음
+→ 새 항목 Confirmation
+```
+
+Web Speech API와 Notification API는 브라우저 지원, OS, HTTPS 및 사용자 권한에 영향을 받는다. Push/PWA와 외부 STT Provider는 현재 Demo 범위에 포함되지 않는다.
+
 ## 핵심 포지셔닝
 
 > **캘린더는 앞으로 할 일을 기억합니다. LASTLY는 마지막으로 한 일을 기억합니다.**
