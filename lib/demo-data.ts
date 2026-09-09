@@ -1,4 +1,5 @@
 import type { LifecycleStatus } from "./types";
+import type { Cycle } from "./cycle";
 
 export type DemoCategory = "생활" | "교체" | "구독" | "건강" | "기타";
 
@@ -7,14 +8,15 @@ export type DemoItem = {
   name: string;
   category: DemoCategory;
   status: LifecycleStatus;
-  memo: string;
+  tags: string[];
+  note: string | null;
   recentLabel: string;
   recentMemoryOrder?: number;
   dDayLabel: string;
   dueLabel: string;
-  cycleLabel: string;
-  cycleDays: number | null;
+  cycle: Cycle;
   lastPerformedDateLabel: string;
+  nextDueDate: string | null;
   nextDueDateLabel: string;
   detail: string;
   history: DemoHistoryEntry[];
@@ -41,13 +43,14 @@ export const demoItems: DemoItem[] = [
     name: "이불 세탁",
     category: "생활",
     status: "DUE",
-    memo: "아이 이불 · 아빠 이불",
+    tags: ["아이 이불", "아빠 이불"],
+    note: null,
     recentLabel: "32일 전",
     dDayLabel: "D+2",
     dueLabel: "관리일 2일 지남",
-    cycleLabel: "30일마다",
-    cycleDays: 30,
+    cycle: { unit: "day", interval: 30 },
     lastPerformedDateLabel: "2026.08.05",
+    nextDueDate: "2026-09-04",
     nextDueDateLabel: "2026.09.04",
     detail: "오늘 확인하면 좋은 생활관리 항목이에요.",
     history: [
@@ -61,13 +64,14 @@ export const demoItems: DemoItem[] = [
     name: "정수기 필터",
     category: "교체",
     status: "DUE",
-    memo: "주방 정수기",
+    tags: ["주방 정수기"],
+    note: null,
     recentLabel: "98일 전",
     dDayLabel: "D+8",
     dueLabel: "관리일 8일 지남",
-    cycleLabel: "90일마다",
-    cycleDays: 90,
+    cycle: { unit: "day", interval: 90 },
     lastPerformedDateLabel: "2026.05.29",
+    nextDueDate: "2026-08-27",
     nextDueDateLabel: "2026.08.27",
     detail: "교체 시점이 지나 알림 확인 대상입니다.",
     history: [
@@ -80,14 +84,15 @@ export const demoItems: DemoItem[] = [
     name: "칫솔 교체",
     category: "교체",
     status: "UPCOMING",
-    memo: "아이 칫솔 · 엄마 칫솔",
+    tags: ["아이 칫솔", "엄마 칫솔"],
+    note: null,
     recentLabel: "3일 전",
     recentMemoryOrder: 3,
     dDayLabel: "D-3",
     dueLabel: "관리일까지 3일 남음",
-    cycleLabel: "30일마다",
-    cycleDays: 30,
+    cycle: { unit: "day", interval: 30 },
     lastPerformedDateLabel: "2026.09.03",
+    nextDueDate: "2026-10-03",
     nextDueDateLabel: "2026.10.03",
     detail: "곧 바꿀 때가 다가와요.",
     history: [
@@ -100,14 +105,15 @@ export const demoItems: DemoItem[] = [
     name: "세탁조 청소",
     category: "생활",
     status: "UPCOMING",
-    memo: "드럼 세탁기",
+    tags: ["드럼 세탁기"],
+    note: null,
     recentLabel: "25일 전",
     recentMemoryOrder: 25,
     dDayLabel: "D-5",
     dueLabel: "관리일까지 5일 남음",
-    cycleLabel: "30일마다",
-    cycleDays: 30,
+    cycle: { unit: "day", interval: 30 },
     lastPerformedDateLabel: "2026.08.12",
+    nextDueDate: "2026-09-11",
     nextDueDateLabel: "2026.09.11",
     detail: "여유가 조금 남아 있어요.",
     history: [
@@ -120,14 +126,15 @@ export const demoItems: DemoItem[] = [
     name: "에어컨 청소",
     category: "생활",
     status: "NORMAL",
-    memo: "거실 에어컨",
+    tags: ["거실 에어컨"],
+    note: null,
     recentLabel: "12일 전",
     recentMemoryOrder: 12,
     dDayLabel: "D-18",
     dueLabel: "관리일까지 18일 남음",
-    cycleLabel: "30일마다",
-    cycleDays: 30,
+    cycle: { unit: "day", interval: 30 },
     lastPerformedDateLabel: "2026.08.24",
+    nextDueDate: "2026-09-23",
     nextDueDateLabel: "2026.09.23",
     detail: "아직은 편하게 지켜봐도 돼요.",
     history: [
@@ -140,13 +147,14 @@ export const demoItems: DemoItem[] = [
     name: "렌즈 교체",
     category: "건강",
     status: "NORMAL",
-    memo: "원데이 렌즈",
+    tags: ["원데이 렌즈"],
+    note: null,
     recentLabel: "4일 전",
     dDayLabel: "D-10",
     dueLabel: "관리일까지 10일 남음",
-    cycleLabel: "14일마다",
-    cycleDays: 14,
+    cycle: { unit: "day", interval: 14 },
     lastPerformedDateLabel: "2026.09.02",
+    nextDueDate: "2026-09-16",
     nextDueDateLabel: "2026.09.16",
     detail: "다음 교체일까지 여유가 있어요.",
     history: [
@@ -159,13 +167,14 @@ export const demoItems: DemoItem[] = [
     name: "보일러 점검",
     category: "기타",
     status: "NO_CYCLE",
-    memo: "겨울철 대비",
+    tags: [],
+    note: "겨울철 대비",
     recentLabel: "9월 1일",
     dDayLabel: "주기 없음",
     dueLabel: "관리주기가 없어요",
-    cycleLabel: "주기 없음",
-    cycleDays: null,
+    cycle: null,
     lastPerformedDateLabel: "2026.09.01",
+    nextDueDate: null,
     nextDueDateLabel: "주기 없음",
     detail: "전체관리에서 주기를 정할 수 있어요.",
     history: [
@@ -177,13 +186,14 @@ export const demoItems: DemoItem[] = [
     name: "냉장고 정리",
     category: "생활",
     status: "NO_HISTORY",
-    memo: "냉장실 · 냉동실",
+    tags: ["냉장실", "냉동실"],
+    note: null,
     recentLabel: "기록 없음",
     dDayLabel: "기록 없음",
     dueLabel: "첫 기록이 필요해요",
-    cycleLabel: "30일마다",
-    cycleDays: 30,
+    cycle: { unit: "day", interval: 30 },
     lastPerformedDateLabel: "기록 없음",
+    nextDueDate: null,
     nextDueDateLabel: "기록 후 계산",
     detail: "관리 대상은 있지만 수행기록은 아직 없어요.",
     history: [],
@@ -193,13 +203,14 @@ export const demoItems: DemoItem[] = [
     name: "신발 세탁",
     category: "생활",
     status: "NO_CYCLE",
-    memo: "아이 신발 · 엄마 운동화 · 나이키 운동화",
+    tags: ["아이 신발", "엄마 운동화", "나이키 운동화"],
+    note: null,
     recentLabel: "8월 20일",
     dDayLabel: "주기 없음",
     dueLabel: "관리주기가 없어요",
-    cycleLabel: "주기 없음",
-    cycleDays: null,
+    cycle: null,
     lastPerformedDateLabel: "2026.08.20",
+    nextDueDate: null,
     nextDueDateLabel: "주기 없음",
     detail: "원하면 반복 확인 주기를 둘 수 있어요.",
     history: [
@@ -211,13 +222,14 @@ export const demoItems: DemoItem[] = [
     name: "구독 결제 확인",
     category: "구독",
     status: "NORMAL",
-    memo: "정기 결제 서비스",
+    tags: [],
+    note: "정기 결제 서비스",
     recentLabel: "15일 전",
     dDayLabel: "D-18",
     dueLabel: "관리일까지 18일 남음",
-    cycleLabel: "60일마다",
-    cycleDays: 60,
+    cycle: { unit: "day", interval: 60 },
     lastPerformedDateLabel: "2026.08.22",
+    nextDueDate: "2026-10-21",
     nextDueDateLabel: "2026.10.21",
     detail: "가끔 확인하면 좋은 항목이에요.",
     history: [

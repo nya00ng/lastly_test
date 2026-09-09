@@ -72,10 +72,136 @@ function createTooManyOutput(): ParserOutput {
   };
 }
 
+function shiftDate(date: string, days: number) {
+  const value = new Date(`${date}T00:00:00Z`);
+  value.setUTCDate(value.getUTCDate() + days);
+  return value.toISOString().slice(0, 10);
+}
+
+type LifestyleAction = "세탁" | "교체" | "청소" | "점검";
+
+function getLifestyleAction(verb: string): LifestyleAction | null {
+  if (/^(?:빨|세탁|씻)/.test(verb)) return "세탁";
+  if (/^(?:갈|교체|바꾸|바꿔|바꿨|교환)/.test(verb)) return "교체";
+  if (/^(?:청소|닦)/.test(verb)) return "청소";
+  if (/^(?:점검|확인)/.test(verb)) return "점검";
+  return null;
+}
+
+function normalizeMockActionTarget(target: string, verb = "") {
+  const compactTarget = target.replace(/\s+/g, "");
+  const canonicalTargets: Record<string, { action: string; tags: string[] }> = {
+    "이불": { action: "이불 세탁", tags: [] },
+    "이불세탁": { action: "이불 세탁", tags: [] },
+    "이불빨래": { action: "이불 빨래", tags: [] },
+    "아빠이불": { action: "이불 세탁", tags: ["아빠 이불"] },
+    "렌즈교체": { action: "렌즈 교체", tags: [] },
+    "정수기필터": { action: "정수기 필터", tags: [] },
+    "필터": { action: "정수기 필터", tags: [] },
+  };
+  const knownTarget = canonicalTargets[compactTarget];
+  const semantic = getLifestyleAction(verb);
+
+  if (!semantic) return knownTarget ?? { action: target.trim(), tags: [] };
+
+  if (compactTarget === "아빠이불" && semantic === "세탁") return canonicalTargets[compactTarget];
+  if ((compactTarget === "정수기필터" || compactTarget === "필터") && semantic === "교체") {
+    return canonicalTargets[compactTarget];
+  }
+
+  const semanticSuffix = /\s*(세탁|교체|청소|점검)$/;
+  const baseTarget = (knownTarget?.action ?? target.trim()).replace(semanticSuffix, "").trim();
+  return { action: `${baseTarget} ${semantic}`, tags: [] };
+}
+
+function createMockQuery(text: string, currentLocalDate: string): ParserOutput | null {
+  const compact = text.replace(/[?？]/g, "").replace(/\s+/g, "");
+  const targetlessQueries = new Set([
+    "언제했어",
+    "언제했지",
+    "언제였지",
+    "언제했더라",
+    "마지막으로언제했어",
+    "마지막이언제야",
+  ]);
+
+  if (targetlessQueries.has(compact)) {
+    return createOutput([
+      createSegment(text, currentLocalDate, {
+        intent: "QUERY",
+        scope: "IN_SCOPE",
+        normalized_action: null,
+        performed_date: null,
+        date_precision: "NOT_APPLICABLE",
+        date_resolution_source: "NONE",
+        needs_clarification: true,
+        clarification: {
+          type: "ACTION",
+          question: "무엇을 언제 했는지 찾을까요?",
+        },
+        tag_candidates: [],
+      }),
+    ]);
+  }
+
+  const targetMatch = text.match(
+    /^(.+?)\s+(?:(?:마지막으로)\s+)?언제\s*(갈았어|갈았지|교체했어|교체했지|바꿨어|바꿨지|교환했어|교환했지|빨았어|빨았지|빨았더라|세탁했어|씻었어|청소했어|닦았어|점검했어|확인했어|했어|했지|했더라)[?？]?$/,
+  );
+  if (!targetMatch) return null;
+
+  const target = targetMatch[1].trim();
+  const details = normalizeMockActionTarget(target, targetMatch[2]);
+
+  return createOutput([
+    createSegment(text, currentLocalDate, {
+      intent: "QUERY",
+      scope: "IN_SCOPE",
+      normalized_action: details.action,
+      performed_date: null,
+      date_precision: "NOT_APPLICABLE",
+      date_resolution_source: "NONE",
+      needs_clarification: false,
+      clarification: null,
+      tag_candidates: details.tags,
+    }),
+  ]);
+}
+
+function createMockCompletedAction(text: string, currentLocalDate: string): ParserOutput | null {
+  const withoutDate = text.replace(/^오늘\s*/, "");
+  const verbPattern = "(빨았어|세탁했어|씻었어|갈았어|교체했어|바꿨어|교환했어|청소했어|닦았어|점검했어|확인했어|했어)";
+  const negativeMatch = withoutDate.match(new RegExp(`^(.+?)\\s*(?:안|못)\\s*${verbPattern}[?？]?$`));
+  const completedMatch = withoutDate.match(new RegExp(`^(.+?)\\s*${verbPattern}[?？]?$`));
+  const match = negativeMatch ?? completedMatch;
+  if (!match) return null;
+
+  const details = normalizeMockActionTarget(match[1].trim(), match[2]);
+  const hasExplicitToday = /^오늘(?:\s|\S)/.test(text);
+  return createOutput([
+    createSegment(text, currentLocalDate, {
+      intent: negativeMatch ? "NOT_COMPLETED" : "COMPLETED",
+      scope: "IN_SCOPE",
+      normalized_action: details.action,
+      performed_date: currentLocalDate,
+      date_precision: "EXACT",
+      date_resolution_source: hasExplicitToday ? "EXPLICIT" : "IMPLICIT_TODAY",
+      needs_clarification: false,
+      clarification: null,
+      tag_candidates: details.tags,
+    }),
+  ]);
+}
+
 export class MockAIAdapter implements AIAdapter {
   async parse({ text, currentLocalDate }: ProviderRequest) {
-    const normalized = text.trim();
+    const normalized = text.trim().replace(/\s+/g, " ");
     const futureDate = "2099-01-01";
+    const queryOutput = createMockQuery(normalized, currentLocalDate);
+
+    if (queryOutput) return queryOutput;
+    const completedActionOutput = createMockCompletedAction(normalized, currentLocalDate);
+
+    if (completedActionOutput) return completedActionOutput;
 
     switch (normalized) {
       case "오늘 이불 빨았어":
@@ -85,6 +211,47 @@ export class MockAIAdapter implements AIAdapter {
             scope: "IN_SCOPE",
             normalized_action: "이불 세탁",
             performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+          }),
+        ]);
+      case "오늘 아빠 이불 빨았어":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+            tag_candidates: ["아빠 이불"],
+          }),
+        ]);
+      case "오늘 아빠 이불 안 빨았어":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "NOT_COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+            tag_candidates: ["아빠 이불"],
+          }),
+        ]);
+      case "어제 이불 빨았어":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: shiftDate(currentLocalDate, -1),
             date_precision: "EXACT",
             date_resolution_source: "EXPLICIT",
             needs_clarification: false,
@@ -118,6 +285,7 @@ export class MockAIAdapter implements AIAdapter {
           }),
         ]);
       case "오늘 이불 못 빨았어":
+      case "오늘 이불 안 빨았어":
         return createOutput([
           createSegment(normalized, currentLocalDate, {
             intent: "NOT_COMPLETED",
@@ -143,7 +311,77 @@ export class MockAIAdapter implements AIAdapter {
             clarification: null,
           }),
         ]);
+      case "이불 세탁 언제 했지?":
+      case "이불 세탁 언제 했지":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "QUERY",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: null,
+            date_precision: "NOT_APPLICABLE",
+            date_resolution_source: "NONE",
+            needs_clarification: false,
+            clarification: null,
+            tag_candidates: [],
+          }),
+        ]);
+      case "아빠 이불 언제 빨았지?":
+      case "아빠 이불 언제 빨았더라?":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "QUERY",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: null,
+            date_precision: "NOT_APPLICABLE",
+            date_resolution_source: "NONE",
+            needs_clarification: false,
+            clarification: null,
+            tag_candidates: ["아빠 이불"],
+          }),
+        ]);
+      case "이불 빨래 언제 했지?":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "QUERY",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 빨래",
+            performed_date: null,
+            date_precision: "NOT_APPLICABLE",
+            date_resolution_source: "NONE",
+            needs_clarification: false,
+            clarification: null,
+          }),
+        ]);
+      case "이불 마지막으로 언제 빨았어?":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "QUERY",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: null,
+            date_precision: "NOT_APPLICABLE",
+            date_resolution_source: "NONE",
+            needs_clarification: false,
+            clarification: null,
+          }),
+        ]);
+      case "정수기 필터 언제 갈았어?":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "QUERY",
+            scope: "IN_SCOPE",
+            normalized_action: "정수기 필터",
+            performed_date: null,
+            date_precision: "NOT_APPLICABLE",
+            date_resolution_source: "NONE",
+            needs_clarification: false,
+            clarification: null,
+          }),
+        ]);
       case "지난주쯤 이불 빨았던 것 같아":
+      case "이불 빨았던 것 같아":
         return createOutput([
           createSegment(normalized, currentLocalDate, {
             intent: "UNCERTAIN",
@@ -157,6 +395,19 @@ export class MockAIAdapter implements AIAdapter {
               type: "DATE",
               question: "정확히 어느 날 이불을 빨았나요?",
             },
+          }),
+        ]);
+      case "내일 정수기 필터 갈 거야":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "PLANNED",
+            scope: "IN_SCOPE",
+            normalized_action: "정수기 필터",
+            performed_date: shiftDate(currentLocalDate, 1),
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
           }),
         ]);
       case "오늘 영화 봤어":
@@ -206,6 +457,39 @@ export class MockAIAdapter implements AIAdapter {
         ]);
       case "오늘 이불 빨고 칫솔 바꾸고 세탁조 청소하고 정수기 필터 갈고 렌즈 바꾸고 에어컨 청소했어":
         return createTooManyOutput();
+      case "오늘 이불 빨고 칫솔 바꾸고 정수기 필터 갈았어":
+        return createOutput([
+          createSegment(normalized, currentLocalDate, {
+            intent: "COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "이불 세탁",
+            performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+          }),
+          createSegment(normalized, currentLocalDate, {
+            intent: "COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "칫솔 교체",
+            performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+          }),
+          createSegment(normalized, currentLocalDate, {
+            intent: "COMPLETED",
+            scope: "IN_SCOPE",
+            normalized_action: "정수기 필터",
+            performed_date: currentLocalDate,
+            date_precision: "EXACT",
+            date_resolution_source: "EXPLICIT",
+            needs_clarification: false,
+            clarification: null,
+          }),
+        ]);
       default:
         return createOutput([
           createSegment(normalized, currentLocalDate, {
@@ -253,11 +537,14 @@ function buildInstructions(currentLocalDate: string, retryReason?: string) {
     `prompt_version must be ${getPromptVersion()}.`,
     `Server current_local_date is ${currentLocalDate} in Asia/Seoul.`,
     "The parser must not choose item_id, database IDs, record_candidate, cycle, save decisions, or item matching.",
+    "tag_candidates is optional structured detail text only; use [] when absent and never return tag IDs or save decisions.",
     "Clarification type must be one of COMPLETION, ACTION, DATE, SCOPE. Never use TARGET.",
     "If 6 or more semantic actions are present, return result_type TOO_MANY_ACTIONS, overflow_detected true, and segments [].",
     "A completed record needs COMPLETED intent, IN_SCOPE scope, normalized_action, exact non-future performed_date, and no clarification. The server decides record_candidate later.",
     "Explicit date expressions such as 오늘 use date_resolution_source EXPLICIT. Missing date with otherwise completed in-scope action may use IMPLICIT_TODAY.",
     "Planned, not completed, query, unknown, out-of-scope, approximate date, future date, or unresolved ambiguity must not be made into a completed save-ready fact.",
+    "Retrospective questions such as 언제 했어, 언제 했지, 언제였지, 언제 했더라, or 마지막이 언제야 are QUERY. If the target is missing, keep normalized_action null and request ACTION clarification; never turn them into COMPLETED.",
+    "For the same maintenance target, Korean action verbs such as 갈다, 교체하다, 바꾸다, and 교환하다 may normalize to the same canonical action. These verbs are not item aliases.",
     retryReason ? `Previous output was invalid: ${retryReason}. Correct the JSON contract now.` : "",
   ]
     .filter(Boolean)

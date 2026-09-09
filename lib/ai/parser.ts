@@ -27,7 +27,7 @@ function sanitizeInput(input: unknown) {
 function enrichSegments(segments: ParserSegment[], currentLocalDate: string): EnrichedParserSegment[] {
   return segments.map((segment) => {
     const candidate = calculateRecordCandidate(segment, currentLocalDate);
-    const itemCandidates = matchDemoItems(segment.normalized_action);
+    const itemCandidates = matchDemoItems(segment.normalized_action, undefined, segment.tag_candidates);
 
     return {
       ...segment,

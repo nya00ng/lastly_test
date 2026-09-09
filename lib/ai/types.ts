@@ -36,6 +36,7 @@ export type ParserSegment = {
   date_resolution_source: DateResolutionSource;
   needs_clarification: boolean;
   clarification: ParserClarification | null;
+  tag_candidates?: string[];
 };
 
 export type ParserOutput = {
@@ -50,7 +51,7 @@ export type AiRuntimeMode = "REAL" | "ERROR" | "MANUAL";
 
 export type ItemMatchingCandidate = {
   name: string;
-  matchType: "EXACT_NAME" | "EXACT_ALIAS" | "DEMO_FUZZY" | "NONE";
+  matchType: "EXACT_NAME" | "EXACT_ALIAS" | "EXACT_TAG" | "NOTE" | "DEMO_FUZZY" | "NONE";
 };
 
 export type EnrichedParserSegment = ParserSegment & {

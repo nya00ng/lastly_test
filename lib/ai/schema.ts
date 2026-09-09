@@ -64,6 +64,11 @@ export const aiParserJsonSchema = {
               { type: "null" },
             ],
           },
+          tag_candidates: {
+            type: "array",
+            maxItems: 10,
+            items: { type: "string", maxLength: 30 },
+          },
         },
       },
     },
@@ -111,6 +116,12 @@ function validateSegment(value: unknown): ValidationResult<ParserSegment> {
   if (typeof value.needs_clarification !== "boolean") {
     return { ok: false, reason: "needs_clarification required" };
   }
+  if (value.tag_candidates !== undefined && (
+    !Array.isArray(value.tag_candidates) ||
+    value.tag_candidates.some((candidate) => typeof candidate !== "string" || candidate.trim().length === 0 || candidate.trim().length > 30)
+  )) {
+    return { ok: false, reason: "tag_candidates must be non-empty strings up to 30 characters" };
+  }
 
   return {
     ok: true,
@@ -125,6 +136,9 @@ function validateSegment(value: unknown): ValidationResult<ParserSegment> {
       date_resolution_source: value.date_resolution_source,
       needs_clarification: value.needs_clarification,
       clarification: clarification.value,
+      tag_candidates: Array.isArray(value.tag_candidates)
+        ? Array.from(new Set(value.tag_candidates.map((candidate) => candidate.trim())))
+        : [],
     },
   };
 }

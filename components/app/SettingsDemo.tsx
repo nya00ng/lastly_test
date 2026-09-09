@@ -1,51 +1,70 @@
-import Link from "next/link";
-import { BellIcon, SettingsIcon } from "./AppIcons";
+"use client";
+
+import { useEffect, useState } from "react";
 import { DemoAppShell } from "./DemoAppShell";
 
+type PermissionState = "unsupported" | "default" | "requesting" | "granted" | "denied";
+
+function getPermissionState(): PermissionState {
+  if (typeof window === "undefined" || typeof Notification === "undefined") return "unsupported";
+  return Notification.permission;
+}
+
 export function SettingsDemo() {
+  const [permission, setPermission] = useState<PermissionState>("default");
+  const [notificationTime, setNotificationTime] = useState("09:00");
+  const [weekendEnabled, setWeekendEnabled] = useState(true);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setPermission(getPermissionState()), 0);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  async function requestPermission() {
+    if (typeof Notification === "undefined") return setPermission("unsupported");
+    setPermission("requesting");
+    try {
+      setPermission(await Notification.requestPermission());
+    } catch {
+      setPermission("unsupported");
+    }
+  }
+
+  const permissionCopy = permission === "granted"
+    ? "허용됨"
+    : permission === "denied"
+      ? "차단됨"
+      : permission === "unsupported"
+        ? "사용할 수 없음"
+        : permission === "requesting"
+          ? "요청 중…"
+          : "알림 켜기";
+
   return (
-    <DemoAppShell activeRoute="settings" title="설정">
-      <section className="space-y-5">
-        <section className="rounded-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
-          <div className="flex items-start gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--line)] bg-white text-[var(--icon-line)]">
-              <BellIcon className="h-5 w-5" />
-            </span>
-            <div>
-              <h2 className="text-[18px] font-semibold">알림</h2>
-              <p className="mt-1 text-[14px] leading-6 text-[var(--muted)]">
-                이 기기에서 관리일 알림을 받을 수 있는지 확인합니다.
-              </p>
+    <DemoAppShell activeRoute="settings" showBack title="설정">
+      <section>
+        <h2 className="text-[17px] font-semibold">알림</h2>
+        <div className="mt-3 rounded-xl border border-[var(--line)] bg-white px-4">
+          <div className="flex min-h-16 items-center justify-between gap-4 border-b border-[var(--divider)] py-3">
+            <div className="min-w-0">
+              <p className="text-[15px] font-semibold">알림 권한</p>
+              {permission === "denied" ? <p className="mt-1 text-[12px] leading-5 text-[var(--muted)]">브라우저 설정에서 권한을 변경해주세요.</p> : null}
+              {permission === "unsupported" ? <p className="mt-1 text-[12px] leading-5 text-[var(--muted)]">이 브라우저에서는 알림 권한을 사용할 수 없어요.</p> : null}
             </div>
+            {permission === "default" || permission === "requesting" ? (
+              <button className="focus-ring min-h-11 shrink-0 rounded-lg bg-[var(--soft-primary)] px-3 text-[13px] font-semibold text-[var(--primary-strong)] disabled:opacity-60" disabled={permission === "requesting"} onClick={requestPermission} type="button">{permissionCopy}</button>
+            ) : <span className="shrink-0 text-[13px] font-semibold text-[var(--muted)]">{permissionCopy}</span>}
           </div>
-          <Link
-            className="focus-ring mt-4 flex min-h-12 items-center justify-center rounded-2xl border border-[var(--line)] bg-[var(--background)] text-[15px] font-semibold"
-            href="/notification"
-          >
-            알림 데모 보기
-          </Link>
-        </section>
-
-        <section className="rounded-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
-          <div className="flex items-start gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--line)] bg-white text-[var(--icon-line)]">
-              <SettingsIcon className="h-5 w-5" />
-            </span>
-            <div>
-              <h2 className="text-[18px] font-semibold">기본 관리 설정</h2>
-              <p className="mt-1 text-[14px] leading-6 text-[var(--muted)]">
-                관리주기는 항목마다 직접 정하는 방향을 유지합니다.
-              </p>
-            </div>
+          <label className="flex min-h-16 items-center justify-between gap-4 border-b border-[var(--divider)] py-3 text-[15px] font-semibold">
+            알림 받을 시간
+            <input aria-label="알림 받을 시간" className="focus-ring min-h-11 max-w-28 rounded-lg border border-[var(--line)] bg-white px-2 text-right text-[15px]" onChange={(event) => setNotificationTime(event.target.value)} type="time" value={notificationTime} />
+          </label>
+          <div className="flex min-h-16 items-center justify-between gap-4 py-3">
+            <span className="text-[15px] font-semibold">주말에도 알림</span>
+            <button aria-checked={weekendEnabled} aria-label="주말에도 알림" className={`focus-ring flex h-7 w-12 items-center rounded-full px-[3px] transition-colors ${weekendEnabled ? "justify-end bg-[var(--primary)]" : "justify-start bg-[#d9ded7]"}`} onClick={() => setWeekendEnabled((current) => !current)} role="switch" type="button"><span className="h-[22px] w-[22px] rounded-full bg-white" /></button>
           </div>
-        </section>
-
-        <section className="rounded-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-card)]">
-          <h2 className="text-[18px] font-semibold">앱 정보</h2>
-          <p className="mt-2 text-[14px] leading-6 text-[var(--muted)]">
-            LASTLY는 마지막으로 한 생활관리 행동을 기억하고 다음 관리시점까지 이어주는 앱입니다.
-          </p>
-        </section>
+        </div>
+        <p className="mt-3 text-[12px] leading-5 text-[var(--muted)]">권한과 설정값을 이 데모 화면에서만 확인합니다. 실제 푸시 구독이나 알림 예약은 하지 않아요.</p>
       </section>
     </DemoAppShell>
   );

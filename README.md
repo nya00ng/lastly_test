@@ -18,27 +18,113 @@ Current Track = DEMO TRACK
 D1 = PASS
 D1.2 = PASS
 D1.3 = PASS
-Current UI = Minimal Mint Line UI + Product Item Detail Demo
-Current Task = D3 — Real Voice Input Demo
+R1~R8 Rebaseline = PASS
+Global Visual Polish = PASS
+HOME UX Rebaseline v2 = PASS
+Month Bento Filter = PASS
+Action Semantic Matching = PASS
+Current UI = MVP Demo Release Candidate
+Current Task = MVP DEMO FREEZE / RELEASE READINESS
 After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
 Runtime Implementation = PARTIAL DEMO TRACK ONLY
 PHASE 2 Implementation = NOT STARTED
 Auth/DB = NOT STARTED
 D2 Foundation = PASS
 D2 Mock Demo = PASS
+Mock Golden 10 = PASS
 Real AI Live Verification = BLOCKED
 D2 Full PASS = NOT YET
 Real AI = MOCK DEMO READY / LIVE BLOCKED
-Browser Voice Demo = IMPLEMENTED / MICROPHONE MANUAL VERIFICATION REQUIRED
-D3 = PARTIAL
+Browser Voice Demo = IMPLEMENTED / USER DEVICE VERIFIED
+D3 = PASS (Browser Demo Scope)
 External STT = NOT IMPLEMENTED
 Real STT = NOT STARTED
 Real Push = NOT STARTED
-Runtime QA = NOT EXECUTED
-External Deployment = NOT EXECUTED
+Runtime QA = PASS
+Manual Device QA = USER VERIFIED
+Vercel Demo = DEPLOYED
 ```
 
-문서가 완성되었다고 해서 실제 구현이 완료된 것은 아니다. AI, STT, Auth, Database, Notification, External Deployment는 이후 Phase에서 실제 구현해야 한다.
+문서와 공개 Demo가 완성되었다고 해서 Production 구현이 완료된 것은 아니다. 실제 AI/STT Provider, Auth, Database, Push Notification과 Production persistence는 이후 Phase에서 구현해야 한다.
+
+## MVP 데모 구현 요약
+
+현재 데모 트랙에서는 다음 Product 경험을 구현했다.
+
+- 하단 탭을 제거하고 HOME을 핵심 작업 공간으로 통합
+- DUE / UPCOMING / NORMAL 상태 Bento와 List/Month 공통 필터
+- Active Item 전체를 보여주는 flat list와 Item Detail 연결
+- 42-cell Monthly View, Activity/Due marker, 선택 날짜 상세
+- 중앙 `+` 버튼에서 음성 또는 직접 입력 진입
+- Web Speech API 기반 한국어 음성 입력과 editable transcript
+- `/api/ai/parse`와 `MockAIAdapter`를 사용하는 Query/Record 흐름
+- Confirmation-first 저장, False Completion 차단, targetless Query clarification
+- Item Name/Alias/Tag/Note matching과 action semantic normalization
+- Tag, Note, day/week/month Cycle 데모 편집 및 lifecycle 재계산
+- Activity History 기반 HOME, Month, Detail, Notification 동기화
+- Mobile-first Minimal Mint Line UI와 360/390/430/1024 반응형 검증
+
+데모 데이터와 저장 결과는 React local state에만 유지된다. 실제 Auth, Supabase DB, Push/PWA, 외부 AI/STT Provider는 구현 범위가 아니다.
+
+## Product Routes
+
+```text
+/
+/record
+/items
+/items/[itemId]
+/notification
+/settings
+```
+
+`/screens/*`는 PHASE 1 회귀 검수용 24개 Fixture route로 유지한다.
+
+## 데모 시연 문장
+
+```text
+QUERY
+- 정수기 필터 언제 갈았어?
+- 렌즈교체 언제 했어
+- 신발 언제 빨았어?
+
+COMPLETED
+- 신발빨았어
+- 선풍기 청소했어
+
+TARGETLESS QUERY
+- 언제했어?
+
+FALSE COMPLETION
+- 신발 안 빨았어
+```
+
+완료 문장은 자동 저장하지 않고 반드시 Confirmation을 거친다. Query와 부정 완료 문장은 Activity를 생성하지 않는다.
+
+## 실행 및 검증
+
+```bash
+npm install
+npm run dev
+npm run typecheck
+npm run lint
+npm run build
+```
+
+데모 실행 시 `.env.local`에 `AI_PROVIDER=mock`을 설정한다. 실제 secret은 저장소에 커밋하지 않는다.
+
+최종 Release Candidate 검증 결과:
+
+```text
+typecheck = PASS
+lint = PASS
+build = PASS
+24 Fixture Screens = PRESERVED
+360 / 390 / 430 / 1024 Horizontal Overflow = 0
+Console Error / Warning = 0
+Physical microphone/touch interactions = manually verified by the user on an external browser/device
+```
+
+공개 데모: https://lastly-six.vercel.app/
 
 ## 핵심 포지셔닝
 
@@ -165,6 +251,8 @@ Item Matching 책임:
 ```text
 Exact Item Name
 → Exact Alias
+→ Exact Tag
+→ Note
 → Optional Fuzzy Candidate
 → None
 ```
@@ -230,14 +318,14 @@ Dashboard에는 `DUE / UPCOMING / NORMAL`만 포함하며 `NO_HISTORY / NO_CYCLE
 
 ## Cycle / Next Due
 
-Cycle은 사용자가 설정한다.
+Cycle은 사용자가 day/week/month 단위로 설정한다. 기존 일수 값은 의미를 바꾸지 않고 day 단위로 유지한다.
 
 ```text
-cycle_days = N
-next_due_date = last_performed_date + cycle_days
+cycle = { unit, interval, weekdays? }
+next_due_date = recurrence(last_performed_date, cycle)
 ```
 
-Upcoming 기준:
+day 단위 Upcoming 기준:
 
 ```text
 upcoming_days = min(5, ceil(cycle_days × 0.2))
@@ -482,9 +570,9 @@ LASTLY/
 
 ## 다음 작업
 
-현재 단계는 **DEMO TRACK / D3 — Real Voice Input Demo**이다. D1 Real App UI / IA Redesign, D1.2 Minimal Mint Line UI Final Revision, D1.3 Product Item Detail Demo는 PASS 상태다. D2 Foundation과 Mock Demo는 PASS 상태이며, 실제 Provider Live Verification은 AI API Key 설정 전까지 BLOCKED다. Browser Voice UI와 Web Speech API 연결은 구현됐지만, 실제 마이크 음성 입력 검증은 수동 확인이 필요해 D3는 PARTIAL 상태다.
+현재 MVP Demo는 Release Candidate로 Freeze한다. 이후 별도 승인된 Task에서 기존 계획인 **PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup**으로 복귀한다. PHASE 2 구현은 아직 시작하지 않았다.
 
-DEMO TRACK 완료 후 기존 계획인 **PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup**으로 복귀한다. PHASE 2 구현은 아직 시작하지 않았다. G1 PASS는 PHASE 1의 Fixture 기반 UI Prototype Acceptance PASS를 의미하며, Auth, Database, AI, STT, Push, External Deployment 완료를 의미하지 않는다.
+G1과 Demo Track PASS는 Fixture/local-state 기반 Product Demo의 완료를 의미한다. 실제 Auth, Database, 외부 AI/STT Provider, Push, 보안 및 Production persistence 완료를 의미하지 않는다.
 
 Codex에게 처음부터 “전체 앱을 만들어”라고 하지 않는다. 작은 Task 단위로 구현하고 각 Task 완료 후 Test, Typecheck, Lint, Diff를 확인한다.
 

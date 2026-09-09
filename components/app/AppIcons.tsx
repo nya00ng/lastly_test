@@ -39,6 +39,36 @@ export function PlusPenIcon(props: IconProps) {
   );
 }
 
+export function PlusIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 5v14" />
+      <path d="M5 12h14" />
+    </Svg>
+  );
+}
+
+export function StatusFaceIcon({ className, mood }: IconProps & { mood: "due" | "normal" | "upcoming" }) {
+  return (
+    <Svg className={className}>
+      <circle cx="12" cy="12" r="9" />
+      {mood === "due" ? (
+        <>
+          <path d="m7.5 8.5 2 1" />
+          <path d="m16.5 8.5-2 1" />
+          <path d="M8.5 17c1-2.5 6-2.5 7 0" />
+        </>
+      ) : (
+        <>
+          <path d="M8.5 9.5h.01" />
+          <path d="M15.5 9.5h.01" />
+          {mood === "upcoming" ? <path d="M8.5 15h7" /> : <path d="M8 14.5c1.5 2.5 6.5 2.5 8 0" />}
+        </>
+      )}
+    </Svg>
+  );
+}
+
 export function ListIcon(props: IconProps) {
   return (
     <Svg {...props}>
@@ -48,6 +78,23 @@ export function ListIcon(props: IconProps) {
       <path d="M3 6h.01" />
       <path d="M3 12h.01" />
       <path d="M3 18h.01" />
+    </Svg>
+  );
+}
+
+export function CalendarIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect height="17" rx="2" width="18" x="3" y="4" />
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <path d="M3 9h18" />
+      <path d="M8 13h.01" />
+      <path d="M12 13h.01" />
+      <path d="M16 13h.01" />
+      <path d="M8 17h.01" />
+      <path d="M12 17h.01" />
+      <path d="M16 17h.01" />
     </Svg>
   );
 }
