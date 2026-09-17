@@ -1,0 +1,2930 @@
+[
+  {
+    "text": "나 오늘 화분 물줬어!",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 오늘 화분 물줬어!",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 오늘 화분 물줬어!",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 오늘 화분 물줬어!",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "오늘 내가 화분에 물 줬어",
+    "core": "화분에 물 줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "오늘 내가 화분에 물 줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "오늘 내가 화분에 물 줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "에",
+            "pos": "JKB",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 6,
+            "end": 8
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물 줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분에 물 줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "오늘 내가 화분에 물 줬어",
+          "coreClause": "화분에 물 줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "아 나 화분 물줬어",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "아 나 화분 물줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "IMPLICIT_TODAY",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "아 나 화분 물줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "아 나 화분 물줬어",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [],
+          "fillers": [
+            "아"
+          ],
+          "sourceOffsets": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 방금 화분 물줬어!",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 방금 화분 물줬어!",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 방금 화분 물줬어!",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 방금 화분 물줬어!",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "방금"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "오늘은 화분에 물을 줬어",
+    "core": "화분에 물을 줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "오늘은 화분에 물을 줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "오늘은 화분에 물을 줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "에",
+            "pos": "JKB",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "물",
+            "pos": "NNG",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "text": "을",
+            "pos": "JKO",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VV",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 7,
+            "end": 9
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분에 물을 줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "오늘은 화분에 물을 줬어",
+          "coreClause": "화분에 물을 줬어",
+          "speaker": null,
+          "dateExpressions": [
+            "오늘은"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "그러고 보니 오늘 화분 물줬어",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "그러고 보니 오늘 화분 물줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "그러고 보니 오늘 화분 물줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "그러고 보니 오늘 화분 물줬어",
+          "coreClause": "화분 물줬어",
+          "speaker": null,
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [
+            "그러고 보니"
+          ],
+          "sourceOffsets": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "음... 나 화분 물줬어",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "음... 나 화분 물줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "IMPLICIT_TODAY",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "음... 나 화분 물줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "음... 나 화분 물줬어",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [],
+          "fillers": [
+            "음"
+          ],
+          "sourceOffsets": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "오늘 내가 신발 빨았어",
+    "core": "신발 빨았어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "오늘 내가 신발 빨았어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "신발 빨다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "신발 빨기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "오늘 내가 신발 빨았어",
+        "tokens": [
+          {
+            "text": "신발",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "빨",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "았",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "신발",
+        "action": "빨다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "빨았어",
+        "lemma_candidate": "빨다",
+        "canonical_action": "신발 빨다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "신발 빨기",
+        "coreClause": "신발 빨았어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "오늘 내가 신발 빨았어",
+          "coreClause": "신발 빨았어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "신발 세탁",
+        "context": {
+          "contexts": [
+            "FABRIC_LAUNDRY"
+          ],
+          "semantic": "세탁",
+          "contextual": true
+        },
+        "candidates": [
+          {
+            "itemId": "shoes",
+            "name": "신발 세탁",
+            "matchType": "EXACT_NAME"
+          }
+        ],
+        "confidence": "HIGH",
+        "needsUserSelection": true,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "아 나 정수기 필터 갈았어",
+    "core": "정수기 필터 갈았어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "아 나 정수기 필터 갈았어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "정수기 필터 갈다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "IMPLICIT_TODAY",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "교체",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "정수기 필터 갈기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "아 나 정수기 필터 갈았어",
+        "tokens": [
+          {
+            "text": "정수기",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "필터",
+            "pos": "NNG",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "text": "갈",
+            "pos": "VV",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "text": "았",
+            "pos": "EP",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 7,
+            "end": 10
+          }
+        ],
+        "target": "정수기 필터",
+        "action": "갈다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "갈았어",
+        "lemma_candidate": "갈다",
+        "canonical_action": "정수기 필터 갈다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "정수기 필터 갈기",
+        "coreClause": "정수기 필터 갈았어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "아 나 정수기 필터 갈았어",
+          "coreClause": "정수기 필터 갈았어",
+          "speaker": "SELF",
+          "dateExpressions": [],
+          "fillers": [
+            "아"
+          ],
+          "sourceOffsets": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "정수기 필터 교체",
+        "context": {
+          "contexts": [
+            "REPLACEABLE_COMPONENT"
+          ],
+          "semantic": "교체",
+          "contextual": true
+        },
+        "candidates": [
+          {
+            "itemId": "water-filter",
+            "name": "정수기 필터",
+            "matchType": "CONTEXT_SEMANTIC"
+          }
+        ],
+        "confidence": "HIGH",
+        "needsUserSelection": true,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "음... 신발 언제 빨았지?",
+    "core": "신발 언제 빨았지?",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "음... 신발 언제 빨았지?",
+        "intent": "QUERY",
+        "scope": "IN_SCOPE",
+        "normalized_action": "신발 빨다",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      "신발 빨기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "음... 신발 언제 빨았지?",
+        "tokens": [
+          {
+            "text": "신발",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "언제",
+            "pos": "MAG",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "text": "빨",
+            "pos": "VV",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "았",
+            "pos": "EP",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "지",
+            "pos": "EF",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "?",
+            "pos": "SF",
+            "start": 6,
+            "end": 10
+          }
+        ],
+        "target": "신발",
+        "action": "빨다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "빨았지?",
+        "lemma_candidate": "빨다",
+        "canonical_action": "신발 빨다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": true,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "신발 빨기",
+        "coreClause": "신발 언제 빨았지?",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "음... 신발 언제 빨았지?",
+          "coreClause": "신발 언제 빨았지?",
+          "speaker": null,
+          "dateExpressions": [],
+          "fillers": [
+            "음"
+          ],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "신발 세탁",
+        "context": {
+          "contexts": [
+            "FABRIC_LAUNDRY"
+          ],
+          "semantic": "세탁",
+          "contextual": true
+        },
+        "candidates": [
+          {
+            "itemId": "shoes",
+            "name": "신발 세탁",
+            "matchType": "EXACT_NAME"
+          }
+        ],
+        "confidence": "HIGH",
+        "needsUserSelection": true,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 오늘 화분 물 안 줬어",
+    "core": "화분 물 안 줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 오늘 화분 물 안 줬어",
+        "intent": "NOT_COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 오늘 화분 물 안 줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "NNG",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "안",
+            "pos": "MAG",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VV",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 7,
+            "end": 9
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": true,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물 안 줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 오늘 화분 물 안 줬어",
+          "coreClause": "화분 물 안 줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 내일 화분 물 줄 거야",
+    "core": "화분 물 줄 거야",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 내일 화분 물 줄 거야",
+        "intent": "PLANNED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 내일 화분 물 줄 거야",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "NNG",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "주",
+            "pos": "VV",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "text": "ㄹ",
+            "pos": "ETM",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "text": "거",
+            "pos": "NNB",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "이",
+            "pos": "VCP",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "text": "야",
+            "pos": "EF",
+            "start": 7,
+            "end": 9
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "INTENTION_OR_FUTURE",
+          "GIVE_PHRASE_RECONSTRUCTED",
+          "TEMPORAL_METADATA_FUTURE"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "줄 거야",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": true,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": true,
+          "nonAssertion": false,
+          "subject": false,
+          "past": false,
+          "assertedEnding": false
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물 줄 거야",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 내일 화분 물 줄 거야",
+          "coreClause": "화분 물 줄 거야",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "내일"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 화분 물 줬나?",
+    "core": "화분 물 줬나?",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 화분 물 줬나?",
+        "intent": "UNCERTAIN",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 줬나?",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": true,
+        "clarification": {
+          "type": "COMPLETION",
+          "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+        },
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      null
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 화분 물 줬나?",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "text": "나",
+            "pos": "EF",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "text": "?",
+            "pos": "SF",
+            "start": 5,
+            "end": 8
+          }
+        ],
+        "target": "화분",
+        "action": "물 줬나?",
+        "confidence": "LOW",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "PREDICATE_CHAIN_UNRESOLVED"
+        ],
+        "intent_confidence": "LOW",
+        "target_confidence": "HIGH",
+        "action_confidence": "LOW",
+        "raw_action_surface": "물 줬나?",
+        "lemma_candidate": "물다",
+        "canonical_action": null,
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": true,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": false
+        },
+        "suggestedItemName": null,
+        "coreClause": "화분 물 줬나?",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 화분 물 줬나?",
+          "coreClause": "화분 물 줬나?",
+          "speaker": "SELF",
+          "dateExpressions": [],
+          "fillers": [],
+          "sourceOffsets": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": null,
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": true
+      }
+    ]
+  },
+  {
+    "text": "나 화분 언제 물줬지?",
+    "core": "화분 언제 물줬지?",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 화분 언제 물줬지?",
+        "intent": "QUERY",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 화분 언제 물줬지?",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "언제",
+            "pos": "MAG",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "지",
+            "pos": "EF",
+            "start": 6,
+            "end": 10
+          },
+          {
+            "text": "?",
+            "pos": "SF",
+            "start": 6,
+            "end": 10
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬지?",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": true,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 언제 물줬지?",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 화분 언제 물줬지?",
+          "coreClause": "화분 언제 물줬지?",
+          "speaker": "SELF",
+          "dateExpressions": [],
+          "fillers": [],
+          "sourceOffsets": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "아이가 약 먹었어",
+    "core": "아이가 약 먹었어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "아이가 약 먹었어",
+        "intent": "UNCERTAIN",
+        "scope": "IN_SCOPE",
+        "normalized_action": "아이가 약 먹었어",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": true,
+        "clarification": {
+          "type": "COMPLETION",
+          "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+        },
+        "tag_candidates": [],
+        "demo_category": "건강",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      null
+    ],
+    "diagnostics": [
+      {
+        "raw": "아이가 약 먹었어",
+        "tokens": [
+          {
+            "text": "아이",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "가",
+            "pos": "JKS",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "약",
+            "pos": "NNG",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "text": "먹",
+            "pos": "VV",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 6,
+            "end": 9
+          }
+        ],
+        "target": "아이 약",
+        "action": "먹다",
+        "confidence": "LOW",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "TARGET_UNRESOLVED"
+        ],
+        "intent_confidence": "LOW",
+        "target_confidence": "LOW",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "먹었어",
+        "lemma_candidate": "먹다",
+        "canonical_action": null,
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": true,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": null,
+        "coreClause": "아이가 약 먹었어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "아이가 약 먹었어",
+          "coreClause": "아이가 약 먹었어",
+          "speaker": null,
+          "dateExpressions": [],
+          "fillers": [],
+          "sourceOffsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": null,
+        "context": {
+          "contexts": [],
+          "semantic": "먹다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": true
+      }
+    ]
+  },
+  {
+    "text": "남편이 필터 갈았어",
+    "core": "남편이 필터 갈았어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "남편이 필터 갈았어",
+        "intent": "UNCERTAIN",
+        "scope": "IN_SCOPE",
+        "normalized_action": "남편이 필터 갈았어",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": true,
+        "clarification": {
+          "type": "COMPLETION",
+          "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+        },
+        "tag_candidates": [],
+        "demo_category": "교체",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      null
+    ],
+    "diagnostics": [
+      {
+        "raw": "남편이 필터 갈았어",
+        "tokens": [
+          {
+            "text": "남편",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "이",
+            "pos": "JKS",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "필터",
+            "pos": "NNG",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "text": "갈",
+            "pos": "VV",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "text": "았",
+            "pos": "EP",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 7,
+            "end": 10
+          }
+        ],
+        "target": "남편 필터",
+        "action": "갈다",
+        "confidence": "LOW",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "TARGET_UNRESOLVED"
+        ],
+        "intent_confidence": "LOW",
+        "target_confidence": "LOW",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "갈았어",
+        "lemma_candidate": "갈다",
+        "canonical_action": null,
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": true,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": null,
+        "coreClause": "남편이 필터 갈았어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "남편이 필터 갈았어",
+          "coreClause": "남편이 필터 갈았어",
+          "speaker": null,
+          "dateExpressions": [],
+          "fillers": [],
+          "sourceOffsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": null,
+        "context": {
+          "contexts": [
+            "REPLACEABLE_COMPONENT"
+          ],
+          "semantic": "교체",
+          "contextual": true
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": true
+      }
+    ]
+  },
+  {
+    "text": "나 어제 화분 물줬어",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 어제 화분 물줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-16",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 어제 화분 물줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 어제 화분 물줬어",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "어제"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 2026년 8월 1일 화분 물줬어",
+    "core": "화분 물줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 2026년 8월 1일 화분 물줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-08-01",
+        "date_precision": "EXACT",
+        "date_resolution_source": "EXPLICIT",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 2026년 8월 1일 화분 물줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 3,
+            "end": 6
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분 물줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 2026년 8월 1일 화분 물줬어",
+          "coreClause": "화분 물줬어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "2026년 8월 1일"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "화분은 물 줬어",
+    "core": "화분은 물 줬어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "화분은 물 줬어",
+        "intent": "COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "화분 물 주다",
+        "performed_date": "2026-09-17",
+        "date_precision": "EXACT",
+        "date_resolution_source": "IMPLICIT_TODAY",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": true,
+        "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+      }
+    ],
+    "names": [
+      "화분 물 주기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "화분은 물 줬어",
+        "tokens": [
+          {
+            "text": "화분",
+            "pos": "NNG",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "text": "물",
+            "pos": "VV",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "text": "주",
+            "pos": "VX",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "text": "었",
+            "pos": "EP",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 6,
+            "end": 8
+          }
+        ],
+        "target": "화분",
+        "action": "물 주다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "GIVE_PHRASE_RECONSTRUCTED"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "물 줬어",
+        "lemma_candidate": "물 주다",
+        "canonical_action": "화분 물 주다",
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "화분 물 주기",
+        "coreClause": "화분은 물 줬어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "화분은 물 줬어",
+          "coreClause": "화분은 물 줬어",
+          "speaker": null,
+          "dateExpressions": [],
+          "fillers": [],
+          "sourceOffsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "화분 물 주다",
+        "context": {
+          "contexts": [
+            "PLANT"
+          ],
+          "semantic": "물 주다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 오늘 신발 안 빨았어",
+    "core": "신발 안 빨았어",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 오늘 신발 안 빨았어",
+        "intent": "NOT_COMPLETED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "신발 빨다",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": false,
+        "clarification": null,
+        "tag_candidates": [],
+        "demo_category": "기타",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      "신발 빨기"
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 오늘 신발 안 빨았어",
+        "tokens": [
+          {
+            "text": "신발",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "안",
+            "pos": "MAG",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "빨",
+            "pos": "VV",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "text": "았",
+            "pos": "EP",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "text": "어",
+            "pos": "EF",
+            "start": 5,
+            "end": 8
+          }
+        ],
+        "target": "신발",
+        "action": "빨다",
+        "confidence": "HIGH",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "HIGH",
+        "raw_action_surface": "빨았어",
+        "lemma_candidate": "빨다",
+        "canonical_action": "신발 빨다",
+        "signals": {
+          "negative": true,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": false,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": false,
+          "nonAssertion": false,
+          "subject": false,
+          "past": true,
+          "assertedEnding": true
+        },
+        "suggestedItemName": "신발 빨기",
+        "coreClause": "신발 안 빨았어",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 오늘 신발 안 빨았어",
+          "coreClause": "신발 안 빨았어",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "오늘"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": "신발 세탁",
+        "context": {
+          "contexts": [
+            "FABRIC_LAUNDRY"
+          ],
+          "semantic": "세탁",
+          "contextual": true
+        },
+        "candidates": [
+          {
+            "itemId": "shoes",
+            "name": "신발 세탁",
+            "matchType": "EXACT_NAME"
+          }
+        ],
+        "confidence": "HIGH",
+        "needsUserSelection": true,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": false
+      }
+    ]
+  },
+  {
+    "text": "나 내일 렌즈 갈 거야",
+    "core": "렌즈 갈 거야",
+    "output": [
+      {
+        "segment_id": "1",
+        "original_text": "나 내일 렌즈 갈 거야",
+        "intent": "PLANNED",
+        "scope": "IN_SCOPE",
+        "normalized_action": "렌즈 갈 거야",
+        "performed_date": null,
+        "date_precision": "NOT_APPLICABLE",
+        "date_resolution_source": "NONE",
+        "needs_clarification": true,
+        "clarification": {
+          "type": "ACTION",
+          "question": "원문의 행동을 확인해주세요."
+        },
+        "tag_candidates": [],
+        "demo_category": "건강",
+        "item_match": {
+          "candidates": [],
+          "needs_review": false
+        },
+        "record_candidate": false,
+        "record_candidate_reason": "INTENT_NOT_COMPLETED"
+      }
+    ],
+    "names": [
+      null
+    ],
+    "diagnostics": [
+      {
+        "raw": "나 내일 렌즈 갈 거야",
+        "tokens": [
+          {
+            "text": "렌즈",
+            "pos": "NNG",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "text": "가",
+            "pos": "VV",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "ㄹ",
+            "pos": "ETM",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "text": "거",
+            "pos": "NNB",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "text": "이",
+            "pos": "VCP",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "text": "야",
+            "pos": "EF",
+            "start": 5,
+            "end": 7
+          }
+        ],
+        "target": "렌즈",
+        "action": "가다",
+        "confidence": "LOW",
+        "reasons": [
+          "CONSERVATIVE_V2",
+          "LAB_ONLY_NO_WRITE_AUTHORIZATION",
+          "INTENTION_OR_FUTURE",
+          "PROSPECTIVE_LEMMA_AMBIGUOUS",
+          "TEMPORAL_METADATA_FUTURE"
+        ],
+        "intent_confidence": "HIGH",
+        "target_confidence": "HIGH",
+        "action_confidence": "LOW",
+        "raw_action_surface": "갈 거야",
+        "lemma_candidate": "가다",
+        "canonical_action": null,
+        "signals": {
+          "negative": false,
+          "nearMiss": false,
+          "intended": false,
+          "prospective": true,
+          "deliberative": false,
+          "obligation": false,
+          "uncertain": false,
+          "temporalQuery": false,
+          "future": true,
+          "nonAssertion": false,
+          "subject": false,
+          "past": false,
+          "assertedEnding": false
+        },
+        "suggestedItemName": null,
+        "coreClause": "렌즈 갈 거야",
+        "tokenSource": "coreClause",
+        "utterance": {
+          "rawInput": "나 내일 렌즈 갈 거야",
+          "coreClause": "렌즈 갈 거야",
+          "speaker": "SELF",
+          "dateExpressions": [
+            "내일"
+          ],
+          "fillers": [],
+          "sourceOffsets": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      }
+    ],
+    "matching": [
+      {
+        "matchingSurface": null,
+        "context": {
+          "contexts": [
+            "REPLACEABLE_COMPONENT"
+          ],
+          "semantic": "가다",
+          "contextual": false
+        },
+        "candidates": [],
+        "confidence": "NONE",
+        "needsUserSelection": false,
+        "selectedItemId": null,
+        "autoMatch": false,
+        "blockedByConfidence": true
+      }
+    ]
+  }
+]

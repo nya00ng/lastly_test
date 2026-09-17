@@ -1,0 +1,3182 @@
+{
+  "today": "2026-09-17",
+  "summary": {
+    "total": 54,
+    "passed": 54,
+    "failed": 0,
+    "unsafeCandidates": 0,
+    "wrongCandidateDates": 0,
+    "wrongMatches": 0,
+    "demoDataUnchanged": true
+  },
+  "sourceHash": "5c040998099a851e4274cd1339bbc2a99debeb010c55be817ded46cd5309bef6",
+  "rows": [
+    {
+      "group": "clear-completion",
+      "text": "저는 오늘 화분에 물을 줬어요!",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "저는 오늘 화분에 물을 줬어요!",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "화분에 물을 줬어요"
+    },
+    {
+      "group": "clear-completion",
+      "text": "아 맞다, 내가 어제 신발을 빨았어.",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아 맞다, 내가 어제 신발을 빨았어.",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": "2026-09-16",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발을 빨았어"
+    },
+    {
+      "group": "clear-completion",
+      "text": "생각해보니 나는 칼을 갈았어~",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "생각해보니 나는 칼을 갈았어~",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "칼 갈다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "칼 갈다",
+          "context": {
+            "contexts": [
+              "SHARPENABLE"
+            ],
+            "semantic": "갈다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "칼 갈기"
+      ],
+      "core": "칼을 갈았어"
+    },
+    {
+      "group": "clear-completion",
+      "text": "참 제가 정수기 필터를 갈았어요",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "참 제가 정수기 필터를 갈았어요",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "정수기 필터 갈다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "정수기 필터 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "water-filter",
+              "name": "정수기 필터",
+              "matchType": "CONTEXT_SEMANTIC"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "정수기 필터 갈기"
+      ],
+      "core": "정수기 필터를 갈았어요"
+    },
+    {
+      "group": "clear-completion",
+      "text": "음… 오늘은 제가 렌즈를 교체했어요",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "음… 오늘은 제가 렌즈를 교체했어요",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "렌즈 교체",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "렌즈 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "lens",
+              "name": "렌즈 교체",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "렌즈 교체하기"
+      ],
+      "core": "렌즈를 교체했어요"
+    },
+    {
+      "group": "clear-completion",
+      "text": "오늘 제가 화장실을 청소했습니다.",
+      "expected": {
+        "intent": "COMPLETED",
+        "candidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "오늘 제가 화장실을 청소했습니다.",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화장실 청소",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "생활",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화장실 청소",
+          "context": {
+            "contexts": [],
+            "semantic": "청소하다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화장실 청소하기"
+      ],
+      "core": "화장실을 청소했습니다"
+    },
+    {
+      "group": "negative",
+      "text": "난 오늘 신발을 안 빨았어!",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "난 오늘 신발을 안 빨았어!",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발을 안 빨았어"
+    },
+    {
+      "group": "negative",
+      "text": "아 맞다 화분에 물 못 줬어",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아 맞다 화분에 물 못 줬어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "화분에 물 못 줬어"
+    },
+    {
+      "group": "negative",
+      "text": "저는 렌즈를 교체하지 않았어요",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "저는 렌즈를 교체하지 않았어요",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "렌즈 교체",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "렌즈 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "lens",
+              "name": "렌즈 교체",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "렌즈 교체하기"
+      ],
+      "core": "렌즈를 교체하지 않았어요"
+    },
+    {
+      "group": "negative",
+      "text": "나 신발 빨았어 아니 안 빨았어",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 신발 빨았어 아니 안 빨았어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "나 신발 빨았어 아니 안 빨았어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "ACTION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "신발 빨았어 아니 안 빨았어"
+    },
+    {
+      "group": "negative",
+      "text": "오늘 화분물안줬어",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "오늘 화분물안줬어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "화분물안줬어"
+    },
+    {
+      "group": "negative",
+      "text": "신발을 빨지는 않았어",
+      "expected": {
+        "noCandidate": true,
+        "intent": "NOT_COMPLETED"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "신발을 빨지는 않았어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발을 빨지는 않았어"
+    },
+    {
+      "group": "uncertain",
+      "text": "나 아마 화분에 물 줬어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 아마 화분에 물 줬어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "나 아마 화분에 물 줬어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "실제로 완료한 일인지 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "아마 화분에 물 줬어"
+    },
+    {
+      "group": "uncertain",
+      "text": "신발 빨았던 것 같아",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "신발 빨았던 것 같아",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨았던 것 같아",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "실제로 완료한 일인지 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "신발 빨았던 것 같아"
+    },
+    {
+      "group": "uncertain",
+      "text": "화분에 물 줬는지 모르겠어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "화분에 물 줬는지 모르겠어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분에 물 줬는지 모르겠어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "화분에 물 줬는지 모르겠어"
+    },
+    {
+      "group": "uncertain",
+      "text": "내가 렌즈를 갈았나?",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "내가 렌즈를 갈았나?",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "내가 렌즈를 갈았나?",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "건강",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "렌즈를 갈았나?"
+    },
+    {
+      "group": "uncertain",
+      "text": "정수기 필터 갈았을 수도 있어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "정수기 필터 갈았을 수도 있어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "정수기 필터 갈았을 수도 있어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "실제로 완료한 일인지 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "정수기 필터 갈았을 수도 있어"
+    },
+    {
+      "group": "uncertain",
+      "text": "화분에 물 준 줄 알았어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "화분에 물 준 줄 알았어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분에 물 준 줄 알았어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "화분에 물 준 줄 알았어"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "나 내일 신발 빨 거야",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 내일 신발 빨 거야",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발 빨 거야"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "화분에 물 주려고 했어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "화분에 물 주려고 했어",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분에 물 주려고 했어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "ACTION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "화분에 물 주려고 했어"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "신발을 빨 뻔했어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "신발을 빨 뻔했어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발을 빨 뻔했어"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "렌즈를 갈아야겠어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "렌즈를 갈아야겠어",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "렌즈 갈다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "건강",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "렌즈 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "lens",
+              "name": "렌즈 교체",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "렌즈 갈기"
+      ],
+      "core": "렌즈를 갈아야겠어"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "다음 달에 정수기 필터 갈 거야",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "다음 달에 정수기 필터 갈 거야",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "다음 달에 정수기 필터 갈 거야",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "ACTION",
+            "question": "원문의 행동을 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "가다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "다음 달에 정수기 필터 갈 거야"
+    },
+    {
+      "group": "planned-or-nonassertion",
+      "text": "내가 화분 물 주면 좋겠어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "내가 화분 물 주면 좋겠어",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "화분 물 주면 좋겠어"
+    },
+    {
+      "group": "date",
+      "text": "저는 2026년 9월 16일 신발을 빨았어요",
+      "expected": {
+        "candidate": true,
+        "dates": [
+          "2026-09-16"
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "저는 2026년 9월 16일 신발을 빨았어요",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": "2026-09-16",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발을 빨았어요"
+    },
+    {
+      "group": "date",
+      "text": "나는 이틀 전에 화분에 물 줬어",
+      "expected": {
+        "allowedCandidateDates": [
+          "2026-09-15"
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나는 이틀 전에 화분에 물 줬어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": "2026-09-15",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "이틀 전에 화분에 물 줬어"
+    },
+    {
+      "group": "date",
+      "text": "나는 지난달에 신발 빨았어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나는 지난달에 신발 빨았어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "APPROXIMATE",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "DATE",
+            "question": "정확한 수행 날짜를 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "EXACT_DATE_REQUIRED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "지난달에 신발 빨았어"
+    },
+    {
+      "group": "date",
+      "text": "나 2099년 1월 1일 렌즈 갈았어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 2099년 1월 1일 렌즈 갈았어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "렌즈 갈다",
+          "performed_date": null,
+          "date_precision": "UNKNOWN",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "DATE",
+            "question": "정확한 수행 날짜를 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "건강",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "EXACT_DATE_REQUIRED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "렌즈 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "lens",
+              "name": "렌즈 교체",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "렌즈 갈기"
+      ],
+      "core": "렌즈 갈았어"
+    },
+    {
+      "group": "date",
+      "text": "나 2026년 2월 30일 화분에 물 줬어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 2026년 2월 30일 화분에 물 줬어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": null,
+          "date_precision": "UNKNOWN",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "DATE",
+            "question": "정확한 수행 날짜를 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "EXACT_DATE_REQUIRED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기"
+      ],
+      "core": "화분에 물 줬어"
+    },
+    {
+      "group": "date",
+      "text": "어제 아니 오늘 화분에 물 줬어",
+      "expected": {
+        "allowedCandidateDates": [
+          "2026-09-17"
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "어제 아니 오늘 화분에 물 줬어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "어제 아니 오늘 화분에 물 줬어",
+          "performed_date": null,
+          "date_precision": "APPROXIMATE",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "DATE",
+            "question": "정확한 수행 날짜를 확인해주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "EXACT_DATE_REQUIRED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "아니 오늘 화분에 물 줬어"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "아이가 화분에 물 줬어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아이가 화분에 물 줬어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "아이가 화분에 물 줬어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "아이가 화분에 물 줬어"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "남편이 신발을 빨았어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "남편이 신발을 빨았어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "남편이 신발을 빨았어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "남편이 신발을 빨았어"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "엄마가 렌즈를 갈았다고 했어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "엄마가 렌즈를 갈았다고 했어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "엄마가 렌즈를 갈았다고 했어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "건강",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "엄마가 렌즈를 갈았다고 했어"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "나는 아빠가 필터 갈았다고 들었어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나는 아빠가 필터 갈았다고 들었어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "나는 아빠가 필터 갈았다고 들었어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "아빠가 필터 갈았다고 들었어"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "아빠는 신발을 빨았대",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아빠는 신발을 빨았대",
+          "intent": "UNKNOWN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "아빠는 신발을 빨았대",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "아빠는 신발을 빨았대"
+    },
+    {
+      "group": "third-person-or-reported",
+      "text": "친구가 화분에 물 줬는지 모르겠어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "친구가 화분에 물 줬는지 모르겠어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "친구가 화분에 물 줬는지 모르겠어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "친구가 화분에 물 줬는지 모르겠어"
+    },
+    {
+      "group": "multi",
+      "text": "나 어제 신발 빨고 화분에 물 줬어",
+      "expected": {
+        "segments": 2,
+        "candidates": [
+          true,
+          true
+        ],
+        "dates": [
+          "2026-09-16",
+          "2026-09-16"
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 어제 신발 빨고",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": "2026-09-16",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        },
+        {
+          "segment_id": "2",
+          "original_text": "화분에 물 줬어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": "2026-09-16",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        },
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기",
+        "화분 물 주기"
+      ],
+      "core": "신발 빨고 화분에 물 줬어"
+    },
+    {
+      "group": "multi",
+      "text": "어제 신발 빨고 오늘 화분에 물 줬어",
+      "expected": {
+        "segments": 2,
+        "candidates": [
+          true,
+          true
+        ],
+        "dates": [
+          "2026-09-16",
+          "2026-09-17"
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "어제 신발 빨고",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": "2026-09-16",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        },
+        {
+          "segment_id": "2",
+          "original_text": "오늘 화분에 물 줬어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "EXPLICIT",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        },
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기",
+        "화분 물 주기"
+      ],
+      "core": "신발 빨고 오늘 화분에 물 줬어"
+    },
+    {
+      "group": "multi",
+      "text": "나 화분에 물 줬고 신발은 안 빨았어",
+      "expected": {
+        "segments": 2,
+        "candidates": [
+          true,
+          false
+        ]
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 화분에 물 줬고",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        },
+        {
+          "segment_id": "2",
+          "original_text": "신발은 안 빨았어",
+          "intent": "NOT_COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        },
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "화분 물 주기",
+        "신발 빨기"
+      ],
+      "core": "화분에 물 줬고 신발은 안 빨았어"
+    },
+    {
+      "group": "multi",
+      "text": "내일 신발 빨고 화분에 물 줄 거야",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "내일 신발 빨고",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "내일 신발 빨고",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        },
+        {
+          "segment_id": "2",
+          "original_text": "화분에 물 줄 거야",
+          "intent": "PLANNED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분 물 주다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        },
+        {
+          "matchingSurface": "화분 물 주다",
+          "context": {
+            "contexts": [
+              "PLANT"
+            ],
+            "semantic": "물 주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        null,
+        "화분 물 주기"
+      ],
+      "core": "신발 빨고 화분에 물 줄 거야"
+    },
+    {
+      "group": "multi",
+      "text": "신발 빨고 화분에 물 줬는지 모르겠어",
+      "expected": {
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "신발 빨고",
+          "intent": "UNKNOWN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨고",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        },
+        {
+          "segment_id": "2",
+          "original_text": "화분에 물 줬는지 모르겠어",
+          "intent": "UNCERTAIN",
+          "scope": "IN_SCOPE",
+          "normalized_action": "화분에 물 줬는지 모르겠어",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "COMPLETION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        },
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "주다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null,
+        null
+      ],
+      "core": "신발 빨고 화분에 물 줬는지 모르겠어"
+    },
+    {
+      "group": "multi",
+      "text": "저는 수건 빨고 문 열고 상자 닫고 매트 털고 텐트 접고 그릇 씻었어",
+      "expected": {
+        "segments": 0,
+        "resultType": "TOO_MANY_ACTIONS"
+      },
+      "failures": [],
+      "segments": [],
+      "matching": [],
+      "names": [],
+      "core": "수건 빨고 문 열고 상자 닫고 매트 털고 텐트 접고 그릇 씻었어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "나 신발을 교체했어",
+      "expected": {
+        "forbidden": "shoes"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나 신발을 교체했어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 교체",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 교체",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "교체하다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 교체하기"
+      ],
+      "core": "신발을 교체했어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "정수기 필터를 청소했어",
+      "expected": {
+        "forbidden": "water-filter"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "정수기 필터를 청소했어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "정수기 필터 청소",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "생활",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "정수기 필터 청소",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "청소하다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "정수기 필터 청소하기"
+      ],
+      "core": "정수기 필터를 청소했어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "아 칼을 갈았어",
+      "expected": {
+        "forbidden": "toothbrush"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아 칼을 갈았어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "칼 갈다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "칼 갈다",
+          "context": {
+            "contexts": [
+              "SHARPENABLE"
+            ],
+            "semantic": "갈다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "칼 갈기"
+      ],
+      "core": "칼을 갈았어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "커피를 갈았어",
+      "expected": {
+        "forbidden": "lens"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "커피를 갈았어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "커피 갈다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "커피 갈다",
+          "context": {
+            "contexts": [],
+            "semantic": "갈다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "커피 갈기"
+      ],
+      "core": "커피를 갈았어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "그릇을 씻었어",
+      "expected": {
+        "forbidden": "shoes"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "그릇을 씻었어",
+          "intent": "COMPLETED",
+          "scope": "IN_SCOPE",
+          "normalized_action": "그릇 씻다",
+          "performed_date": "2026-09-17",
+          "date_precision": "EXACT",
+          "date_resolution_source": "IMPLICIT_TODAY",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": true,
+          "record_candidate_reason": "READY_FOR_USER_CONFIRMATION"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "그릇 씻다",
+          "context": {
+            "contexts": [
+              "CLEANABLE_OBJECT"
+            ],
+            "semantic": "씻다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "그릇 씻기"
+      ],
+      "core": "그릇을 씻었어"
+    },
+    {
+      "group": "action-compatibility",
+      "text": "아빠 이불 교체 언제 했어?",
+      "expected": {
+        "forbidden": "bedding"
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아빠 이불 교체 언제 했어?",
+          "intent": "QUERY",
+          "scope": "IN_SCOPE",
+          "normalized_action": "아빠 이불 교체",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "생활",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "아빠 이불 교체",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "교체하다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "아빠 이불 교체하기"
+      ],
+      "core": "아빠 이불 교체 언제 했어?"
+    },
+    {
+      "group": "query",
+      "text": "아 맞다 신발 언제 빨았더라?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아 맞다 신발 언제 빨았더라?",
+          "intent": "QUERY",
+          "scope": "IN_SCOPE",
+          "normalized_action": "신발 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "신발 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "shoes",
+              "name": "신발 세탁",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "신발 빨기"
+      ],
+      "core": "신발 언제 빨았더라?"
+    },
+    {
+      "group": "query",
+      "text": "나는 정수기 필터 마지막으로 언제 갈았지?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "나는 정수기 필터 마지막으로 언제 갈았지?",
+          "intent": "QUERY",
+          "scope": "IN_SCOPE",
+          "normalized_action": "정수기 필터 갈다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "정수기 필터 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "water-filter",
+              "name": "정수기 필터",
+              "matchType": "CONTEXT_SEMANTIC"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "정수기 필터 갈기"
+      ],
+      "core": "정수기 필터 마지막으로 언제 갈았지?"
+    },
+    {
+      "group": "query",
+      "text": "음 렌즈 언제 교체했어요?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "음 렌즈 언제 교체했어요?",
+          "intent": "QUERY",
+          "scope": "IN_SCOPE",
+          "normalized_action": "렌즈 교체",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "교체",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "렌즈 교체",
+          "context": {
+            "contexts": [
+              "REPLACEABLE_COMPONENT"
+            ],
+            "semantic": "교체",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "lens",
+              "name": "렌즈 교체",
+              "matchType": "EXACT_NAME"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "렌즈 교체하기"
+      ],
+      "core": "렌즈 언제 교체했어요?"
+    },
+    {
+      "group": "query",
+      "text": "아빠 이불 언제 빨았지?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "아빠 이불 언제 빨았지?",
+          "intent": "QUERY",
+          "scope": "IN_SCOPE",
+          "normalized_action": "아빠 이불 빨다",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": false,
+          "clarification": null,
+          "tag_candidates": [],
+          "demo_category": "생활",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": "아빠 이불 세탁",
+          "context": {
+            "contexts": [
+              "FABRIC_LAUNDRY"
+            ],
+            "semantic": "세탁",
+            "contextual": true
+          },
+          "candidates": [
+            {
+              "itemId": "bedding",
+              "name": "이불 세탁",
+              "matchType": "EXACT_TAG"
+            }
+          ],
+          "confidence": "HIGH",
+          "needsUserSelection": true,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": false
+        }
+      ],
+      "names": [
+        "아빠 이불 빨기"
+      ],
+      "core": "아빠 이불 언제 빨았지?"
+    },
+    {
+      "group": "query",
+      "text": "언제 했더라?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "언제 했더라?",
+          "intent": "QUERY",
+          "scope": "UNCERTAIN",
+          "normalized_action": "언제 했더라?",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "ACTION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "하다",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "언제 했더라?"
+    },
+    {
+      "group": "query",
+      "text": "마지막으로 한 게 언제였지?",
+      "expected": {
+        "intent": "QUERY",
+        "noCandidate": true
+      },
+      "failures": [],
+      "segments": [
+        {
+          "segment_id": "1",
+          "original_text": "마지막으로 한 게 언제였지?",
+          "intent": "QUERY",
+          "scope": "UNCERTAIN",
+          "normalized_action": "마지막으로 한 게 언제였지?",
+          "performed_date": null,
+          "date_precision": "NOT_APPLICABLE",
+          "date_resolution_source": "NONE",
+          "needs_clarification": true,
+          "clarification": {
+            "type": "ACTION",
+            "question": "원문을 확인하고 행동과 수행 여부를 알려주세요."
+          },
+          "tag_candidates": [],
+          "demo_category": "기타",
+          "item_match": {
+            "candidates": [],
+            "needs_review": false
+          },
+          "record_candidate": false,
+          "record_candidate_reason": "INTENT_NOT_COMPLETED"
+        }
+      ],
+      "matching": [
+        {
+          "matchingSurface": null,
+          "context": {
+            "contexts": [],
+            "semantic": "",
+            "contextual": false
+          },
+          "candidates": [],
+          "confidence": "NONE",
+          "needsUserSelection": false,
+          "selectedItemId": null,
+          "autoMatch": false,
+          "blockedByConfidence": true
+        }
+      ],
+      "names": [
+        null
+      ],
+      "core": "마지막으로 한 게 언제였지?"
+    }
+  ]
+}

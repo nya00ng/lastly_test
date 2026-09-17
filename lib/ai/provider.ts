@@ -625,7 +625,7 @@ export class OpenAIAdapter implements AIAdapter {
 }
 
 export function createAIAdapter(): AIAdapter {
-  const provider = process.env.AI_PROVIDER || "openai";
+  const provider = process.env.AI_PROVIDER || "mock";
 
   if (provider === "mock") {
     return new MockAIAdapter();
@@ -639,7 +639,7 @@ export function createAIAdapter(): AIAdapter {
 }
 
 export function getAIAdapterMode() {
-  return process.env.AI_PROVIDER === "mock" ? "MOCK" : "REAL";
+  return (process.env.AI_PROVIDER || "mock") === "mock" ? "MOCK" : "REAL";
 }
 
 export async function requestParserOutput(request: ProviderRequest) {

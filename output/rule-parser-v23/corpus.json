@@ -1,0 +1,1946 @@
+[
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 화분 물 줬어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 화분 물 줬을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 하루 전에 화분 물 줬어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 화분안물줬어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 화분 물 줬고 렌즈 갈았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "화분",
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 화분 물 줬고 렌즈 안 갈았어.",
+    "intents": [
+      "COMPLETED",
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "화분",
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 화분 물 줬어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 화분 물 줬어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 화분 물 줬어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 화분 마지막으로 언제 물 줬어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 화분 물 줄 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 화분 물 줬던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "화분"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 신발 빨았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 신발 빨았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 이틀 전에 신발 빨았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      "2026-09-15"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 신발못빨았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 신발 빨았고 나서 칼 갈았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "신발",
+      "칼"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 신발 빨았고 칼 내일 갈 거야.",
+    "intents": [
+      "COMPLETED",
+      "PLANNED"
+    ],
+    "targets": [
+      "신발",
+      "칼"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 신발 빨았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 신발 빨았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 신발 빨았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 신발 마지막으로 언제 빨았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 신발 빨 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 신발 빨았나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "신발"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 정수기 필터 갈았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 정수기 필터 갈았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 사흘 전에 정수기 필터 갈았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      "2026-09-14"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 정수기필터안갈았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 정수기 필터 갈았어. 그리고 커피 갈았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터",
+      "커피"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 정수기 필터 갈았고 커피 언제 갈았어?",
+    "intents": [
+      "COMPLETED",
+      "QUERY"
+    ],
+    "targets": [
+      "정수기 필터",
+      "커피"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 정수기 필터 갈았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 정수기 필터 갈았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 정수기 필터 갈았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 정수기 필터 마지막으로 언제 갈았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 정수기 필터 갈 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 정수기 필터 갈았던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "정수기 필터"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 렌즈 갈았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 렌즈 갈았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 3일 전에 렌즈 갈았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-14"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 렌즈못갈았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 렌즈 갈았어. 또 그릇 씻었어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈",
+      "그릇"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 렌즈 안 갈았어. 그리고 그릇 씻었어.",
+    "intents": [
+      "NOT_COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈",
+      "그릇"
+    ],
+    "dates": [
+      null,
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 렌즈 갈았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 렌즈 갈았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 렌즈 갈았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 렌즈 마지막으로 언제 갈았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 렌즈 갈 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 렌즈 갈았나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "렌즈"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 칼 갈았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 칼 갈았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 일주일 전에 칼 갈았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      "2026-09-10"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 칼안갈았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 칼 갈았어. 그다음 가습기 말렸어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "칼",
+      "가습기"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 칼 갈았고 가습기 안 말렸어.",
+    "intents": [
+      "COMPLETED",
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "칼",
+      "가습기"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 칼 갈았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 칼 갈았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 칼 갈았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 칼 마지막으로 언제 갈았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 칼 갈 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 칼 갈았던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "칼"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 커피 갈았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 커피 갈았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 2주 전에 커피 갈았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      "2026-09-03"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 커피못갈았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 커피 갈았는데 문 열었어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "커피",
+      "문"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 커피 갈았고 문 내일 열 거야.",
+    "intents": [
+      "COMPLETED",
+      "PLANNED"
+    ],
+    "targets": [
+      "커피",
+      "문"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 커피 갈았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 커피 갈았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 커피 갈았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 커피 마지막으로 언제 갈았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 커피 갈 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 커피 갈았나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "커피"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 그릇 씻었어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 그릇 씻었을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 한 달 전에 그릇 씻었어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      "2026-08-17"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 그릇안씻었어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 그릇 씻었고 텐트 접었어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "그릇",
+      "텐트"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 그릇 씻었고 텐트 언제 접었어?",
+    "intents": [
+      "COMPLETED",
+      "QUERY"
+    ],
+    "targets": [
+      "그릇",
+      "텐트"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 그릇 씻었어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 그릇 씻었어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 그릇 씻었어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 그릇 마지막으로 언제 씻었어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 그릇 씻을 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 그릇 씻었던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "그릇"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 가습기 말렸어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 가습기 말렸을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 2개월 전에 가습기 말렸어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      "2026-07-17"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 가습기못말렸어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 가습기 말렸고 나서 상자 닫았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기",
+      "상자"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 가습기 안 말렸어. 그리고 상자 닫았어.",
+    "intents": [
+      "NOT_COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기",
+      "상자"
+    ],
+    "dates": [
+      null,
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 가습기 말렸어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 가습기 말렸어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 가습기 말렸어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 가습기 마지막으로 언제 말렸어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 가습기 말릴 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 가습기 말렸나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "가습기"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 문 열었어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 문 열었을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 며칠 전에 문 열었어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 문안열었어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 문 열었어. 그리고 수건 빨았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "문",
+      "수건"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 문 열었고 수건 안 빨았어.",
+    "intents": [
+      "COMPLETED",
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "문",
+      "수건"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 문 열었어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 문 열었어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 문 열었어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 문 마지막으로 언제 열었어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 문 열 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 문 열었던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "문"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 텐트 접었어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 텐트 접었을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 얼마 전에 텐트 접었어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 텐트못접었어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 텐트 접었어. 또 화분 물 줬어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "텐트",
+      "화분"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 텐트 접었고 화분 내일 물 줄 거야.",
+    "intents": [
+      "COMPLETED",
+      "PLANNED"
+    ],
+    "targets": [
+      "텐트",
+      "화분"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 텐트 접었어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 텐트 접었어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 텐트 접었어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 텐트 마지막으로 언제 접었어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 텐트 접을 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 텐트 접었나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "텐트"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마 제가 상자 닫았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 상자 닫았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 한참 전에 상자 닫았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 상자안닫았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 상자 닫았어. 그다음 신발 빨았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "상자",
+      "신발"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 상자 닫았고 신발 언제 빨았어?",
+    "intents": [
+      "COMPLETED",
+      "QUERY"
+    ],
+    "targets": [
+      "상자",
+      "신발"
+    ],
+    "dates": [
+      "2026-09-17",
+      null
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 상자 닫았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 상자 닫았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 상자 닫았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 상자 마지막으로 언제 닫았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 상자 닫을 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 상자 닫았던 것 같아.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "상자"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "speculation",
+    "text": "어, 아마도 제가 수건 빨았어.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "probability",
+    "text": "참 수건 빨았을 수도 있어요!",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "relative-date",
+    "text": "아, 저는 나흘 전에 수건 빨았어~",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      "2026-09-13"
+    ]
+  },
+  {
+    "group": "attached-negation",
+    "text": "음... 수건못빨았어",
+    "intents": [
+      "NOT_COMPLETED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "multi-action",
+    "text": "참 나는 수건 빨았는데 정수기 필터 갈았어!",
+    "intents": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건",
+      "정수기 필터"
+    ],
+    "dates": [
+      "2026-09-17",
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "mixed-intent",
+    "text": "어 수건 안 빨았어. 그리고 정수기 필터 갈았어.",
+    "intents": [
+      "NOT_COMPLETED",
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건",
+      "정수기 필터"
+    ],
+    "dates": [
+      null,
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "filler",
+    "text": "어, 참 그러고 보니 수건 빨았어!",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "speaker",
+    "text": "난 어제 수건 빨았어！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      "2026-09-16"
+    ]
+  },
+  {
+    "group": "punctuation",
+    "text": "음… 저 오늘은 수건 빨았어！！",
+    "intents": [
+      "COMPLETED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      "2026-09-17"
+    ]
+  },
+  {
+    "group": "query",
+    "text": "아 맞다, 수건 마지막으로 언제 빨았어？",
+    "intents": [
+      "QUERY"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "planned",
+    "text": "참 제가 내일 수건 빨 거야~",
+    "intents": [
+      "PLANNED"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  },
+  {
+    "group": "uncertain",
+    "text": "음 수건 빨았나 봐.",
+    "intents": [
+      "UNCERTAIN"
+    ],
+    "targets": [
+      "수건"
+    ],
+    "dates": [
+      null
+    ]
+  }
+]

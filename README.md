@@ -24,7 +24,9 @@ HOME UX Rebaseline v2 = PASS
 Month Bento Filter = PASS
 Action Semantic Matching = PASS
 Current UI = MVP Demo Release Candidate
-Current Task = MVP DEMO FREEZE / RELEASE READINESS
+Current Task = RULE PARSER V2.3 / ADVERSARIAL GENERALIZATION GATE
+Rule Parser V2.3 = PARTIAL / LOCAL PILOT ONLY
+Production Parser Default = mock
 After Demo Track = PHASE 2 / TASK 1 — Supabase Foundation & Auth Setup
 Runtime Implementation = PARTIAL DEMO TRACK ONLY
 PHASE 2 Implementation = NOT STARTED
@@ -46,6 +48,54 @@ Vercel Demo = DEPLOYED
 ```
 
 문서와 공개 Demo가 완성되었다고 해서 Production 구현이 완료된 것은 아니다. 실제 AI/STT Provider, Auth, Database, Push Notification과 Production persistence는 이후 Phase에서 구현해야 한다.
+
+## 최근 변경: Rule Parser Product Pilot (2026-09-17)
+
+기존 Mock 경로를 보존하면서 **Garu 한국어 형태소 분석 + 결정론적 Rule Parser**를
+음성 transcript와 직접 입력이 공유하는 Product 분석 흐름에 연결했다.
+이는 Gemma 같은 생성형 로컬 언어모델로 교체한 것이 아니다.
+Rule Parser 자체에는 외부 AI API 키가 필요하지 않으며, 브라우저 음성 인식은
+별도 Web Speech 기능으로 그대로 유지한다. 완전한 오프라인 음성 인식을 의미하지 않는다.
+
+- 로컬 AI 모델 실험과 별도 Lab을 보존하고 Rule Parser V2/V2.1/V2.2/V2.3 검증을 추가했다.
+- `AI_PROVIDER=mock`이 기본값이다. `rule-v21`은 기존 이름을 유지한 Preview/로컬 pilot flag이며 현재 코드의 V2.3 파이프라인을 선택한다.
+- Production에서는 pilot 사용을 차단하며 초기화 실패 시 Mock으로 조용히 전환하지 않는다.
+- V2.2는 화자·군더더기 표현을 정리하고 원문을 보존하는 전처리를 추가했다.
+- V2.3는 추측 우선 처리, 상대 날짜 계산, 붙여쓰기 부정 복원, 복합 행동의 독립적인 의도 분리를 추가했다.
+- 자동 저장 금지, Query 쓰기 차단, 미래 완료일 차단, 최대 5개 행동, Confirmation 및 저장 시 재검증을 유지한다.
+- Parser가 Item ID를 선택하지 않으며 기존 matching과 Activity History 기반 처리를 보존한다.
+- 완료·부정·계획이 섞인 입력은 Product에서 부분 저장하지 않고 나누어 입력하도록 안내한다.
+
+### 최신 검증 결과
+
+| 검증 | 결과 |
+|---|---|
+| 기존 54개 adversarial | 54/54, 이전 실패 5건 해결 |
+| 신규 144개 | 143/144, PARTIAL |
+| 기존 369개 | 의도 일치 365/369, 기존 오류 4건 유지 |
+| 신규 corpus 핵심 안전 오류 | 0건 |
+| 실제 Product 지정 입력 | 7개 최종 UI 확인 |
+| Product 무결성 / Cycle / Month / Mock | PASS |
+| Fixture route | 24/24 |
+| typecheck / lint / build | PASS |
+
+남은 실패는 `음... 문안열었어`를 NOT_COMPLETED 대신 UNCERTAIN으로 처리하는
+명사 경계 문제다. 저장 후보는 만들지 않지만 인식 실패로 기록한다.
+신규 corpus는 수정 과정에서 반복 사용했으므로 최종 점수를 완전히 독립적인
+미공개 데이터 정확도로 해석하지 않는다.
+
+데스크톱 측정: 초기화 117.9ms, 분석 중앙값 1.49ms, 100문장 270.1ms.
+이 결과는 휴대폰 성능 보장이 아니다. 기존 사용자 기기 검증과 별개로
+**V2.3 실기기·마이크 검증은 아직 필요하다.**
+
+이번 작업에서는 Vercel 배포나 Production 설정 변경을 수행하지 않았다.
+기존 공개 Preview가 자동으로 V2.3이 되었다고 간주하지 않는다.
+Production 전환은 실기기 검증 및 별도 승인 후 진행한다.
+
+상세 근거: [V2.3 보고서](docs/RULE_PARSER_V2_3.md),
+[V2.2 adversarial 검증](docs/RULE_PARSER_V2_2_ADVERSARIAL_QA.md),
+[Product Pilot](docs/RULE_PARSER_V2_1_PRODUCT_PILOT.md),
+[로컬 AI 실험](docs/LOCAL_AI_POC.md).
 
 ## MVP 데모 구현 요약
 

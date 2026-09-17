@@ -1,16 +1,16 @@
 import type { DemoItem } from "./demo-data";
-import type { EnrichedParserSegment } from "./ai/types";
+import type { EnrichedParserSegment, ItemMatchingCandidate } from "./ai/types";
 
 export type DemoQueryResolution =
   | { type: "CLARIFICATION"; question: string; segmentId: string }
-  | { type: "AMBIGUOUS"; candidates: string[]; segmentId: string }
+  | { type: "AMBIGUOUS"; candidates: ItemMatchingCandidate[]; segmentId: string }
   | { type: "NOT_FOUND"; segmentId: string }
   | { type: "FOUND"; item: DemoItem; lastActivityDate: string; queryTag?: string; segmentId: string };
 
 export function resolveDemoQuery(
   segment: EnrichedParserSegment,
   items: DemoItem[],
-  selectedItemName?: string,
+  selectedItemId?: string,
 ): DemoQueryResolution {
   if (segment.needs_clarification && segment.clarification) {
     return {
@@ -21,15 +21,15 @@ export function resolveDemoQuery(
   }
 
   const candidates = segment.item_match.candidates
-    .filter((candidate) => candidate.matchType !== "NONE")
-    .map((candidate) => candidate.name);
+    .filter((candidate) => candidate.itemId && candidate.matchType !== "NONE");
 
-  if (!selectedItemName && segment.item_match.needs_review && candidates.length > 1) {
+  if (!selectedItemId && candidates.length > 1) {
     return { candidates, segmentId: segment.segment_id, type: "AMBIGUOUS" };
   }
 
-  const targetName = selectedItemName || candidates[0];
-  const item = items.find((candidate) => candidate.name === targetName);
+  const targetId = selectedItemId || candidates[0]?.itemId;
+  const item = candidates.some(candidate => candidate.itemId === targetId)
+    ? items.find(candidate => candidate.id === targetId && candidate.status !== "ARCHIVED") : undefined;
   if (!item || item.history.length === 0) {
     return { segmentId: segment.segment_id, type: "NOT_FOUND" };
   }

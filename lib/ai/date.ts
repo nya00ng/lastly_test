@@ -1,3 +1,5 @@
+import { parseDateOnly } from "../cycle";
+
 export const SERVER_TIMEZONE = "Asia/Seoul" as const;
 
 export function getCurrentLocalDate(timeZone: typeof SERVER_TIMEZONE = SERVER_TIMEZONE) {
@@ -20,5 +22,5 @@ export function getCurrentLocalDate(timeZone: typeof SERVER_TIMEZONE = SERVER_TI
 }
 
 export function isIsoDate(value: string | null): value is string {
-  return value !== null && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  return typeof value === "string" && parseDateOnly(value) !== null;
 }

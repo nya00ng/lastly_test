@@ -1,7 +1,19 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { parseNaturalLanguageRecord } from "@/lib/ai/parser";
+import { getCurrentLocalDate } from "@/lib/ai/date";
+import { validateRulePilot } from "@/lib/ai/rule-pilot";
 
 export const runtime = "nodejs";
+
+function pilotDisallowed() {
+  return process.env.AI_PROVIDER === "rule-v21" && process.env.VERCEL_ENV === "production";
+}
+
+export function GET() {
+  if (pilotDisallowed()) return NextResponse.json({ error: "PILOT_PREVIEW_ONLY" }, { status: 503 });
+  return NextResponse.json({ provider: process.env.AI_PROVIDER || "mock", currentLocalDate: getCurrentLocalDate() },
+    { headers: { "Cache-Control": "no-store" } });
+}
 
 const rateLimitWindowMs = 60_000;
 const maxRequestsPerWindow = 20;
@@ -21,6 +33,8 @@ function isRateLimited(key: string) {
 }
 
 export async function POST(request: NextRequest) {
+  if (pilotDisallowed()) return NextResponse.json({ ok: false, mode: "MANUAL", code: "AI_CONFIG_MISSING",
+    message: "이 Parser는 시험 환경에서만 사용할 수 있어요." }, { status: 503 });
   if (isRateLimited(getClientKey(request))) {
     return NextResponse.json(
       {
@@ -49,6 +63,11 @@ export async function POST(request: NextRequest) {
   }
 
   const text = typeof body === "object" && body !== null && "text" in body ? body.text : undefined;
+  if (process.env.AI_PROVIDER === "rule-v21") {
+    const proposal = body as { rule_output?: unknown; rule_confidences?: unknown } | null;
+    const result = validateRulePilot(text, proposal?.rule_output, proposal?.rule_confidences, getCurrentLocalDate());
+    return NextResponse.json(result, { status: result.ok ? 200 : 400 });
+  }
   const result = await parseNaturalLanguageRecord(text);
 
   const status = result.ok ? 200 : result.code === "AI_CONFIG_MISSING" ? 503 : 400;

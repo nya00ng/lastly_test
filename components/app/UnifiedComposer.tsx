@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import type { AiParseApiResponse, EnrichedParserSegment, ParserIntent } from "@/lib/ai/types";
-import { getCurrentLocalDate } from "@/lib/ai/date";
+import type { AiParseApiResponse, EnrichedParserSegment, ItemMatchingCandidate, ParserIntent } from "@/lib/ai/types";
+import { getCurrentLocalDate, isIsoDate } from "@/lib/ai/date";
+import { matchConfirmationAction } from "@/lib/confirmation-matching";
 import { matchDemoItems } from "@/lib/ai/demo-matching";
+import { parseProductInput } from "@/lib/ai/product-parse";
 import { resolveDemoQuery, type DemoQueryResolution } from "@/lib/demo-query";
 import type { DemoCategory } from "@/lib/demo-data";
 import { useDemoActivityStore } from "./DemoActivityProvider";
@@ -19,7 +21,9 @@ type ConfirmationDraft = {
   action: string;
   category: DemoCategory;
   date: string;
-  itemName: string;
+  itemId: string | null | undefined;
+  candidates: ItemMatchingCandidate[];
+  dateResolutionSource: "EXPLICIT" | "IMPLICIT_TODAY";
   selectedTags: string[];
   segment: EnrichedParserSegment;
 };
@@ -120,12 +124,14 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
       }
       setDrafts(segments.map((segment) => {
         const candidates = segment.item_match.candidates.filter((candidate) => candidate.matchType !== "NONE");
-        const matchedInitial = initialItem && candidates.some((candidate) => candidate.name === initialItem.name);
+        const matchedInitial = initialItem && candidates.some((candidate) => candidate.itemId === initialItem.id);
         return {
-          action: segment.normalized_action || "",
+          action: segment.suggested_item_name || segment.normalized_action || "",
           category: (segment.demo_category || "기타") as DemoCategory,
           date: segment.performed_date || "",
-          itemName: matchedInitial ? initialItem.name : candidates[0]?.name || "새 항목으로 기록",
+          itemId: matchedInitial ? initialItem.id : candidates.length > 1 ? undefined : candidates[0]?.itemId ?? null,
+          candidates,
+          dateResolutionSource: segment.date_resolution_source === "EXPLICIT" ? "EXPLICIT" : "IMPLICIT_TODAY",
           selectedTags: [...(segment.tag_candidates ?? [])],
           segment,
         };
@@ -133,7 +139,9 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
       setView("confirm");
       return;
     }
-    if (intents.size > 1) setMessage("기록과 조회가 함께 있어요. 한 번에 한 종류씩 다시 입력해주세요.");
+    if (intents.size > 1) setMessage(intents.has("QUERY")
+      ? "기록과 조회가 함께 있어요. 한 번에 한 종류씩 다시 입력해주세요."
+      : "완료 여부가 서로 다른 내용이 함께 있어요. 한 종류씩 나누어 입력해주세요.");
     else if (segments[0]) setMessage(intentMessage(segments[0].intent, segments[0]));
     setView("blocked");
   }
@@ -148,12 +156,7 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
     setResult(null);
     setText(submittedText);
     try {
-      const response = await fetch("/api/ai/parse", {
-        body: JSON.stringify({ text: submittedText }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const payload = (await response.json()) as AiParseApiResponse;
+      const payload = await parseProductInput(submittedText, items);
       setResult(payload);
       if (!payload.ok) {
         setMessage(payload.message);
@@ -171,6 +174,7 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
         return;
       }
       const runtimeSegments = payload.segments.map((segment) => {
+        if (payload.mode === "RULE") return segment;
         const candidates = matchDemoItems(
           segment.normalized_action,
           items,
@@ -186,8 +190,8 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
         };
       });
       routeSegments(runtimeSegments);
-    } catch {
-      setMessage("연결이 원활하지 않아요. 잠시 후 다시 시도해주세요.");
+    } catch (error) {
+      setMessage(error instanceof Error && error.message.startsWith("로컬 Parser") ? error.message : "연결이 원활하지 않아요. 잠시 후 다시 시도해주세요.");
       setView("blocked");
     } finally {
       parsingRef.current = false;
@@ -196,11 +200,19 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
   }
 
   function updateDraft(index: number, patch: Partial<ConfirmationDraft>) {
-    setDrafts((current) => current.map((draft, draftIndex) => draftIndex === index ? { ...draft, ...patch } : draft));
+    setMessage("");
+    setDrafts((current) => current.map((draft, draftIndex) => {
+      if (draftIndex !== index) return draft;
+      if (patch.action !== undefined && patch.action !== draft.action) {
+        const candidates = matchConfirmationAction(patch.action, items);
+        return { ...draft, ...patch, candidates, itemId: candidates.length ? undefined : null, selectedTags: [] };
+      }
+      return { ...draft, ...patch, ...(patch.date !== undefined ? { dateResolutionSource: "EXPLICIT" as const } : {}) };
+    }));
   }
 
   const draftsValid = drafts.length > 0 && drafts.every((draft) =>
-    draft.action.trim().length > 0 && draft.date.trim().length > 0 && draft.date <= today,
+    draft.action.trim().length > 0 && isIsoDate(draft.date) && draft.date <= today && draft.itemId !== undefined,
   );
 
   function saveRecords() {
@@ -210,9 +222,11 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
     const saved = addActivities(drafts.map((draft) => ({
       action: draft.action,
       category: draft.category,
-      itemName: draft.itemName === "새 항목으로 기록" ? draft.action : draft.itemName,
+      itemId: draft.itemId ?? null,
       performedDate: draft.date,
       selectedTags: draft.selectedTags,
+      datePrecision: "EXACT",
+      dateResolutionSource: draft.dateResolutionSource,
     })));
     setIsSaving(false);
     savingRef.current = false;
@@ -271,18 +285,18 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
     {view === "confirm" ? <section className="space-y-4">
       <div><h3 className="text-[26px] font-bold leading-8">이렇게 기록할까요?</h3><p className="mt-1 text-[13px] text-[var(--muted)]">확인하기 전에는 기록되지 않아요.</p></div>
       {drafts.map((draft, index) => {
-        const itemOptions = Array.from(new Set([...draft.segment.item_match.candidates.filter((candidate) => candidate.matchType !== "NONE").map((candidate) => candidate.name), ...(initialItem ? [initialItem.name] : []), "새 항목으로 기록"]));
+        const itemOptions = draft.candidates.filter(candidate => candidate.itemId);
         return <fieldset className="space-y-3 border-t border-[var(--divider)] pt-4 first:border-t-0 first:pt-0" key={draft.segment.segment_id}>
           {drafts.length > 1 ? <legend className="text-[14px] font-semibold">기억 {index + 1}</legend> : null}
           <label className="block text-[13px] font-medium text-[var(--muted)]">항목<input className="focus-ring mt-1 min-h-12 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-[14px] text-[var(--foreground)]" onChange={(event) => updateDraft(index, { action: event.target.value })} value={draft.action} /></label>
           <label className="block text-[13px] font-medium text-[var(--muted)]">날짜<input className="focus-ring mt-1 min-h-12 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-[14px] text-[var(--foreground)]" max={today} onChange={(event) => updateDraft(index, { date: event.target.value })} type="date" value={draft.date} /></label>
-          <label className="block text-[13px] font-medium text-[var(--muted)]">관리 항목<select className="focus-ring mt-1 min-h-12 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-[14px] text-[var(--foreground)]" onChange={(event) => updateDraft(index, { itemName: event.target.value })} value={draft.itemName}>{itemOptions.map((option) => <option key={option}>{option}</option>)}</select></label>
+          <label className="block text-[13px] font-medium text-[var(--muted)]">관리 항목<select className="focus-ring mt-1 min-h-12 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-[14px] text-[var(--foreground)]" onChange={(event) => updateDraft(index, { itemId: event.target.value || null })} value={draft.itemId === undefined ? "__select__" : draft.itemId ?? ""}><option disabled value="__select__">항목을 다시 선택해주세요.</option>{itemOptions.map((option, optionIndex) => <option key={option.itemId} value={option.itemId}>{option.name}{itemOptions.filter(candidate => candidate.name === option.name).length > 1 ? ` · ${optionIndex + 1}` : ""}</option>)}<option value="">새 항목으로 기록</option></select></label>
           {(draft.segment.tag_candidates ?? []).length > 0 ? <div>
             <p className="text-[14px] font-semibold">세부 대상</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {(draft.segment.tag_candidates ?? []).map((tag) => {
                 const selected = draft.selectedTags.includes(tag);
-                const matchedItem = items.find((item) => item.name === draft.itemName);
+                const matchedItem = items.find((item) => item.id === draft.itemId);
                 const isNew = !matchedItem?.tags.includes(tag);
                 return <button
                   aria-pressed={selected}
@@ -301,17 +315,18 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
             </div>
             <p className="mt-2 text-[12px] text-[var(--muted)]">선택한 세부 대상만 기록 확인 후 항목에 반영돼요.</p>
           </div> : null}
-          {draft.segment.date_resolution_source === "IMPLICIT_TODAY" ? <p className="text-[13px] text-[var(--muted)]">날짜 표현이 없어 오늘로 이해했어요.</p> : null}
+          {draft.dateResolutionSource === "IMPLICIT_TODAY" ? <p className="text-[13px] text-[var(--muted)]">날짜 표현이 없어 오늘로 이해했어요.</p> : null}
         </fieldset>;
       })}
-      {!draftsValid ? <p className="text-[13px] font-semibold text-[var(--danger)]">Action과 오늘 또는 과거의 정확한 날짜를 확인해주세요.</p> : null}
+      {!draftsValid ? <p className="text-[13px] font-semibold text-[var(--danger)]">행동, 관리 항목과 오늘 또는 과거의 정확한 날짜를 확인해주세요.</p> : null}
+      {message ? <p className="text-[13px] font-semibold text-[var(--danger)]" role="alert">{message}</p> : null}
       <div className="grid grid-cols-2 gap-2"><DemoButton onClick={resetToInput} tone="secondary">취소</DemoButton><DemoButton disabled={!draftsValid || isSaving} onClick={saveRecords} tone="primary">기록하기</DemoButton></div>
     </section> : null}
 
     {view === "query" ? <section aria-live="polite" className="space-y-4"><h3 className="text-[26px] font-bold leading-8">찾은 기억</h3>
       {queryResults.map((queryResult) => {
         if (queryResult.type === "CLARIFICATION") return <p className="rounded-xl bg-[#f4f7f5] p-4 text-[15px] font-semibold" key={queryResult.segmentId}>{queryResult.question}</p>;
-        if (queryResult.type === "AMBIGUOUS") return <div className="space-y-3" key={queryResult.segmentId}><p className="text-[15px] font-semibold">어떤 기억을 찾을까요?</p>{queryResult.candidates.map((candidate) => <DemoButton key={candidate} onClick={() => setQuerySelections((current) => ({ ...current, [queryResult.segmentId]: candidate }))} tone="secondary">{candidate}</DemoButton>)}</div>;
+        if (queryResult.type === "AMBIGUOUS") return <div className="space-y-3" key={queryResult.segmentId}><p className="text-[15px] font-semibold">어떤 기억을 찾을까요?</p>{queryResult.candidates.map((candidate, index) => <DemoButton key={candidate.itemId} onClick={() => setQuerySelections((current) => ({ ...current, [queryResult.segmentId]: candidate.itemId! }))} tone="secondary">{candidate.name}{queryResult.candidates.filter(other => other.name === candidate.name).length > 1 ? ` · ${index + 1}` : ""}</DemoButton>)}</div>;
         if (queryResult.type === "NOT_FOUND") return <p className="rounded-xl bg-[#f4f7f5] p-4 text-[14px] text-[var(--muted)]" key={queryResult.segmentId}>관련된 기억을 찾지 못했어요.</p>;
         return <div className="border-y border-[var(--divider)] py-4" key={queryResult.segmentId}>
           <p className="text-[18px] font-semibold">{queryResult.queryTag ?? queryResult.item.name}</p>
@@ -328,6 +343,7 @@ export function UnifiedComposer({ initialEntry = "text", initialItemId, mode, on
     {view === "saved" ? <section className="space-y-5 py-12 text-center"><span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--soft-primary)] text-[var(--primary)]"><CheckIcon className="h-6 w-6" /></span><h3 className="text-[26px] font-bold leading-8">기록했어요.</h3><p className="text-[14px] text-[var(--muted)]">현재 데모 세션에서 확인할 수 있어요.</p><DemoButton href="/" tone="primary">홈으로</DemoButton><DemoButton onClick={resetToInput} tone="secondary">계속 입력하기</DemoButton></section> : null}
 
     {result?.ok && result.mode === "MOCK" && view !== "processing" ? <p className="text-center text-[11px] text-[var(--muted)]">Mock Demo 결과</p> : null}
+    {result?.ok && result.mode === "RULE" && view !== "processing" ? <p className="text-center text-[11px] text-[var(--muted)]">로컬 Parser · 시험 적용</p> : null}
   </div>;
 
   if (mode === "sheet") return <div className="fixed inset-0 z-40 flex items-end bg-black/20 px-3 pb-[var(--safe-bottom)] pt-16"><section aria-label="기록하거나 물어보기" aria-modal="true" className="mx-auto max-h-full w-full max-w-[480px] overflow-y-auto rounded-t-[20px] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-float)]" role="dialog">{content}</section></div>;

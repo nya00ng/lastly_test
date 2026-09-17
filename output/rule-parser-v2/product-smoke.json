@@ -1,0 +1,55 @@
+{
+  "api": [
+    {
+      "intent": "COMPLETED",
+      "mode": "MOCK",
+      "text": "신발빨았어",
+      "candidate": true
+    },
+    {
+      "intent": "QUERY",
+      "mode": "MOCK",
+      "text": "정수기 필터 언제 갈았어?",
+      "candidate": false
+    },
+    {
+      "intent": "NOT_COMPLETED",
+      "mode": "MOCK",
+      "text": "신발 안 빨았어",
+      "candidate": false
+    },
+    {
+      "intent": "COMPLETED",
+      "mode": "MOCK",
+      "text": "선풍기 청소했어",
+      "candidate": true
+    }
+  ],
+  "fixtures": 24,
+  "routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/record",
+      "status": 200
+    },
+    {
+      "route": "/items",
+      "status": 200
+    },
+    {
+      "route": "/items/bedding",
+      "status": 200
+    },
+    {
+      "route": "/notification",
+      "status": 200
+    },
+    {
+      "route": "/settings",
+      "status": 200
+    }
+  ]
+}

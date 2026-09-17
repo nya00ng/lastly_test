@@ -60,16 +60,12 @@ export function matchDemoItems(
   }
 
   const normalizedTags = tagCandidates.map((tag) => tag.trim()).filter(Boolean);
-  const exact = items.find((item) => item.name === normalized);
-  if (exact) {
-    const tagsMatchExactItem = normalizedTags.every((tag) => exact.tags.includes(tag));
-    if (normalizedTags.length > 0 && tagsMatchExactItem) {
-      return [{ name: exact.name, matchType: "EXACT_TAG" }];
-    }
-    if (normalizedTags.length > 0 && options.requireTagMatch) {
-      return [{ name: "새 항목으로 기록", matchType: "NONE" }];
-    }
-    return [{ name: exact.name, matchType: "EXACT_NAME" }];
+  const exact = items.filter((item) => item.status !== "ARCHIVED" && item.name === normalized);
+  if (exact.length) {
+    const matches = exact.filter(item => !options.requireTagMatch || normalizedTags.every(tag => item.tags.includes(tag)));
+    return matches.length ? matches.map(item => ({ itemId: item.id, name: item.name,
+      matchType: normalizedTags.length && normalizedTags.every(tag => item.tags.includes(tag)) ? "EXACT_TAG" : "EXACT_NAME" }))
+      : [{ name: "새 항목으로 기록", matchType: "NONE" }];
   }
 
   const aliasItem = items.find((item) => item.id === aliasMap[normalized]);
@@ -78,14 +74,14 @@ export function matchDemoItems(
     if (normalizedTags.length > 0 && !tagsMatchAliasItem && options.requireTagMatch) {
       return [{ name: "새 항목으로 기록", matchType: "NONE" }];
     }
-    return [{ name: aliasItem.name, matchType: "EXACT_ALIAS" }];
+    return [{ itemId: aliasItem.id, name: aliasItem.name, matchType: "EXACT_ALIAS" }];
   }
 
   const exactTagMatches = items.filter((item) =>
     normalizedTags.some((tag) => item.tags.some((itemTag) => itemTag === tag)),
   );
   if (exactTagMatches.length > 0) {
-    return exactTagMatches.map((item) => ({ name: item.name, matchType: "EXACT_TAG" }));
+    return exactTagMatches.map((item) => ({ itemId: item.id, name: item.name, matchType: "EXACT_TAG" }));
   }
   if (normalizedTags.length > 0 && options.requireTagMatch) {
     return [{ name: "새 항목으로 기록", matchType: "NONE" }];
@@ -93,12 +89,12 @@ export function matchDemoItems(
 
   const actionTagMatches = items.filter((item) => item.tags.some((tag) => tag === normalized));
   if (actionTagMatches.length > 0) {
-    return actionTagMatches.map((item) => ({ name: item.name, matchType: "EXACT_TAG" }));
+    return actionTagMatches.map((item) => ({ itemId: item.id, name: item.name, matchType: "EXACT_TAG" }));
   }
 
   const noteMatches = items.filter((item) => item.note && item.note.toLowerCase().includes(normalized.toLowerCase()));
   if (noteMatches.length > 0) {
-    return noteMatches.map((item) => ({ name: item.name, matchType: "NOTE" }));
+    return noteMatches.map((item) => ({ itemId: item.id, name: item.name, matchType: "NOTE" }));
   }
 
   const fuzzy = items
@@ -106,7 +102,7 @@ export function matchDemoItems(
       normalized.includes(item.name.split(" ")[0]) || item.name.includes(normalized.split(" ")[0])
     ) && isActionCompatible(normalized, item))
     .slice(0, 2)
-    .map((item) => ({ name: item.name, matchType: "DEMO_FUZZY" as const }));
+    .map((item) => ({ itemId: item.id, name: item.name, matchType: "DEMO_FUZZY" as const }));
 
   return fuzzy.length > 0 ? fuzzy : [{ name: "새 항목으로 기록", matchType: "NONE" }];
 }

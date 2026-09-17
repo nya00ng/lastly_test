@@ -50,11 +50,13 @@ export type ParserOutput = {
 export type AiRuntimeMode = "REAL" | "ERROR" | "MANUAL";
 
 export type ItemMatchingCandidate = {
+  itemId?: string;
   name: string;
-  matchType: "EXACT_NAME" | "EXACT_ALIAS" | "EXACT_TAG" | "NOTE" | "DEMO_FUZZY" | "NONE";
+  matchType: "EXACT_NAME" | "EXACT_ALIAS" | "EXACT_TAG" | "NOTE" | "CONTEXT_SEMANTIC" | "DEMO_FUZZY" | "NONE";
 };
 
 export type EnrichedParserSegment = ParserSegment & {
+  suggested_item_name?: string | null;
   record_candidate: boolean;
   record_candidate_reason: string;
   demo_category: string;
@@ -66,7 +68,8 @@ export type EnrichedParserSegment = ParserSegment & {
 
 export type AiParseSuccessResponse = {
   ok: true;
-  mode: "REAL" | "MOCK";
+  mode: "REAL" | "MOCK" | "RULE";
+  timing?: { initMs: number; parseMs: number };
   parse_id: string;
   schema_version: string;
   prompt_version: string;

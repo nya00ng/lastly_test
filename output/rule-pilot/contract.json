@@ -1,0 +1,146 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "text": "화분 물줬어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "화분 물 주기"
+    },
+    {
+      "text": "자동차 워셔액 넣었어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "자동차 워셔액 넣기"
+    },
+    {
+      "text": "가습기 말렸어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "가습기 말리기"
+    },
+    {
+      "text": "신발 언제 빨았어",
+      "intent": "QUERY",
+      "candidate": false,
+      "matching": [
+        {
+          "itemId": "shoes",
+          "name": "신발 세탁",
+          "matchType": "EXACT_NAME"
+        }
+      ],
+      "name": "신발 빨기"
+    },
+    {
+      "text": "렌즈 언제 갈았어",
+      "intent": "QUERY",
+      "candidate": false,
+      "matching": [
+        {
+          "itemId": "lens",
+          "name": "렌즈 교체",
+          "matchType": "EXACT_NAME"
+        }
+      ],
+      "name": "렌즈 갈기"
+    },
+    {
+      "text": "정수기 필터 언제 갈았어",
+      "intent": "QUERY",
+      "candidate": false,
+      "matching": [
+        {
+          "itemId": "water-filter",
+          "name": "정수기 필터",
+          "matchType": "CONTEXT_SEMANTIC"
+        }
+      ],
+      "name": "정수기 필터 갈기"
+    },
+    {
+      "text": "정수기 필터 갈았어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [
+        {
+          "itemId": "water-filter",
+          "name": "정수기 필터",
+          "matchType": "CONTEXT_SEMANTIC"
+        }
+      ],
+      "name": "정수기 필터 갈기"
+    },
+    {
+      "text": "칼 갈았어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "칼 갈기"
+    },
+    {
+      "text": "커피 갈았어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "커피 갈기"
+    },
+    {
+      "text": "그릇 씻었어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "그릇 씻기"
+    },
+    {
+      "text": "신발 빨려고 했어",
+      "intent": "PLANNED",
+      "candidate": false,
+      "matching": [],
+      "name": null
+    },
+    {
+      "text": "화분 물 안 줬어",
+      "intent": "NOT_COMPLETED",
+      "candidate": false,
+      "matching": [],
+      "name": "화분 물 주기"
+    },
+    {
+      "text": "나 화장실 청소했어",
+      "intent": "COMPLETED",
+      "candidate": true,
+      "matching": [],
+      "name": "화장실 청소하기"
+    },
+    {
+      "text": "화분물안줬어",
+      "intent": "NOT_COMPLETED",
+      "candidate": false,
+      "matching": [],
+      "name": "화분 물 주기"
+    },
+    {
+      "text": "렌즈 다음주에 갈꺼야",
+      "intent": "PLANNED",
+      "candidate": false,
+      "matching": [],
+      "name": null
+    },
+    {
+      "text": "가습기 말렸나 기억 안 나",
+      "intent": "UNCERTAIN",
+      "candidate": false,
+      "matching": [],
+      "name": null
+    }
+  ],
+  "newItemQuery": "PASS",
+  "lowGuard": "PASS",
+  "futureGuard": "PASS",
+  "multi": "2/5/6 PASS",
+  "mutation": 0
+}
