@@ -1,8 +1,8 @@
 # Backend migration checklist
 
 - [x] Establish the current baseline before changing deployment behavior: 885 API tests and both typechecks pass after rebuilding parser.
-- [ ] Select the user's Supabase project and configure its database, Vault, and Edge Function secrets.
-- [ ] Build and test the shared Supabase Edge Function foundation.
+- [ ] Create the new `lastly-personal` Supabase project and configure its database, Vault, and Edge Function secrets.
+- [ ] Deploy and verify the Supabase Edge Function foundation with a real user (isolated handler tests pass).
 - [ ] Migrate items and logs.
 - [ ] Migrate capture and preserve Golden Tests.
 - [ ] Checkpoint: core user flow works through Supabase.

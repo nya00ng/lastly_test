@@ -4,11 +4,11 @@
 
 ## 1. 내 프로젝트 선택
 
-Supabase 대시보드에서 새 프로젝트를 만들거나 이미 소유한 프로젝트를 선택한다. 프로젝트 URL은 `https://<project-ref>.supabase.co` 형식이다. 비밀번호나 비밀키를 GitHub, 이 문서, 채팅에 적지 않는다.
+기존 Supabase 프로젝트는 일시 정지된 상태다. 데이터는 건드리지 않고 `nya00ng` 조직에 새 프로젝트 `lastly-personal`을 서울 지역으로 만들었다. 프로젝트 ID는 `ovcexehchfxqibspbsyp`, URL은 `https://ovcexehchfxqibspbsyp.supabase.co`다. 비밀번호나 비밀키를 GitHub, 이 문서, 채팅에 적지 않는다.
 
 ## 2. DB와 인증
 
-이 저장소의 `supabase/migrations`를 **내 프로젝트에만** 적용한다. 기존 운영 데이터가 있는 프로젝트라면 먼저 현재 스키마와 마이그레이션 이력을 확인한다. 프로젝트가 비어 있다면 Supabase CLI로 링크한 뒤 `supabase db push`를 실행한다. 적용 뒤 `items`, `logs`, `profiles`, `notifications`, `push_subscriptions`, `priors` 테이블과 RLS 정책을 확인한다.
+이 저장소의 `supabase/migrations`를 **내 프로젝트에만** 적용한다. 기존 운영 데이터가 있는 프로젝트라면 먼저 현재 스키마와 마이그레이션 이력을 확인한다. 프로젝트가 비어 있다면 Supabase CLI로 링크한 뒤 `supabase db push`를 실행한다. 적용 뒤 `items`, `item_logs`, `profiles`, `notifications`, `push_subscriptions`, `cadence_priors` 테이블과 RLS 정책을 확인한다.
 
 ## 3. 알림 함수와 예약 작업
 
@@ -24,6 +24,8 @@ Supabase 대시보드에서 새 프로젝트를 만들거나 이미 소유한 �
 | Edge Function Secrets | `VAPID_SUBJECT`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | 내 웹 푸시 키 |
 
 `SUPABASE_URL`과 `SUPABASE_SERVICE_ROLE_KEY`는 호스팅된 Edge Function의 기본 환경변수다. `CRON_SECRET`과 VAPID 값은 직접 설정해야 한다. 함수를 배포한 뒤 예약 작업이 내 함수로 호출되는지 확인한다. `keep-api-awake`는 복제본에서 제거한다.
+
+새 `api` Edge Function은 먼저 `GET /v1/items`를 제공한다. 호출 주소는 `https://<project-ref>.supabase.co/functions/v1/api/v1/items`다. 브라우저의 사전 요청(OPTIONS)을 처리하기 위해 플랫폼 JWT 검사를 끄고, 실제 목록 요청에서는 함수가 사용자 토큰을 검증한다. 조회에는 사용자 권한의 Supabase 클라이언트를 사용하므로 RLS가 적용된다. 웹앱 주소는 Edge Function Secrets의 `CORS_ORIGIN`에 설정한다. 지금은 코드를 작성하고 분리 테스트만 했으며 아직 배포하거나 웹 연결을 바꾸지 않았다.
 
 ## 4. 웹과 API 연결
 

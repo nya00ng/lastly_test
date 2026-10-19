@@ -19,7 +19,7 @@ Move the application backend in small, verifiable slices from the two Render Doc
 
 - [x] Task 1: Record the current API contracts, environment variables, database migrations, cron jobs, and baseline test results. API baseline: 13 suites and 885 tests pass after rebuilding the parser package; API and parser typechecks pass.
 - [ ] Task 1a: Create or select the user's Supabase project, apply migrations, deploy the existing digest Edge Function, and configure Vault/Edge secrets. Remove upstream project URLs before applying migrations.
-- [ ] Task 2: Create a Supabase Edge Function foundation with shared environment loading, Supabase Auth token verification, JSON responses, CORS, and error handling.
+- [ ] Task 2: Create a Supabase Edge Function foundation with shared environment loading, Supabase Auth token verification, JSON responses, CORS, and error handling. Initial `api` function and isolated tests are written; deployment and real-user verification remain.
 
 ### Phase 2: Core user flow
 
@@ -71,6 +71,6 @@ Move the application backend in small, verifiable slices from the two Render Doc
 
 ## Open Questions
 
-- Should the final deployment use one Edge Function with internal routing or multiple functions grouped by feature?
+- The first API slice uses one `api` Edge Function with internal routing. Revisit this only if bundle size or deployment isolation requires it.
 - Should server-side AI remain external, or should the Python logic be ported to TypeScript?
-- Which Supabase project will be the user's long-term production project? Do not deploy or apply migrations before it is identified.
+- The user chose a new Supabase project rather than reviving the paused one. `lastly-personal` is healthy in Seoul, project ref `ovcexehchfxqibspbsyp`; do not alter the paused project.

@@ -5,6 +5,10 @@ project_id = "lastly"
 [functions.dispatch-digests]
 verify_jwt = false
 
+# 브라우저의 OPTIONS 요청을 처리하고, 함수 안에서 사용자 JWT를 검증한다.
+[functions.api]
+verify_jwt = false
+
 [api]
 enabled = true
 port = 54321
