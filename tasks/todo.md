@@ -4,7 +4,7 @@
 - [x] Create the new `lastly-personal` Supabase project and apply all 23 database migrations.
 - [ ] Configure Vault and Edge Function secrets for the notification scheduler.
 - [x] Verify the first Edge endpoint: OPTIONS 204, unauthenticated 401, authenticated anonymous GET 200, and cross-user item isolation. Test item removed; test Auth users remain.
-- [ ] Migrate items and logs.
+- [ ] Migrate items and logs. List, create, and complete are deployed and verified; undo, history, update, archive/restore, search, calendar/feed remain.
 - [ ] Migrate capture and preserve Golden Tests.
 - [ ] Checkpoint: core user flow works through Supabase.
 - [ ] Migrate profile and notification settings.

@@ -23,7 +23,7 @@ Move the application backend in small, verifiable slices from the two Render Doc
 
 ### Phase 2: Core user flow
 
-- [ ] Task 3: Move item and log operations: list, create, update, archive/restore, complete, and history.
+- [ ] Task 3: Move item and log operations: list, create, update, archive/restore, complete, and history. List, create, and complete have passed live anonymous-user tests on the new project; the remaining operations and web cutover are pending.
 - [ ] Task 4: Move capture operations: interpret, cadence preview, and commit, preserving the existing rule parser and Golden Test behavior.
 
 ### Checkpoint: Core user flow

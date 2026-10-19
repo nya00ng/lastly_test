@@ -92,7 +92,13 @@ test('denies an invalid token and unrelated browser origins', async () => {
     new Request('https://example.supabase.co/functions/v1/api/v1/items', {
       headers: { authorization: 'Bearer invalid', origin: 'https://unrelated.example' },
     }),
-    { allowedOrigins: ['https://my-app.example'], today: '2026-10-19', async listItems() { return null; } },
+    {
+      allowedOrigins: ['https://my-app.example'],
+      today: '2026-10-19',
+      async listItems() {
+        return null;
+      },
+    },
   );
   assert.equal(response.status, 401);
   assert.equal(response.headers.get('Access-Control-Allow-Origin'), null);
@@ -122,4 +128,145 @@ test('answers allowed browser preflight without invoking authentication or the d
   assert.equal(response.headers.get('Access-Control-Allow-Origin'), 'https://my-app.example');
   assert.match(response.headers.get('Access-Control-Allow-Headers'), /authorization/);
   assert.equal(queried, false);
+});
+
+test('creates an item with the same response shape and cadence defaults', async () => {
+  let input;
+  const response = await handleApiRequest(
+    new Request('https://example.supabase.co/functions/v1/api/v1/items', {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt', 'content-type': 'application/json' },
+      body: JSON.stringify({ name: '책 읽기', cadence: { unit: 'week', interval: 1 } }),
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async createItem(_token, parsed) {
+        input = parsed;
+        return row;
+      },
+    },
+  );
+  assert.equal(response.status, 201);
+  assert.deepEqual(input, {
+    name: '책 읽기',
+    cadence: { unit: 'week', interval: 1, weekdays: [], notifyTimeLocal: null },
+    cadenceSource: 'user',
+    firstDoneOn: undefined,
+  });
+  assert.equal((await response.json()).name, '책 읽기');
+});
+
+test('rejects a future first completion before inserting the item', async () => {
+  let inserted = false;
+  const response = await handleApiRequest(
+    new Request('https://example.supabase.co/functions/v1/api/v1/items', {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt', 'content-type': 'application/json' },
+      body: JSON.stringify({
+        name: '책 읽기',
+        cadence: { unit: 'week', interval: 1, weekdays: [] },
+        firstDoneOn: '2026-10-20',
+      }),
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async createItem() {
+        inserted = true;
+        return row;
+      },
+    },
+  );
+  assert.equal(response.status, 400);
+  assert.equal(inserted, false);
+});
+
+test('returns conflict rather than success for an existing active item name', async () => {
+  const response = await handleApiRequest(
+    new Request('https://example.supabase.co/functions/v1/api/v1/items', {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt', 'content-type': 'application/json' },
+      body: JSON.stringify({ name: '책 읽기', cadence: { unit: 'day', interval: 1 } }),
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async createItem() {
+        return 'duplicate';
+      },
+    },
+  );
+  assert.equal(response.status, 409);
+  assert.equal((await response.json()).error.code, 'ConflictException');
+});
+
+test('completes one owned active item and returns a reversible log token', async () => {
+  const expected = {
+    log: {
+      id: 'cfc06f3e-79c5-46f8-a0b7-af589d26f1ed',
+      itemId: row.id,
+      doneOn: '2026-10-19',
+      note: null,
+      gapDays: null,
+      createdAt: '2026-10-19T00:00:00Z',
+    },
+    itemId: row.id,
+    itemName: row.name,
+    nextDueOn: '2026-10-26',
+    undoToken: 'cfc06f3e-79c5-46f8-a0b7-af589d26f1ed',
+  };
+  const response = await handleApiRequest(
+    new Request(`https://example.supabase.co/functions/v1/api/v1/items/${row.id}/complete`, {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt' },
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async completeItem(token, id, today) {
+        assert.equal(token, 'user-jwt');
+        assert.equal(id, row.id);
+        assert.equal(today, '2026-10-19');
+        return expected;
+      },
+    },
+  );
+  assert.equal(response.status, 201);
+  assert.deepEqual(await response.json(), expected);
+});
+
+test('does not create a completion for another user or an archived item', async () => {
+  let attempted = false;
+  const response = await handleApiRequest(
+    new Request(`https://example.supabase.co/functions/v1/api/v1/items/${row.id}/complete`, {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt' },
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async completeItem() {
+        attempted = true;
+        return 'not-found';
+      },
+    },
+  );
+  assert.equal(response.status, 404);
+  assert.equal(attempted, true);
 });
