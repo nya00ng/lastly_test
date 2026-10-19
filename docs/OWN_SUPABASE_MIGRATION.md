@@ -29,6 +29,10 @@
 
 ## 4. 웹과 API 연결
 
+2026-10-19 추가 이전: `PATCH /v1/items/:id`, `DELETE /v1/items/:id`(보관), `POST /v1/items/:id/restore`, `GET/POST /v1/items/:id/logs`, `PATCH/DELETE /v1/logs/:id`를 개인 프로젝트에 배포했다. 기록 날짜 수정·삭제 후 DB 트리거의 예정일 재계산, 보관 후 기록 유지와 복원, 이름 충돌 409, 타 사용자 수정 차단을 실제 API에서 검증했다. Edge 단위 테스트 19개와 기존 API 테스트 885개가 통과했고 Edge 처리 모듈의 strict TypeScript 검사도 통과했다.
+
+재검증 스크립트: `supabase/functions/tests/lifecycle-smoke.mjs`. `LASTLY_LIVE_TEST=ovcexehchfxqibspbsyp`로 명시적으로 실행하며, 익명 계정 2개를 만들고 해당 실행에서 만든 항목만 삭제한다. 이번 두 번의 실행에서 항목·기록은 모두 정리했고 빈 익명 계정 4개가 남았다. 날짜 입력은 실제 달력 날짜도 확인하여 `2026-02-30` 같은 값은 400으로 거절한다. 이름 변경 시 기존 임베딩은 비우며 AI 임베딩 생성은 AI 이전 단계에서 연결한다. 항목 상세의 주기 제안, 홈·검색·달력, capture, 계정·알림·AI와 웹 전환은 아직 남아 있다.
+
 웹앱에는 내 프로젝트의 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`가 필요하다. `SUPABASE_SERVICE_ROLE_KEY`는 브라우저에 넣지 않는다. 현재 `NEXT_PUBLIC_API_URL`은 Render API를 가리킨다. API 기능을 Edge Function으로 옮겨 확인한 뒤 이 주소를 단계적으로 전환한다.
 
 ## 진행 기준

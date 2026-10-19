@@ -1,6 +1,7 @@
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
 import { handleApiRequest } from './handler.ts';
+import { handleLifecycle } from './lifecycle.ts';
 import {
   ITEM_COLUMNS,
   type CompleteItemResult,
@@ -154,26 +155,28 @@ async function undoLog(token: string, undoToken: string): Promise<void | null> {
   if (error) throw error;
 }
 
-Deno.serve((req) =>
-  handleApiRequest(req, {
-    allowedOrigins,
-    today: todayInSeoul(),
-    async listItems(token) {
-      const auth = await userClient(token);
-      if (!auth) return null;
+Deno.serve(
+  async (req) =>
+    (await handleLifecycle(req, { allowedOrigins, today: todayInSeoul(), userClient })) ??
+    handleApiRequest(req, {
+      allowedOrigins,
+      today: todayInSeoul(),
+      async listItems(token) {
+        const auth = await userClient(token);
+        if (!auth) return null;
 
-      // 사용자 JWT로 쿼리하므로 RLS가 적용된다. user_id도 명시해 범위를 좁힌다.
-      const { data, error } = await auth.client
-        .from('items')
-        .select(ITEM_COLUMNS)
-        .eq('user_id', auth.userId)
-        .eq('status', 'active')
-        .order('next_due_on', { ascending: true, nullsFirst: true });
-      if (error) throw error;
-      return (data ?? []) as ItemRow[];
-    },
-    createItem: insertItem,
-    completeItem,
-    undoLog,
-  }),
+        // 사용자 JWT로 쿼리하므로 RLS가 적용된다. user_id도 명시해 범위를 좁힌다.
+        const { data, error } = await auth.client
+          .from('items')
+          .select(ITEM_COLUMNS)
+          .eq('user_id', auth.userId)
+          .eq('status', 'active')
+          .order('next_due_on', { ascending: true, nullsFirst: true });
+        if (error) throw error;
+        return (data ?? []) as ItemRow[];
+      },
+      createItem: insertItem,
+      completeItem,
+      undoLog,
+    }),
 );

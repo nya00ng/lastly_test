@@ -29,7 +29,7 @@ function headers(req: Request, allowedOrigins: string[]): Headers {
     result.set('Access-Control-Allow-Origin', origin);
     result.set('Vary', 'Origin');
     result.set('Access-Control-Allow-Headers', 'authorization, apikey, content-type');
-    result.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    result.set('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   }
   return result;
 }
