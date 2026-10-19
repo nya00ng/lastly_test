@@ -6,9 +6,8 @@
 --
 -- 보낼 대상을 고르는 기준(users_due_for_digest)은 그대로다. 발송하는 쪽만 바뀐다.
 --
--- 되돌리려면 아래 url 을 다시
---   https://lastly-api.onrender.com/v1/internal/dispatch-digests
--- 로 바꾸고 db push 한다. 함수 본문 외에는 건드릴 것이 없다.
+-- 프로젝트 주소는 Vault 의 supabase_url 에 둔다. 복제한 데이터베이스가
+-- 원본 프로젝트의 함수를 호출하지 않게 하기 위해서다.
 create or replace function public.dispatch_digests()
 returns void
 language plpgsql
@@ -17,19 +16,29 @@ set search_path = public, net, vault
 as $$
 declare
   v_secret text;
+  v_supabase_url text;
 begin
   select decrypted_secret into v_secret
     from vault.decrypted_secrets
    where name = 'cron_secret';
+
+  select decrypted_secret into v_supabase_url
+    from vault.decrypted_secrets
+   where name = 'supabase_url';
 
   if v_secret is null then
     raise warning '알림 배치를 부르지 못했습니다 — Vault 에 cron_secret 이 없습니다.';
     return;
   end if;
 
+  if v_supabase_url is null then
+    raise warning '알림 배치를 부르지 못했습니다 — Vault 에 supabase_url 이 없습니다.';
+    return;
+  end if;
+
   -- 응답은 기다리지 않는다. 결과는 net._http_response 에 남는다.
   perform net.http_post(
-    url := 'https://mimbdlhyguuctnodtijq.supabase.co/functions/v1/dispatch-digests',
+    url := trim(trailing '/' from v_supabase_url) || '/functions/v1/dispatch-digests',
     body := '{}'::jsonb,
     headers := jsonb_build_object(
       'Content-Type', 'application/json',

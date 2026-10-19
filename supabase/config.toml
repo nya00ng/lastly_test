@@ -1,5 +1,10 @@
 project_id = "lastly"
 
+# pg_cron 은 사용자 JWT 없이 별도 CRON_SECRET 으로 호출한다.
+# 함수 안에서 Authorization 헤더를 검증한다.
+[functions.dispatch-digests]
+verify_jwt = false
+
 [api]
 enabled = true
 port = 54321
