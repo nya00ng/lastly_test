@@ -1,5 +1,7 @@
 # Implementation Plan: Move the backend from Render to Supabase
 
+> Original incremental plan retained for history. Current implementation and verification: `docs/PERSONAL_DEPLOYMENT.md`. Server AI is deliberately deferred by user choice; the active API uses rule/local-AI fallback without Render.
+
 ## Overview
 
 Move the application backend in small, verifiable slices from the two Render Docker services to the user's Supabase project. Reuse the repository's migrations, Auth integration, RLS, RPCs, rule parser, and Golden Tests. The upstream repository already includes a Supabase Edge Function for digest delivery.

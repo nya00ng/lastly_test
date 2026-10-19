@@ -21,7 +21,8 @@
 - 브라우저 규칙은 검증했다. 기기 Gemma 경로는 유지했지만 모델 다운로드/실제 추론은 이번에 검증하지 않았다.
 - Google OAuth 미설정. `NEXT_PUBLIC_ENABLE_GOOGLE_LOGIN=false`로 숨기고 익명 사용을 안내한다. 브라우저 데이터 삭제 시 익명 기록에 접근하지 못할 수 있다.
 - 푸시 구독 API와 예약 함수 호출은 검증했지만 실제 기기 푸시 수신은 미검증이다.
-- Vercel 배포와 실제 도메인 저장 검증 진행 중.
+- Vercel `lastly-test` 배포 성공: https://lastly-test.vercel.app (main, 최초 커밋 2d2c757). 개인 API health 200과 정확한 production origin CORS 응답 확인.
+- 실제 production 브라우저에서 익명 사용 → 복합 문장 해석 → 저장 → 상세 날짜/주기/메모 확인 통과. 콘솔 경고/오류 없음. 테스트 항목 `d22166bd-b50e-4912-ae79-c7e6255485eb`는 확인용으로 남겼다.
 - 현재 통합 API는 원본 공용 입력 스키마를 사용한다. 이전 문서의 별도 달력 날짜 검증 설명은 현재 통합 처리기에 해당하지 않는다.
 
 ## 재배포 및 복구

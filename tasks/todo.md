@@ -1,5 +1,7 @@
 # Backend migration checklist
 
+> Historical incremental checklist. Current completed scope, verification and deferred features are recorded in `docs/PERSONAL_DEPLOYMENT.md`.
+
 - [x] Establish the current baseline before changing deployment behavior: 885 API tests and both typechecks pass after rebuilding parser.
 - [x] Create the new `lastly-personal` Supabase project and apply all 23 database migrations.
 - [ ] Configure Vault and Edge Function secrets for the notification scheduler.

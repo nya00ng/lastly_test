@@ -1,5 +1,7 @@
 # 내 Supabase로 이전하기
 
+> 아래는 단계별 작업 당시 기록이다. 현재 통합 API·알림·웹 배포 상태와 제한사항은 [PERSONAL_DEPLOYMENT.md](PERSONAL_DEPLOYMENT.md)를 우선 참고한다.
+
 이 저장소는 세빈의 `main`을 기준으로 복제했다. 현재 DB·인증은 Supabase, 알림 발송은 Supabase Edge Function, 나머지 API와 AI는 Render에 있다. 이 문서는 **내 프로젝트를 준비하는 단계**를 기록한다. 백엔드 API 전환은 `tasks/plan.md`의 기능별 순서로 진행한다.
 
 ## 1. 내 프로젝트 선택
