@@ -143,6 +143,17 @@ async function completeItem(
   };
 }
 
+async function undoLog(token: string, undoToken: string): Promise<void | null> {
+  const auth = await userClient(token);
+  if (!auth) return null;
+  const { error } = await auth.client
+    .from('item_logs')
+    .delete()
+    .eq('id', undoToken)
+    .eq('user_id', auth.userId);
+  if (error) throw error;
+}
+
 Deno.serve((req) =>
   handleApiRequest(req, {
     allowedOrigins,
@@ -163,5 +174,6 @@ Deno.serve((req) =>
     },
     createItem: insertItem,
     completeItem,
+    undoLog,
   }),
 );

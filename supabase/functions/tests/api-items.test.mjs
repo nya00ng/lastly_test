@@ -270,3 +270,51 @@ test('does not create a completion for another user or an archived item', async 
   assert.equal(response.status, 404);
   assert.equal(attempted, true);
 });
+
+test('undoes only the authenticated user log and returns no response body', async () => {
+  const undoToken = 'cfc06f3e-79c5-46f8-a0b7-af589d26f1ed';
+  let received;
+  const response = await handleApiRequest(
+    new Request('https://example.supabase.co/functions/v1/api/v1/logs/undo', {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt', 'content-type': 'application/json' },
+      body: JSON.stringify({ undoToken }),
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async undoLog(token, id) {
+        received = { token, id };
+      },
+    },
+  );
+  assert.equal(response.status, 204);
+  assert.equal(await response.text(), '');
+  assert.deepEqual(received, { token: 'user-jwt', id: undoToken });
+});
+
+test('rejects a missing undo token without touching logs', async () => {
+  let deleted = false;
+  const response = await handleApiRequest(
+    new Request('https://example.supabase.co/functions/v1/api/v1/logs/undo', {
+      method: 'POST',
+      headers: { authorization: 'Bearer user-jwt', 'content-type': 'application/json' },
+      body: '{}',
+    }),
+    {
+      allowedOrigins: [],
+      today: '2026-10-19',
+      async listItems() {
+        return [];
+      },
+      async undoLog() {
+        deleted = true;
+      },
+    },
+  );
+  assert.equal(response.status, 400);
+  assert.equal(deleted, false);
+});

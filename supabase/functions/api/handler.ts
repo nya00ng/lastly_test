@@ -18,6 +18,8 @@ interface ApiDependencies {
     itemId: string,
     today: string,
   ): Promise<CompleteItemResult | 'not-found' | null>;
+  /** null은 인증 실패. 소유한 기록이 없을 때도 기존 API처럼 성공으로 간주한다. */
+  undoLog?(token: string, undoToken: string): Promise<void | null>;
 }
 
 function headers(req: Request, allowedOrigins: string[]): Headers {
@@ -50,15 +52,17 @@ export async function handleApiRequest(req: Request, deps: ApiDependencies): Pro
   const path = new URL(req.url).pathname;
   const isItems = /\/v1\/items\/?$/.test(path);
   const completeMatch = path.match(/\/v1\/items\/([^/]+)\/complete\/?$/);
+  const isUndo = /\/v1\/logs\/undo\/?$/.test(path);
 
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: headers(req, deps.allowedOrigins) });
   }
-  if (!isItems && !completeMatch)
+  if (!isItems && !completeMatch && !isUndo)
     return error(req, deps.allowedOrigins, 404, 'NotFoundException', '주소를 찾을 수 없습니다.');
   if (
     (isItems && req.method !== 'GET' && (req.method !== 'POST' || !deps.createItem)) ||
-    (completeMatch && (req.method !== 'POST' || !deps.completeItem))
+    (completeMatch && (req.method !== 'POST' || !deps.completeItem)) ||
+    (isUndo && (req.method !== 'POST' || !deps.undoLog))
   ) {
     return error(
       req,
@@ -75,6 +79,34 @@ export async function handleApiRequest(req: Request, deps: ApiDependencies): Pro
   }
 
   try {
+    if (isUndo) {
+      const body = await req.json().catch(() => null);
+      const undoToken =
+        body && typeof body === 'object' && !Array.isArray(body) ? body.undoToken : null;
+      if (
+        typeof undoToken !== 'string' ||
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(undoToken)
+      ) {
+        return error(
+          req,
+          deps.allowedOrigins,
+          400,
+          'VALIDATION_FAILED',
+          '요청 형식이 올바르지 않습니다.',
+        );
+      }
+      const result = await deps.undoLog!(authorization.slice(7), undoToken);
+      if (result === null) {
+        return error(
+          req,
+          deps.allowedOrigins,
+          401,
+          'UnauthorizedException',
+          '세션이 만료되었습니다. 다시 로그인해 주세요.',
+        );
+      }
+      return new Response(null, { status: 204, headers: headers(req, deps.allowedOrigins) });
+    }
     if (completeMatch) {
       const itemId = completeMatch[1];
       if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(itemId)) {
