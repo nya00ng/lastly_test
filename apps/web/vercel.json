@@ -1,0 +1,4 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm --filter @lastly/contracts build && pnpm --filter @lastly/parser build && pnpm --filter @lastly/web build"
+}

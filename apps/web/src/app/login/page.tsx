@@ -30,6 +30,7 @@ function LoginScreen() {
   const next = params.get('next') ?? '/';
   const failed = params.get('error');
   const failedDetail = params.get('detail');
+  const googleEnabled = process.env.NEXT_PUBLIC_ENABLE_GOOGLE_LOGIN !== 'false';
   /**
    * 카카오는 아직 없다.
    *
@@ -81,9 +82,15 @@ function LoginScreen() {
       </h1>
 
       <p className="mt-3 text-[14.5px] leading-[1.75] text-ink-2">
-        계정에 담아두면 폰을 바꾸거나 앱을 지워도
-        <br />
-        지금까지의 기록이 그대로 남아요.
+        {googleEnabled ? (
+          <>
+            계정에 담아두면 폰을 바꾸거나 앱을 지워도
+            <br />
+            지금까지의 기록이 그대로 남아요.
+          </>
+        ) : (
+          '현재는 이 브라우저에서 사용할 수 있어요. 브라우저 데이터를 삭제하면 기록에 다시 접근할 수 없으니 설정에서 기록을 내보내 주세요.'
+        )}
       </p>
 
       {failed ? (
@@ -109,18 +116,27 @@ function LoginScreen() {
       <DevSignIn />
 
       <div className="mt-auto flex flex-col gap-2.5">
-        <button
-          type="button"
-          onClick={() => signIn('google')}
-          disabled={pending !== null}
-          className="flex h-14 w-full items-center justify-center gap-2.5 rounded-xl border border-line bg-card text-16 font-semibold text-ink disabled:opacity-60"
-        >
-          <span
-            className="block h-[19px] w-[19px] rounded-full border-[3px] border-[#4285F4] border-b-[#FBBC05] border-r-[#EA4335]"
-            aria-hidden
-          />
-          {pending === 'google' ? '연결하는 중…' : '구글로 계속하기'}
-        </button>
+        {googleEnabled ? (
+          <button
+            type="button"
+            onClick={() => signIn('google')}
+            disabled={pending !== null}
+            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-xl border border-line bg-card text-16 font-semibold text-ink disabled:opacity-60"
+          >
+            <span
+              className="block h-[19px] w-[19px] rounded-full border-[3px] border-[#4285F4] border-b-[#FBBC05] border-r-[#EA4335]"
+              aria-hidden
+            />
+            {pending === 'google' ? '연결하는 중…' : '구글로 계속하기'}
+          </button>
+        ) : (
+          <Link
+            href="/"
+            className="flex h-14 items-center justify-center rounded-xl bg-ink text-16 font-semibold text-white"
+          >
+            이 브라우저에서 계속하기
+          </Link>
+        )}
 
         {/* 계정을 만들기 전에 읽을 수 있어야 하는 문서다. 로그인 없이 열린다. */}
         <p className="mt-1 text-center text-12 text-ink-3">
