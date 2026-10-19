@@ -8,7 +8,7 @@
 
 ## 2. DB와 인증
 
-이 저장소의 `supabase/migrations`를 **내 프로젝트에만** 적용한다. 기존 운영 데이터가 있는 프로젝트라면 먼저 현재 스키마와 마이그레이션 이력을 확인한다. 프로젝트가 비어 있다면 Supabase CLI로 링크한 뒤 `supabase db push`를 실행한다. 적용 뒤 `items`, `item_logs`, `profiles`, `notifications`, `push_subscriptions`, `cadence_priors` 테이블과 RLS 정책을 확인한다.
+이 저장소의 `supabase/migrations`를 **내 프로젝트에만** 적용한다. 새 프로젝트에 Supabase CLI를 연결하고 `supabase db push`로 23개 마이그레이션을 적용했다. 로컬·원격 마이그레이션 이력도 일치한다. `items`, `item_logs`, `profiles`, `notifications`, `push_subscriptions`, `cadence_priors` 테이블과 RLS 정책을 실제 사용자 요청으로 추가 확인해야 한다.
 
 ## 3. 알림 함수와 예약 작업
 
@@ -25,7 +25,7 @@
 
 `SUPABASE_URL`과 `SUPABASE_SERVICE_ROLE_KEY`는 호스팅된 Edge Function의 기본 환경변수다. `CRON_SECRET`과 VAPID 값은 직접 설정해야 한다. 함수를 배포한 뒤 예약 작업이 내 함수로 호출되는지 확인한다. `keep-api-awake`는 복제본에서 제거한다.
 
-새 `api` Edge Function은 먼저 `GET /v1/items`를 제공한다. 호출 주소는 `https://<project-ref>.supabase.co/functions/v1/api/v1/items`다. 브라우저의 사전 요청(OPTIONS)을 처리하기 위해 플랫폼 JWT 검사를 끄고, 실제 목록 요청에서는 함수가 사용자 토큰을 검증한다. 조회에는 사용자 권한의 Supabase 클라이언트를 사용하므로 RLS가 적용된다. 웹앱 주소는 Edge Function Secrets의 `CORS_ORIGIN`에 설정한다. 지금은 코드를 작성하고 분리 테스트만 했으며 아직 배포하거나 웹 연결을 바꾸지 않았다.
+새 `api` Edge Function은 먼저 `GET /v1/items`를 제공한다. 호출 주소는 `https://ovcexehchfxqibspbsyp.supabase.co/functions/v1/api/v1/items`다. 브라우저의 사전 요청(OPTIONS)을 처리하기 위해 플랫폼 JWT 검사를 끄고, 실제 목록 요청에서는 함수가 사용자 토큰을 검증한다. 조회에는 사용자 권한의 Supabase 클라이언트를 사용하므로 RLS가 적용된다. 웹앱 주소는 Edge Function Secrets의 `CORS_ORIGIN`에 설정한다. 함수 배포 뒤 OPTIONS 204와 미인증 GET 401을 확인했다. 실제 사용자 JWT·DB 조회 및 웹 연결 전환은 아직 확인하지 않았다.
 
 ## 4. 웹과 API 연결
 
@@ -35,7 +35,7 @@
 
 - 파서를 다시 빌드한 상태에서 API 테스트 13개 묶음, 총 885개가 통과한다.
 - API와 파서 TypeScript 검사도 통과한다.
-- 알림 발송 Edge Function은 이미 있지만, **내 Supabase에 아직 배포되지 않았다.**
+- 알림 발송 Edge Function은 이미 있지만, **내 Supabase에 아직 배포되지 않았다.** 첫 `api` 함수만 배포했다.
 - Render의 NestJS API와 Python AI 서버 이전은 아직 시작 단계다.
 
 참고: [Edge Function 환경변수](https://supabase.com/docs/guides/functions/secrets), [예약 실행](https://supabase.com/docs/guides/functions/schedule-functions), [JWT 설정](https://supabase.com/docs/guides/functions/auth-headers).

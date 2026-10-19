@@ -18,8 +18,8 @@ Move the application backend in small, verifiable slices from the two Render Doc
 ### Phase 1: Baseline and foundation
 
 - [x] Task 1: Record the current API contracts, environment variables, database migrations, cron jobs, and baseline test results. API baseline: 13 suites and 885 tests pass after rebuilding the parser package; API and parser typechecks pass.
-- [ ] Task 1a: Create or select the user's Supabase project, apply migrations, deploy the existing digest Edge Function, and configure Vault/Edge secrets. Remove upstream project URLs before applying migrations.
-- [ ] Task 2: Create a Supabase Edge Function foundation with shared environment loading, Supabase Auth token verification, JSON responses, CORS, and error handling. Initial `api` function and isolated tests are written; deployment and real-user verification remain.
+- [ ] Task 1a: Create or select the user's Supabase project, apply migrations, deploy the existing digest Edge Function, and configure Vault/Edge secrets. The new Seoul project and all 23 migrations are done; digest secrets and deployment remain.
+- [ ] Task 2: Create a Supabase Edge Function foundation with shared environment loading, Supabase Auth token verification, JSON responses, CORS, and error handling. Initial `api` function is deployed; six isolated tests, preflight 204, and unauthenticated 401 pass. Real-user verification remains.
 
 ### Phase 2: Core user flow
 
